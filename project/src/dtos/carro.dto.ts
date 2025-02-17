@@ -13,5 +13,5 @@ export class CreateCarroDto {
   @IsNotEmpty() @IsString() tipoModelo: string;
   @IsNotEmpty() @IsString() combustivel: string;
   @IsNotEmpty() @IsString() cor: string;
-  @IsNotEmpty() @IsNumber() id_anunciante: number; // ✅ Ensure id_anunciante is explicitly defined
+  @IsNotEmpty() @IsNumber() id_anunciante: number; 
 }

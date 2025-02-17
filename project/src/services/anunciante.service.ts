@@ -41,10 +41,10 @@ export class AnunciantesService {
     return updatedAnunciante;
   }
 
-  async findAnuncianteWithCarros(id: number): Promise<Anunciante> {
+  async findAnuncianteWithCarrosImoveis(id: number): Promise<Anunciante> {
     const anunciante = await this.anunciantesRepository.findOne({
       where: { id },
-      relations: ['carros'], // Load related carros
+      relations: ['carros','imoveis'], 
     });
 
     if (!anunciante) {

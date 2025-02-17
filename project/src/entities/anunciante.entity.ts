@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Carro } from './carro.entity';
+import { Imovel } from './imovel.entity';
 
 @Entity({ schema: 'toanunciando', name: 'anunciantes' })
 export class Anunciante {
@@ -38,4 +39,7 @@ export class Anunciante {
 
   @OneToMany(() => Carro, (carro) => carro.anunciante)
   carros: Carro[];
+
+  @OneToMany(() => Imovel, (imovel) => imovel.anunciante)
+  imoveis: Imovel[];
 }

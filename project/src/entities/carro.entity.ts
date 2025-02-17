@@ -54,4 +54,5 @@ export class Carro {
 
   @Column({ length: 20 })
   cor: string;
+  acessorios: any;
 }

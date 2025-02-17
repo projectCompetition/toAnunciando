@@ -6,6 +6,11 @@ import { Anunciante } from '../entities/anunciante.entity';
 export class AnunciantesController {
   constructor(private readonly anunciantesService: AnunciantesService) {}
 
+  @Post()
+  create(@Body() anunciante: Partial<Anunciante>): Promise<Anunciante> {
+    return this.anunciantesService.create(anunciante);
+  }
+
   @Get()
   findAll(): Promise<Anunciante[]> {
     return this.anunciantesService.findAll();
@@ -14,11 +19,6 @@ export class AnunciantesController {
   @Get(':id')
   findOne(@Param('id') id: number): Promise<Anunciante | null> {
     return this.anunciantesService.findOne(id);
-  }
- 
-  @Post()
-  create(@Body() anunciante: Partial<Anunciante>): Promise<Anunciante> {
-    return this.anunciantesService.create(anunciante);
   }
 
   @Put(':id')
@@ -33,6 +33,11 @@ export class AnunciantesController {
 
   @Get('/carros/:id')
   async findAnuncianteWithCarros(@Param('id') id: number): Promise<Anunciante> {
-    return this.anunciantesService.findAnuncianteWithCarros(id);
+    return this.anunciantesService.findAnuncianteWithCarrosImoveis(id);
+  }
+
+  @Get('/imoveis/:id')
+  async findAnuncianteWithImoveis(@Param('id') id: number): Promise<Anunciante> {
+    return this.anunciantesService.findAnuncianteWithCarrosImoveis(id);
   }
 }
