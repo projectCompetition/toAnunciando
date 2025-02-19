@@ -1,26 +1,18 @@
 import { NestFactory } from '@nestjs/core';
-import {
-  NestFastifyApplication,
-  FastifyAdapter,
-} from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
-import { join } from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter(),
-  );
-  app.useStaticAssets({
-    root: join(__dirname, '..', 'public'),
-    prefix: '/public/',
+  const app = await NestFactory.create(AppModule);
+
+  app.enableCors(); // Permite chamadas do React
+  app.use((req, res, next) => {
+    if (req.path === '/login') {
+      res.redirect('http://localhost:3000/login');
+    } else {
+      next();
+    }
   });
-  app.setViewEngine({
-    engine: {
-      handlebars: require('handlebars'),
-    },
-    templates: join(__dirname, '..', 'views'),
-  });
-  await app.listen(process.env.PORT ?? 3000);
+
+  await app.listen(3001);
 }
 bootstrap();

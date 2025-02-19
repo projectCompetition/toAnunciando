@@ -6,6 +6,7 @@ import { CarrosModule } from './modules/carro.module';
 import { ImoveisModule } from './modules/imovel.module';
 import { CarroAcessorios } from './entities/carro-acessorios.entity';
 import { CarroAcessoriosModule } from './modules/carro-acessorios.module';
+import { AuthModule } from './modules/auth.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { CarroAcessoriosModule } from './modules/carro-acessorios.module';
     CarrosModule,
     ImoveisModule,
     CarroAcessoriosModule,
+    AuthModule,
   ],
 })
 export class AppModule { }

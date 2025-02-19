@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BeforeInsert } from 'typeorm';
 import { Carro } from './carro.entity';
 import { Imovel } from './imovel.entity';
+import * as bcrypt from 'bcrypt';
 
 @Entity({ schema: 'toanunciando', name: 'anunciantes' })
 export class Anunciante {
@@ -42,4 +43,9 @@ export class Anunciante {
 
   @OneToMany(() => Imovel, (imovel) => imovel.anunciante)
   imoveis: Imovel[];
+
+  @BeforeInsert()
+  async hashPassword() {
+    this.senha = await bcrypt.hash(this.senha, 10);
+  }
 }
