@@ -16,7 +16,7 @@ import { CarroAcessoriosModule } from './modules/carro-acessorios.module';
       port: 5432,
       username: 'postgres',
       password: 'masterkey',
-      database: 'toAnunciando',
+      database: 'postgres',
       autoLoadEntities: true,
       synchronize: true, // Set to false in production
     }),
