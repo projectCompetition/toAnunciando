@@ -5,7 +5,7 @@ import { Carro } from '../entities/carro.entity';
 import { CreateCarroDto } from '../dtos/carro.dto';
 
 @Injectable()
-export class CarrosService {
+export class CarroService {
   constructor(
     @InjectRepository(Carro)
     private readonly carrosRepository: Repository<Carro>,
@@ -50,7 +50,7 @@ export class CarrosService {
   async findCarroWithAcessorios(id: number): Promise<Carro> {
     const carro = await this.carrosRepository.findOne({
       where: { id },
-      relations: ['acessorios'], // Carrega os acessórios relacionados ao carro
+      relations: ['acessorio'], 
     });
   
     if (!carro) {

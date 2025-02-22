@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsOptional } from 'class-validator';
 
 export class CreateCarroDto {
   @IsNotEmpty() @IsString() descricao: string;
@@ -13,5 +13,6 @@ export class CreateCarroDto {
   @IsNotEmpty() @IsString() tipoModelo: string;
   @IsNotEmpty() @IsString() combustivel: string;
   @IsNotEmpty() @IsString() cor: string;
+  @IsOptional() @IsNumber() id_acessorio?: number;
   @IsNotEmpty() @IsNumber() id_anunciante: number; 
 }
