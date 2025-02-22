@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { ImoveisService } from '../services/imovel.service';
 import { Imovel } from '../entities/imovel.entity';
-import { CreateImovelDto } from 'src/dtos/imovel.dto';
+import { CreateImovelDto } from '../dtos/imovel.dto';
 
 @Controller('imoveis')
 export class ImoveisController {

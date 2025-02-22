@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, IsString, Validate } from 'class-validator';
-import { IsCpfCnpj } from 'src/validators/is-cpf-cnpj-validator';
+import { IsCpfCnpj } from '../validators/is-cpf-cnpj-validator';
 
 export class LoginDto {
   @IsEmail()

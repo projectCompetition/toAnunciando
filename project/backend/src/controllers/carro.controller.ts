@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { CarrosService } from '../services/carro.service';
 import { Carro } from '../entities/carro.entity';
-import { CreateCarroDto } from 'src/dtos/carro.dto';
+import { CreateCarroDto } from '../dtos/carro.dto';
 
 @Controller('carros')
 export class CarrosController {
-  constructor(private readonly carrosService: CarrosService) {}
+  constructor(private readonly carrosService: CarrosService) { }
 
   @Post()
   async create(@Body() data: CreateCarroDto): Promise<Carro> {
