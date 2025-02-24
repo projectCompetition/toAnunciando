@@ -24,7 +24,7 @@ export class AuthService {
       // 🔍 Valida como e-mail
       anunciante = await this.anunciantesRepository.findOne({
         where: { email: login },
-        select: ['id', 'email', 'cpfCnpj', 'senha'],
+        select: ['id', 'email', 'cpfcnpj', 'senha'],
       });
     } else {
       // 🔍 Valida como CPF ou CNPJ
@@ -36,8 +36,8 @@ export class AuthService {
       }
 
       anunciante = await this.anunciantesRepository.findOne({
-        where: { cpfCnpj: login },
-        select: ['id', 'email', 'cpfCnpj', 'senha'],
+        where: { cpfcnpj: login },
+        select: ['id', 'email', 'cpfcnpj', 'senha'],
       });
     }
 
