@@ -5,16 +5,27 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Verifica se o token existe, se não, redireciona para o login
     if (!localStorage.getItem("token")) {
-      navigate("/login"); // Se não estiver autenticado, manda para login
+      navigate("/login");
     }
   }, [navigate]);
+
+  const handleLogout = () => {
+    // Remove o token do localStorage
+    localStorage.removeItem("token");
+
+    // Redireciona para o login após um pequeno atraso
+    setTimeout(() => {
+      navigate("/login");
+    }, 500); // Atraso de 500ms para garantir a remoção do token
+  };
 
   return (
     <div>
       <h1>Dashboard</h1>
       <p>Bem-vindo ao painel de controle!</p>
-      <button onClick={() => { localStorage.removeItem("token"); navigate("/login"); }}>Sair</button>
+      <button onClick={handleLogout}>Sair</button>
     </div>
   );
 };

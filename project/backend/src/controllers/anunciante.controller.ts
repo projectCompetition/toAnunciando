@@ -8,7 +8,6 @@ export class AnunciantesController {
   constructor(private readonly anunciantesService: AnunciantesService) {}
 
   @Post()
-  @UseGuards(AuthGuard('jwt'))
   create(@Body() anunciante: Partial<Anunciante>): Promise<Anunciante> {
     return this.anunciantesService.create(anunciante);
   }

@@ -1,0 +1,140 @@
+.cadastro-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #eef2f7;
+}
+
+.cadastro-box {
+  display: flex;
+  background: white;
+  width: 900px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cadastro-form {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cadastro-form h1 {
+  margin-bottom: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box; /* Para garantir que o padding não altere o tamanho total do campo */
+}
+
+.cadastro-options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.cadastro-options label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cadastro-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.cadastro-button:hover {
+  background-color: #357ab8;
+}
+
+.cadastro-form p {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.cadastro-form a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cadastro-form a:hover {
+  text-decoration: underline;
+}
+
+/* Right Side - Illustration */
+.cadastro-info {
+  flex: 1;
+  background: #4a90e2;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.cadastro-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.cadastro-info p {
+  font-size: 16px;
+  max-width: 300px;
+}
+
+select {
+  background-color: #fff; /* Cor de fundo para select */
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #007bff; /* Ajuste a cor da borda ao focar no campo */
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .cadastro-box {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .cadastro-info {
+    display: none;
+  }
+}

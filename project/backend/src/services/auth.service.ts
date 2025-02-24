@@ -5,6 +5,7 @@ import { Anunciante } from '../entities/anunciante.entity';
 import { LoginDto } from '../dtos/login.dto';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { cpf, cnpj } from 'cpf-cnpj-validator';
 
 @Injectable()
 export class AuthService {
@@ -12,17 +13,33 @@ export class AuthService {
     @InjectRepository(Anunciante)
     private readonly anunciantesRepository: Repository<Anunciante>,
     private readonly jwtService: JwtService, // ✅ Injeta o serviço JWT
-  ) {}
+  ) { }
 
   // ✅ Método de login
   async login(loginDto: LoginDto): Promise<{ accessToken: string }> {
-    const { email, senha } = loginDto;
+    const { login, senha } = loginDto;
+    let anunciante: Anunciante | null;
 
-    // 🔍 Busca anunciante pelo e-mail (e inclui a senha)
-    const anunciante = await this.anunciantesRepository.findOne({
-      where: { email },
-      select: ['id', 'email', 'senha'], // ⚠️ Precisamos incluir a senha na consulta
-    });
+    if (login.includes('@')) {
+      // 🔍 Valida como e-mail
+      anunciante = await this.anunciantesRepository.findOne({
+        where: { email: login },
+        select: ['id', 'email', 'cpfCnpj', 'senha'],
+      });
+    } else {
+      // 🔍 Valida como CPF ou CNPJ
+      const isCpfValid = cpf.isValid(login);
+      const isCnpjValid = cnpj.isValid(login);
+
+      if (!isCpfValid && !isCnpjValid) {
+        throw new UnauthorizedException('CPF ou CNPJ inválido');
+      }
+
+      anunciante = await this.anunciantesRepository.findOne({
+        where: { cpfCnpj: login },
+        select: ['id', 'email', 'cpfCnpj', 'senha'],
+      });
+    }
 
     if (!anunciante) {
       throw new UnauthorizedException('Credenciais inválidas');
