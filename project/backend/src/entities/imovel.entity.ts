@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne } from 'typeorm';
 import { Anunciante } from './anunciante.entity';
+import { ImovelDetalhe } from './imovel-detalhe.entity';
 
-
-@Entity({ schema: 'toanunciando', name: 'imoveis' })
+@Entity({ schema: 'toanunciando', name: 'imovel' })
 export class Imovel {
   @PrimaryGeneratedColumn()
   id: number;
@@ -49,4 +49,9 @@ export class Imovel {
 
   @Column({ type: 'numeric', precision: 15, scale: 2, nullable: true })
   area_total?: number;
+
+  @OneToOne(() => ImovelDetalhe, (detalhe) => detalhe.imovel, { nullable: true })
+  @JoinColumn({ name: 'id_detalhe' })
+  detalhe?: ImovelDetalhe;
 }
+

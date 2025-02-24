@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Imovel } from '../entities/imovel.entity';
-import { ImoveisService } from '../services/imovel.service';
-import { ImoveisController } from '../controllers/imovel.controller';
+import { ImovelService } from '../services/imovel.service';
+import { ImovelController } from '../controllers/imovel.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Imovel])],
-  controllers: [ImoveisController],
-  providers: [ImoveisService],
-  exports: [ImoveisService],
+  controllers: [ImovelController],
+  providers: [ImovelService],
+  exports: [ImovelService],
 })
-export class ImoveisModule {}
+export class ImovelModule {}

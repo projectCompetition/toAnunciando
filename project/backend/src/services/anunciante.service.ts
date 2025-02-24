@@ -4,35 +4,35 @@ import { Repository } from 'typeorm';
 import { Anunciante } from '../entities/anunciante.entity';
 
 @Injectable()
-export class AnunciantesService {
+export class AnuncianteService {
   constructor(
     @InjectRepository(Anunciante)
-    private readonly anunciantesRepository: Repository<Anunciante>,
+    private readonly anuncianteRepository: Repository<Anunciante>,
   ) {}
 
   findAll(): Promise<Anunciante[]> {
-    return this.anunciantesRepository.find();
+    return this.anuncianteRepository.find();
   }
 
   findOne(id: number): Promise<Anunciante | null> {
-    return this.anunciantesRepository.findOne({ where: { id } });
+    return this.anuncianteRepository.findOne({ where: { id } });
   }
 
   create(anunciante: Partial<Anunciante>): Promise<Anunciante> {
-    const newAnunciante = this.anunciantesRepository.create(anunciante);
-    return this.anunciantesRepository.save(newAnunciante);
+    const newAnunciante = this.anuncianteRepository.create(anunciante);
+    return this.anuncianteRepository.save(newAnunciante);
   }
 
   async update(id: number, data: Partial<Anunciante>): Promise<Anunciante> {
-    const anunciante = await this.anunciantesRepository.findOne({ where: { id } });
+    const anunciante = await this.anuncianteRepository.findOne({ where: { id } });
   
     if (!anunciante) {
       throw new Error(`Anunciante with ID ${id} not found`);
     }
   
-    await this.anunciantesRepository.update(id, data);
+    await this.anuncianteRepository.update(id, data);
   
-    const updatedAnunciante = await this.anunciantesRepository.findOne({ where: { id } });
+    const updatedAnunciante = await this.anuncianteRepository.findOne({ where: { id } });
   
     if (!updatedAnunciante) {
       throw new Error(`Failed to update anunciante with ID ${id}`);
@@ -41,10 +41,23 @@ export class AnunciantesService {
     return updatedAnunciante;
   }
 
-  async findAnuncianteWithCarrosImoveis(id: number): Promise<Anunciante> {
-    const anunciante = await this.anunciantesRepository.findOne({
+  async findAnuncianteWithCarro(id: number): Promise<Anunciante> {
+    const anunciante = await this.anuncianteRepository.findOne({
       where: { id },
-      relations: ['carros','imoveis'], 
+      relations: ['carros'], 
+    });
+
+    if (!anunciante) {
+      throw new NotFoundException(`Anunciante with ID ${id} not found`);
+    }
+
+    return anunciante;
+  }
+
+  async findAnuncianteWithImovel(id: number): Promise<Anunciante> {
+    const anunciante = await this.anuncianteRepository.findOne({
+      where: { id },
+      relations: ['imoveis'], 
     });
 
     if (!anunciante) {
@@ -55,6 +68,6 @@ export class AnunciantesService {
   }
   
   async delete(id: number): Promise<void> {
-    await this.anunciantesRepository.delete(id);
+    await this.anuncianteRepository.delete(id);
   }
 }

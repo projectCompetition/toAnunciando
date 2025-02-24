@@ -1,34 +1,39 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
-import { ImoveisService } from '../services/imovel.service';
+import { ImovelService } from '../services/imovel.service';
 import { Imovel } from '../entities/imovel.entity';
 import { CreateImovelDto } from '../dtos/imovel.dto';
 
-@Controller('imoveis')
-export class ImoveisController {
-  constructor(private readonly imoveisService: ImoveisService) {}
+@Controller('imovel')
+export class ImovelController {
+  constructor(private readonly imovelService: ImovelService) {}
 
   @Post()
   async create(@Body() data: CreateImovelDto): Promise<Imovel> {
-    return this.imoveisService.create(data);
+    return this.imovelService.create(data);
   }
 
   @Get()
   async findAll(): Promise<Imovel[]> {
-    return this.imoveisService.findAll();
+    return this.imovelService.findAll();
   }
 
   @Get(':id')
   async findOne(@Param('id') id: number): Promise<Imovel> {
-    return this.imoveisService.findOne(id);
+    return this.imovelService.findOne(id);
   }
 
   @Put(':id')
   async update(@Param('id') id: number, @Body() imovel: Imovel): Promise<Imovel> {
-    return this.imoveisService.update(id, imovel);
+    return this.imovelService.update(id, imovel);
   }
 
   @Delete(':id')
   async remove(@Param('id') id: number): Promise<void> {
-    return this.imoveisService.remove(id);
+    return this.imovelService.remove(id);
+  }
+
+  @Get('/:id/detalhe')
+  async findImovelWithDetalhe(@Param('id') id: number): Promise<Imovel> {
+    return this.imovelService.findImovelWithDetalhe(id);
   }
 }

@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString, IsOptional, IsBoolean } from 'class-validator';
 
-export class CreateCarroAcessoriosDto {
+export class CreateCarroAcessorioDto {
   @IsOptional() @IsNumber() id_carro?: number;
   @IsOptional() @IsString() cambio?: string;
   @IsOptional() @IsNumber() portas?: number;

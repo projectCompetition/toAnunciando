@@ -1,13 +1,15 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToOne,
-  JoinColumn,
+import { 
+  Entity, 
+  PrimaryGeneratedColumn, 
+  Column, 
+  ManyToOne, 
+  OneToOne, 
+  JoinColumn 
 } from 'typeorm';
-import { Anunciante } from './anunciante.entity'; // Import the related entity
+import { Anunciante } from './anunciante.entity';
+import { CarroAcessorio } from './carro-acessorio.entity';
 
-@Entity({ schema: 'toanunciando', name: 'carros' })
+@Entity({ schema: 'toanunciando', name: 'carro' })
 export class Carro {
   @PrimaryGeneratedColumn()
   id: number;
@@ -16,43 +18,47 @@ export class Carro {
   @JoinColumn({ name: 'id_anunciante' })
   anunciante: Anunciante;
 
-  @Column({ length: 100 })
+  @Column({ type: 'varchar', length: 100, nullable: false })
   descricao: string;
 
   @Column({ type: 'text', nullable: true })
   observacao?: string;
 
-  @Column({ type: 'numeric', precision: 15, scale: 2 })
+  @Column({ type: 'numeric', precision: 15, scale: 2, nullable: false })
   valor: number;
 
-  @Column({ length: 40 })
+  @Column({ type: 'varchar', length: 40, nullable: false })
   cidade: string;
 
-  @Column({ length: 2 })
+  @Column({ type: 'varchar', length: 2, nullable: false })
   uf: string;
 
-  @Column({ length: 2 })
+  @Column({ type: 'varchar', length: 2, nullable: false })
   pais: string;
 
-  @Column({ length: 9, name: 'ano_fabricacao' })
+  @Column({ type: 'varchar', length: 9, nullable: false, name: 'ano_fabricacao' })
   anoFabricacao: string;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', nullable: false })
   km: number;
 
-  @Column({ length: 8 })
+  @Column({ type: 'varchar', length: 8, nullable: false })
   placa: string;
 
-  @Column({ length: 20 })
+  @Column({ type: 'varchar', length: 20, nullable: false })
   marca: string;
 
-  @Column({ length: 1, name: 'tipo_modelo' })
+  @Column({ type: 'varchar', length: 1, nullable: false, name: 'tipo_modelo' })
   tipoModelo: string;
 
-  @Column({ length: 1 })
+  @Column({ type: 'varchar', length: 1, nullable: false })
   combustivel: string;
 
-  @Column({ length: 20 })
+  @Column({ type: 'varchar', length: 20, nullable: false })
   cor: string;
-  acessorios: any;
+
+  @OneToOne(() => CarroAcessorio, (acessorio) => acessorio.carro, { nullable: true })
+  @JoinColumn({ name: 'id_acessorio' })
+  acessorio?: CarroAcessorio;
 }
+

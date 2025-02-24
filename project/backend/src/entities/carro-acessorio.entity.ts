@@ -1,13 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
 import { Carro } from './carro.entity';
 
-@Entity({ schema: 'toanunciando', name: 'carro_acessorios' })
-export class CarroAcessorios {
+@Entity({ schema: 'toanunciando', name: 'carro_acessorio' })
+export class CarroAcessorio {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Carro, (carro) => carro.acessorios)
-  @JoinColumn({ name: 'id_carro' })
+  @OneToOne(() => Carro, (carro) => carro.acessorio)
   carro: Carro;
 
   @Column({ type: 'varchar', length: 1, nullable: true })

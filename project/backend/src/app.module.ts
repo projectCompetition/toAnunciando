@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { AnunciantesModule } from './modules/anunciante.module';
-import { CarrosModule } from './modules/carro.module';
-import { ImoveisModule } from './modules/imovel.module';
-import { CarroAcessorios } from './entities/carro-acessorios.entity';
-import { CarroAcessoriosModule } from './modules/carro-acessorios.module';
+import { AnuncianteModule } from './modules/anunciante.module';
+import { CarroModule } from './modules/carro.module';
+import { ImovelModule } from './modules/imovel.module';
+import { CarroAcessorioModule } from './modules/carro-acessorio.module';
+import { ImovelDetalheModule } from './modules/imovel-detalhe.module';
 import { AuthModule } from './modules/auth.module';
 
 @Module({
@@ -21,10 +21,11 @@ import { AuthModule } from './modules/auth.module';
       autoLoadEntities: true,
       synchronize: true, // Set to false in production
     }),
-    AnunciantesModule,
-    CarrosModule,
-    ImoveisModule,
-    CarroAcessoriosModule,
+    AnuncianteModule,
+    CarroModule,
+    ImovelModule,
+    CarroAcessorioModule,
+    ImovelDetalheModule,
     AuthModule,
   ],
 })
