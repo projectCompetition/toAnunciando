@@ -17,7 +17,7 @@ import { AuthModule } from './modules/auth.module';
       port: 5432,
       username: 'postgres',
       password: 'masterkey',
-      database: 'postgres',
+      database: 'toanunciando',
       autoLoadEntities: true,
       synchronize: true, // Set to false in production
     }),

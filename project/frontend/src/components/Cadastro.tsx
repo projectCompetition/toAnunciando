@@ -6,7 +6,7 @@ import "../styles/Cadastro.css";
 const Cadastro: React.FC = () => {
   const [formData, setFormData] = useState({
     nome: "",
-    cpfCnpj: "",
+    cpfcnpj: "",
     email: "",
     endereco: "",
     cidade: "",
@@ -106,7 +106,7 @@ const Cadastro: React.FC = () => {
     setSuccess(false);
 
     try {
-      await api.post("/anunciantes", formData);
+      await api.post("/anunciante", formData);
       setSuccess(true);
       setTimeout(() => navigate("/login"), 2000); // Redireciona após 2s
     } catch (err) {
@@ -123,7 +123,7 @@ const Cadastro: React.FC = () => {
           {success && <p className="success-message">Cadastro realizado com sucesso! Redirecionando...</p>}
           <form onSubmit={handleSubmit}>
             <input type="text" name="nome" placeholder="Nome Completo" value={formData.nome} onChange={handleChange} className="input-field" required />
-            <input type="text" name="cpfCnpj" placeholder="CPF/CNPJ" value={formData.cpfCnpj} onChange={handleChange} className="input-field" required />
+            <input type="text" name="cpfcnpj" placeholder="CPF/CNPJ" value={formData.cpfcnpj} onChange={handleChange} className="input-field" required />
             <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className="input-field" required />
             <input type="text" name="endereco" placeholder="Endereço" value={formData.endereco} onChange={handleChange} className="input-field" required />
             <select name="pais" value={formData.pais} onChange={handleChange} className="input-field" required>

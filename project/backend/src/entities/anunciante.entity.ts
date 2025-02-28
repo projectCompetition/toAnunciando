@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BeforeInsert } from 'typeorm';
 import { Imovel } from './imovel.entity';
 import { Carro } from './carro.entity';
+import * as bcrypt from 'bcrypt';
 
 @Entity({ schema: 'toanunciando', name: 'anunciante' })
 export class Anunciante {
@@ -42,4 +43,9 @@ export class Anunciante {
 
   @OneToMany(() => Carro, (carro) => carro.anunciante)
   carros: Carro[];
+
+  @BeforeInsert()
+  async hashPassword() {
+    this.senha = await bcrypt.hash(this.senha, 10);
+  }
 }
