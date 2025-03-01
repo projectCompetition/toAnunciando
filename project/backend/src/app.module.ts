@@ -7,10 +7,13 @@ import { ImovelModule } from './modules/imovel.module';
 import { CarroAcessorioModule } from './modules/carro-acessorio.module';
 import { ImovelDetalheModule } from './modules/imovel-detalhe.module';
 import { AuthModule } from './modules/auth.module';
+import { AvaliacaoModule } from './modules/avaliacao.module';
+import { TipoAnuncioModule } from './modules/tipo-anuncio.module';
+import { AnuncioModule } from './modules/anuncio.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), // Load environment variables
+    ConfigModule.forRoot(), 
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -19,7 +22,7 @@ import { AuthModule } from './modules/auth.module';
       password: 'masterkey',
       database: 'toanunciando',
       autoLoadEntities: true,
-      synchronize: true, // Set to false in production
+      synchronize: true, 
     }),
     AnuncianteModule,
     CarroModule,
@@ -27,6 +30,9 @@ import { AuthModule } from './modules/auth.module';
     CarroAcessorioModule,
     ImovelDetalheModule,
     AuthModule,
+    AvaliacaoModule,
+    TipoAnuncioModule,
+    AnuncioModule,
   ],
 })
 export class AppModule { }
