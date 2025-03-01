@@ -1,43 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../api"; // Arquivo onde configuramos a conexão com o NestJS
+import { useAuth } from "../contexts/AuthContext"; // Importa o contexto de autenticação
+import api from "../api";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF, FaApple } from "react-icons/fa";
 import "../styles/Login.css";
 
 const Login: React.FC = () => {
-  const [login, setUsername] = useState("");
-  const [senha, setPassword] = useState("");
+  const [login, setLogin] = useState("");
+  const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
+  const { login: authLogin } = useAuth(); // Usa a função de login do contexto
   const navigate = useNavigate();
 
-  // Verifica se o usuário já está logado ao carregar o componente
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    console.log("Token no localStorage:", token); // Debug
-
-    if (token) {
-      console.log("Token encontrado, redirecionando para /dashboard..."); // Debug
-      navigate("/dashboard", { replace: true }); // Redireciona para o dashboard
-    }
-  }, [navigate]); // Dependência: navigate
-
   const handleLogin = async () => {
-    console.log("Tentando fazer login...");
     try {
       const response = await api.post("/auth/login", { login, senha });
-      console.log("Resposta do servidor:", response.data);
 
       if (response.data && response.data.accessToken) {
-        localStorage.setItem("token", response.data.accessToken); // Armazena o token
-        console.log("Token armazenado:", response.data.accessToken); // Debug
-        navigate("/dashboard", { replace: true }); // Redireciona para o dashboard
+        authLogin(response.data.accessToken); // Chama a função de login do contexto
+        navigate("/dashboard"); // Redireciona para o dashboard
       } else {
-        console.error("Token não recebido do servidor");
         setError("Erro ao fazer login. Tente novamente.");
       }
     } catch (err) {
-      console.error("Erro ao fazer login:", err);
       setError("Usuário ou senha incorretos");
     }
   };
@@ -58,7 +44,7 @@ const Login: React.FC = () => {
           type="text"
           placeholder="Login"
           value={login}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setLogin(e.target.value)}
           className="input-field"
           onKeyDown={handleKeyPress} // Detecta pressionamento de tecla
         />
@@ -66,7 +52,7 @@ const Login: React.FC = () => {
           type="password"
           placeholder="Password"
           value={senha}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setSenha(e.target.value)}
           className="input-field"
           onKeyDown={handleKeyPress} // Detecta pressionamento de tecla
         />
