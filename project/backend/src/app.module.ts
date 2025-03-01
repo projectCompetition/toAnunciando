@@ -20,7 +20,7 @@ import { AnuncioModule } from './modules/anuncio.module';
       port: 5432,
       username: 'postgres',
       password: 'masterkey',
-      database: 'toanunciando',
+      database: 'toAnunciando',
       autoLoadEntities: true,
       synchronize: true, 
     }),
