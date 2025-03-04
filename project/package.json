@@ -1,5 +1,13 @@
 {
   "dependencies": {
-    "axios": "^1.7.9"
+    "@nestjs/config": "^4.0.0",
+    "@nestjs/mapped-types": "^2.1.0",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/testing": "^11.0.10",
+    "@types/jest": "^29.5.14",
+    "axios": "^1.7.9",
+    "class-validator": "^0.14.1",
+    "mapped-types": "^0.0.1",
+    "supertest": "^7.0.0"
   }
 }
