@@ -39,7 +39,6 @@ const Cadastro: React.FC = () => {
         paisesSet.sort((a, b) => a.nome.localeCompare(b.nome));
         setPaises(paisesSet);
       } catch (error) {
-        console.error("Erro ao buscar a lista de países:", error);
       }
     };
 
@@ -59,7 +58,6 @@ const Cadastro: React.FC = () => {
         estadosSet.sort((a, b) => a.nome.localeCompare(b.nome));
         setEstados(estadosSet);
       } catch (error) {
-        console.error("Erro ao buscar estados:", error);
       }
     };
 
@@ -87,7 +85,6 @@ const Cadastro: React.FC = () => {
           cidadesSet.sort((a, b) => a.nome.localeCompare(b.nome));
           setCidades(cidadesSet);
         } catch (error) {
-          console.error("Erro ao buscar cidades:", error);
         }
       }
     };

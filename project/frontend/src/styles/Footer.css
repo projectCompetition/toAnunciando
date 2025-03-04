@@ -1,0 +1,99 @@
+.footer {
+    background: #222;
+    color: white;
+    padding: 20px 0; /* Padding reduzido para diminuir a altura */
+    text-align: center;
+    width: 100%; /* Garantir que ocupe toda a largura */
+    margin: 0; /* Remover margens padrão */
+    box-sizing: border-box; /* Garantir que o padding não aumente a largura */
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centralizar o conteúdo */
+    padding: 0 20px; /* Adicionar padding lateral */
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px 0; /* Margem reduzida */
+    padding: 0 10px; /* Padding reduzido */
+  }
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px; /* Margem inferior reduzida */
+  }
+  
+  .footer-section p,
+  .footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 8px; /* Margem inferior reduzida */
+  }
+  
+  .footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #5a67d8;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .social-icons a {
+    color: white;
+    font-size: 24px;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #5a67d8;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px; /* Margem superior reduzida */
+    border-top: 1px solid #444;
+    padding-top: 10px; /* Padding superior reduzido */
+    width: 100%; /* Garantir que ocupe toda a largura */
+  }
+  
+  .footer-bottom p {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-section {
+      text-align: center;
+    }
+  
+    .social-icons {
+      justify-content: center;
+    }
+  }
