@@ -1,12 +1,12 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
+import HomePage from "./privado/HomePage";
 
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="*" element={<Dashboard />} /> {/* Se não encontrar, redireciona para Dashboard */}
+      <Route path="/" element={<HomePage />} />
+      <Route path="*" element={<HomePage />} /> {/* Se não encontrar, redireciona para Dashboard */}
     </Routes>
   );
 };
