@@ -19,7 +19,7 @@ import { TipoAnuncioModule } from './tipo-anuncio.module';
   providers: [AnuncioService],
   exports: [AnuncioService],
 })
-export class AnuncioModule {}
+export class AnuncioModule { }
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -29,7 +29,7 @@ export class AnuncioModule {}
       port: 5432,
       username: 'postgres',
       password: 'masterkey',
-      database: 'postgres',
+      database: 'toanunciando',
       autoLoadEntities: true,
       synchronize: true,
     }),

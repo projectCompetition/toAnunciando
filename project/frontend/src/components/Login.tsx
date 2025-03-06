@@ -35,55 +35,57 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="login-container">
-      {/* Left Section */}
-      <div className="login-box">
-        <h1>Sign in</h1>
-        {error && <p className="error-message">{error}</p>}
-        <input
-          type="text"
-          placeholder="Login"
-          value={login}
-          onChange={(e) => setLogin(e.target.value)}
-          className="input-field"
-          onKeyDown={handleKeyPress} // Detecta pressionamento de tecla
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          className="input-field"
-          onKeyDown={handleKeyPress} // Detecta pressionamento de tecla
-        />
-        <div className="login-options">
-          <label>
-            <input type="checkbox" /> Remember me
-          </label>
-          <a href="#">Forgot password?</a>
-        </div>
-        <button className="login-button" onClick={handleLogin}>
-          Sign in
-        </button>
-        <div className="social-login">
-          <p>Or sign in with</p>
-          <div className="social-icons">
-            <button className="social-button">
-              <FcGoogle />
-            </button>
-            <button className="social-button">
-              <FaFacebookF />
-            </button>
-            <button className="social-button">
-              <FaApple />
-            </button>
+    <div className="body-login">
+      <div className="login-container">
+        {/* Left Section */}
+        <div className="login-box">
+          <h1>Sign in</h1>
+          {error && <p className="error-message">{error}</p>}
+          <input
+            type="text"
+            placeholder="Login"
+            value={login}
+            onChange={(e) => setLogin(e.target.value)}
+            className="input-field"
+            onKeyDown={handleKeyPress} // Detecta pressionamento de tecla
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            className="input-field"
+            onKeyDown={handleKeyPress} // Detecta pressionamento de tecla
+          />
+          <div className="login-options">
+            <label>
+              <input type="checkbox" /> Remember me
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <button className="login-button" onClick={handleLogin}>
+            Sign in
+          </button>
+          <div className="social-login">
+            <p>Or sign in with</p>
+            <div className="social-icons">
+              <button className="social-button">
+                <FcGoogle />
+              </button>
+              <button className="social-button">
+                <FaFacebookF />
+              </button>
+              <button className="social-button">
+                <FaApple />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      {/* Right Section */}
-      <div className="info-box">
-        <h2>Voluptate dolor tempor</h2>
-        <p>Minim cupidatat cillum</p>
+        {/* Right Section */}
+        <div className="info-box">
+          <h2>Voluptate dolor tempor</h2>
+          <p>Minim cupidatat cillum</p>
+        </div>
       </div>
     </div>
   );
