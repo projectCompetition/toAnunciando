@@ -1,0 +1,107 @@
+.imoveis-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100%;
+  margin: 0;
+  /* Remover margens padrão */
+  padding: 0;
+  /* Remover paddings padrão */
+  box-sizing: border-box;
+  /* Garantir que padding e borda não aumentem o tamanho */
+  padding-top: 50px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 80px 20px 20px;
+  /* Adicionar padding-top para evitar corte pelo Topbar */
+  text-align: center;
+  background: #f9f9f9;
+  padding-top: 80px;
+  /* Ajuste para compensar a altura do Topbar */
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.search-input {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #5a67d8;
+}
+
+.search-button {
+  background: #5a67d8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  transition: background 0.3s;
+}
+
+.search-button:hover {
+  background: #434190;
+}
+
+.imoveis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.imovel-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.imovel-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.imovel-card p {
+  margin: 10px 0;
+  color: #555;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-input {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .search-button {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .imoveis-list {
+    padding: 0 10px;
+  }
+}
