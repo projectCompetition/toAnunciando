@@ -22,7 +22,7 @@
   
   .nav-menu {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     gap: 20px;
   }
   

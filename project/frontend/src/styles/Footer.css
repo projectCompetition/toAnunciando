@@ -1,7 +1,7 @@
 .footer {
     background: #222;
     color: white;
-    padding: 20px 0; /* Padding reduzido para diminuir a altura */
+    padding-bottom: 10px; /* Padding reduzido para diminuir a altura */
     text-align: center;
     width: 100%; /* Garantir que ocupe toda a largura */
     margin: 0; /* Remover margens padrão */
@@ -20,28 +20,31 @@
   .footer-section {
     flex: 1;
     min-width: 250px;
-    margin: 10px 0; /* Margem reduzida */
+    margin: 0; /* Margem reduzida */
     padding: 0 10px; /* Padding reduzido */
   }
   
   .footer-section h3 {
-    font-size: 18px;
-    margin-bottom: 10px; /* Margem inferior reduzida */
+    font-size: 16px;
+    margin-bottom: 5px; /* Margem inferior reduzida */
   }
-  
-  .footer-section p,
-  .footer-section ul {
-    font-size: 14px;
-    line-height: 1.6;
+
+  .footer-section p {
+    list-style: none;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1;
   }
-  
+
   .footer-section ul {
     list-style: none;
     padding: 0;
+    font-size: 12px;
+    line-height: 1.6;
   }
   
   .footer-section ul li {
-    margin-bottom: 8px; /* Margem inferior reduzida */
+    margin-bottom: 4px; /* Margem inferior reduzida */
   }
   
   .footer-section ul li a {
@@ -57,6 +60,7 @@
   .social-icons {
     display: flex;
     justify-content: center;
+    margin-top: 15px;
     gap: 15px;
   }
   
@@ -71,14 +75,14 @@
   }
   
   .footer-bottom {
-    margin-top: 20px; /* Margem superior reduzida */
+    margin-top: 0; 
     border-top: 1px solid #444;
-    padding-top: 10px; /* Padding superior reduzido */
-    width: 100%; /* Garantir que ocupe toda a largura */
+    padding-top: 10px;
+    width: 100%; 
   }
   
   .footer-bottom p {
-    font-size: 14px;
+    font-size: 11px;
     margin: 0;
   }
   

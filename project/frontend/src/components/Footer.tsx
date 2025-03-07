@@ -16,19 +16,13 @@ const Footer: React.FC = () => {
 
         <div className="footer-section links">
           <h3>Links Úteis</h3>
-          <ul>
-            <li>
-              <a href="/sobre">Sobre Nós</a>
-            </li>
+          <ul>            
             <li>
               <a href="/termos">Termos de Serviço</a>
             </li>
             <li>
               <a href="/privacidade">Política de Privacidade</a>
-            </li>
-            <li>
-              <a href="/contato">Contato</a>
-            </li>
+            </li>          
           </ul>
         </div>
 
