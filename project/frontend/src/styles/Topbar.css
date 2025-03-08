@@ -53,21 +53,15 @@
   color: white;
   border: none;
   padding: 6px 12px;
-  /* Padding reduzido */
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.3s;
   font-size: 14px;
-  /* Tamanho da fonte ajustado */
   height: 36px;
-  /* Altura fixa para o botão */
   display: flex;
   align-items: center;
-  /* Alinhar texto verticalmente */
   justify-content: center;
-  /* Alinhar texto horizontalmente */
   box-sizing: border-box;
-  /* Garantir que o padding não aumente a altura */
 }
 
 .login-btn:hover {
