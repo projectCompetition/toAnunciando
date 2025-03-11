@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaSearch } from "react-icons/fa"; // Importando o ícone de lupa
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
 import "../styles/Veiculos.css";
@@ -61,19 +62,21 @@ const Veiculos: React.FC = () => {
     <div className="veiculos-page-container">
       <Topbar /> {/* ✅ Topbar reutilizável */}
 
-      <main className="main-content">
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Informe um veículo"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && handleSearch()} // Pesquisar ao pressionar Enter
-            className="search-input"
-          />
-          <button onClick={handleSearch} className="search-button">
-            Pesquisar
-          </button>
+      <main className="veiculos-main-content">
+        <div className="veiculos-search-container">
+          <div className="veiculos-search-input-container">
+            <input
+              type="text"
+              placeholder="Informe um veículo"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={(e) => e.key === "Enter" && handleSearch()} // Pesquisar ao pressionar Enter
+              className="veiculos-search-input"
+            />
+            <div className="veiculos-search-icon" onClick={handleSearch}>
+              <FaSearch />
+            </div>
+          </div>
         </div>
 
         {loading ? (
@@ -81,7 +84,7 @@ const Veiculos: React.FC = () => {
         ) : (
           <div className="veiculos-list">
             {carros.map((carro) => (
-              <div key={carro.id} className="veiculo-card">
+              <div key={carro.id} className="veiculos-card">
                 <h3>{carro.marca} - {carro.descricao}</h3>
                 <p>
                   <strong>Localização:</strong> {carro.cidade} - {carro.uf}, {carro.pais}

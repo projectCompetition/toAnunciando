@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaSearch } from "react-icons/fa"; // Importando o ícone de lupa
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
 import "../styles/Imoveis.css";
@@ -60,19 +61,21 @@ const Imoveis: React.FC = () => {
     <div className="imoveis-page-container">
       <Topbar /> {/* ✅ Topbar reutilizável */}
 
-      <main className="main-content">
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Informe um imóvel"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && handleSearch()} // Pesquisar ao pressionar Enter
-            className="search-input"
-          />
-          <button onClick={handleSearch} className="search-button">
-            Pesquisar
-          </button>
+      <main className="imoveis-main-content">
+        <div className="imoveis-search-container">
+          <div className="imoveis-search-input-container">
+            <input
+              type="text"
+              placeholder="Informe um imóvel"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={(e) => e.key === "Enter" && handleSearch()} // Pesquisar ao pressionar Enter
+              className="imoveis-search-input"
+            />
+            <div className="imoveis-search-icon" onClick={handleSearch}>
+              <FaSearch />
+            </div>
+          </div>
         </div>
 
         {loading ? (
@@ -80,7 +83,7 @@ const Imoveis: React.FC = () => {
         ) : (
           <div className="imoveis-list">
             {imoveis.map((imovel) => (
-              <div key={imovel.id} className="imovel-card">
+              <div key={imovel.id} className="imoveis-card">
                 <h3>{imovel.tipo_imovel}</h3>
                 <p>
                   <strong>Descrição:</strong> {imovel.descricao}

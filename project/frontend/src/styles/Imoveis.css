@@ -2,106 +2,120 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-width: 100%;
+  min-width: 100vw;
   margin: 0;
-  /* Remover margens padrão */
   padding: 0;
-  /* Remover paddings padrão */
   box-sizing: border-box;
-  /* Garantir que padding e borda não aumentem o tamanho */
-  padding-top: 50px;
 }
 
-.main-content {
+.imoveis-main-content {
   flex: 1;
-  padding: 80px 20px 20px;
-  /* Adicionar padding-top para evitar corte pelo Topbar */
-  text-align: center;
-  background: #ffffff;
-  padding-top: 80px;
-  /* Ajuste para compensar a altura do Topbar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Centraliza a barra de pesquisa */
+  justify-content: center;
+  /* Centraliza verticalmente */
+  padding: 20px;
+  background: #f9f9f9;
 }
 
-.search-container {
+.imoveis-search-container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 600px;
+  /* Largura máxima da barra de pesquisa */
   margin-bottom: 40px;
 }
 
-.search-input {
-  width: 300px;
-  padding: 10px;
+.imoveis-search-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.imoveis-search-input {
+  width: 100%;
+  /* Ocupa todo o espaço disponível */
+  padding: 12px 40px 12px 20px;
+  /* Padding para o ícone */
   font-size: 16px;
-  border: 2px solid #ddd;
-  border-radius: 5px 0 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  /* Bordas arredondadas */
   outline: none;
-  transition: border-color 0.3s;
+  transition: box-shadow 0.3s, border-color 0.3s;
 }
 
-.search-input:focus {
+.imoveis-search-input:focus {
   border-color: #5a67d8;
+  box-shadow: 0 0 8px rgba(90, 103, 216, 0.3);
+  /* Efeito de sombra ao focar */
 }
 
-.search-button {
-  background: #5a67d8;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+.imoveis-search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
   cursor: pointer;
-  border-radius: 0 5px 5px 0;
-  transition: background 0.3s;
+  transition: color 0.3s;
 }
 
-.search-button:hover {
-  background: #434190;
+.imoveis-search-icon:hover {
+  color: #5a67d8;
 }
 
 .imoveis-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 800px;
+  max-width: 1200px;
+  /* Aumentei a largura máxima da lista */
   margin: 0 auto;
 }
 
-.imovel-card {
+.imoveis-card {
   background: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
+  width: 600px;
+  /* Aumentei a largura fixa */
+  height: 300px;
+  /* Altura fixa */
+  overflow: hidden;
+  /* Evita que o conteúdo ultrapasse o container */
 }
 
-.imovel-card h3 {
+.imoveis-card h3 {
   margin-top: 0;
   color: #333;
 }
 
-.imovel-card p {
+.imoveis-card p {
   margin: 10px 0;
   color: #555;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-  .search-container {
+  .imoveis-search-container {
     flex-direction: column;
     gap: 10px;
   }
 
-  .search-input {
+  .imoveis-search-input {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 24px;
   }
 
-  .search-button {
+  .imoveis-card {
     width: 100%;
-    border-radius: 5px;
-  }
-
-  .imoveis-list {
-    padding: 0 10px;
+    /* Ocupa toda a largura em telas menores */
+    height: auto;
+    /* Altura automática para se ajustar ao conteúdo */
   }
 }
