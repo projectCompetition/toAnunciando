@@ -1,3 +1,4 @@
+/* Container principal da página */
 .imoveis-page-container {
   display: flex;
   flex-direction: column;
@@ -8,74 +9,144 @@
   box-sizing: border-box;
 }
 
+/* Conteúdo principal */
 .imoveis-main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Centraliza a barra de pesquisa */
   justify-content: center;
-  /* Centraliza verticalmente */
   padding: 20px;
   background: #f9f9f9;
 }
 
+/* Container da barra de pesquisa */
 .imoveis-search-container {
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 600px;
-  /* Largura máxima da barra de pesquisa */
-  margin-bottom: 40px;
+  margin-bottom: 5px;
 }
 
+/* Container do input de pesquisa */
 .imoveis-search-input-container {
   position: relative;
   width: 100%;
+  margin-bottom: 15px;
 }
 
+/* Input de pesquisa */
 .imoveis-search-input {
   width: 100%;
-  /* Ocupa todo o espaço disponível */
   padding: 12px 40px 12px 20px;
-  /* Padding para o ícone */
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 24px;
-  /* Bordas arredondadas */
   outline: none;
   transition: box-shadow 0.3s, border-color 0.3s;
+  margin-top: 10px;
 }
 
+/* Efeito ao focar no input */
 .imoveis-search-input:focus {
   border-color: #5a67d8;
   box-shadow: 0 0 8px rgba(90, 103, 216, 0.3);
-  /* Efeito de sombra ao focar */
 }
 
+/* Ícone de pesquisa */
 .imoveis-search-icon {
   position: absolute;
   right: 15px;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   color: #888;
   cursor: pointer;
   transition: color 0.3s;
 }
 
+/* Efeito ao passar o mouse no ícone */
 .imoveis-search-icon:hover {
   color: #5a67d8;
 }
 
+/* Botão de filtro */
+.imoveis-filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: black;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  margin-left: 10px;
+}
+
+/* Efeito ao passar o mouse no botão de filtro */
+.imoveis-filter-button:hover {
+  opacity: 0.7;
+}
+
+/* Container dos filtros */
+.imoveis-filtros-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 10px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Coluna de filtros */
+.filtros-coluna {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+/* Linha de separação entre as colunas de filtros */
+.linha-separadora {
+  width: 1px;
+  height: 100%;
+  background-color: #646363;
+}
+
+/* Estilo dos filtros individuais */
+.imoveis-filtro {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Títulos dos filtros */
+.filtros-coluna h5 {
+  margin: 10px 0 5px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Lista de imóveis */
 .imoveis-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
   max-width: 1200px;
-  /* Aumentei a largura máxima da lista */
   margin: 0 auto;
 }
 
+/* Card de imóvel */
 .imoveis-card {
   background: white;
   padding: 20px;
@@ -83,18 +154,17 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
   width: 600px;
-  /* Aumentei a largura fixa */
   height: 300px;
-  /* Altura fixa */
   overflow: hidden;
-  /* Evita que o conteúdo ultrapasse o container */
 }
 
+/* Título do card de imóvel */
 .imoveis-card h3 {
   margin-top: 0;
   color: #333;
 }
 
+/* Parágrafos do card de imóvel */
 .imoveis-card p {
   margin: 10px 0;
   color: #555;
@@ -114,8 +184,14 @@
 
   .imoveis-card {
     width: 100%;
-    /* Ocupa toda a largura em telas menores */
     height: auto;
-    /* Altura automática para se ajustar ao conteúdo */
+  }
+
+  .imoveis-filtros-container {
+    flex-direction: column;
+  }
+
+  .linha-separadora {
+    display: none;
   }
 }
