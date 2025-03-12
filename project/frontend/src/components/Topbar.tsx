@@ -5,17 +5,21 @@ import "../styles/Topbar.css";
 const Topbar: React.FC = () => {
   return (
     <header className="topbar">
-      <div className="logo">to Anunciando</div>
+      <div className="logo">
+        <Link to="/homepage" className="nav-link">
+          to Anunciando
+        </Link>
+      </div>
 
       <div className="div-nav">
         <div>
-          <nav className="nav-menu">            
+          <nav className="nav-menu">
             <Link to="/imoveis" className="nav-link">
               Imóveis
             </Link>
             <Link to="/veiculos" className="nav-link">
               Veículos
-            </Link>          
+            </Link>
           </nav>
         </div>
 
