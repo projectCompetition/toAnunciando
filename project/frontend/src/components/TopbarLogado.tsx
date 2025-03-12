@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import "../styles/Topbar.css";
 
 const TopbarLogado: React.FC = () => {
   const { anunciante, logout } = useAuth();
+  const [loading, setLoading] = useState(false); // Estado para controlar o loading
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
+  const handleLogout = async () => {
+    setLoading(true); // Ativa o estado de loading
+    try {
+      await logout(); // Chama a função de logout do contexto
+      navigate("/login"); // Redireciona para a página de login
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+    } finally {
+      setLoading(false); // Desativa o estado de loading
+    }
   };
 
   return (
@@ -29,9 +37,16 @@ const TopbarLogado: React.FC = () => {
         <div className="div-login">
           {anunciante ? (
             <div className="anunciante-info">
-              <span className="anunciante-nome">{anunciante.nome}</span>
-              <button className="logout-btn" onClick={handleLogout}>
-                Logout
+              <span className="anunciante-nome">
+                Olá, {anunciante.nome || "Anunciante"}
+              </span>
+              <button
+                className="logout-btn"
+                onClick={handleLogout}
+                disabled={loading} // Desabilita o botão durante o loading
+                aria-label="Logout"
+              >
+                {loading ? "Saindo..." : "Logout"}
               </button>
             </div>
           ) : (

@@ -18,7 +18,8 @@ const Login: React.FC = () => {
       const response = await api.post("/auth/login", { login, senha });
 
       if (response.data && response.data.accessToken) {
-        authLogin(response.data.accessToken); // Chama a função de login do contexto
+        // Chama a função de login do contexto com o token e o nome do anunciante
+        authLogin(response.data.accessToken, response.data.anunciante.nome);
         navigate("/dashboard"); // Redireciona para o dashboard
       } else {
         setError("Erro ao fazer login. Tente novamente.");

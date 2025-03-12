@@ -1,10 +1,10 @@
+/* Estilos existentes do Topbar */
 .topbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  /* Altura fixa do Topbar */
   background: #222;
   color: white;
   display: flex;
@@ -14,7 +14,6 @@
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   box-sizing: border-box;
-  /* Garantir que o padding não aumente a altura */
 }
 
 .logo {
@@ -66,4 +65,36 @@
 
 .login-btn:hover {
   background: #434190;
+}
+
+/* Novos estilos para a área logada */
+.anunciante-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.anunciante-nome {
+  font-size: 14px;
+  color: white;
+}
+
+.logout-btn {
+  background: #dc3545; /* Cor vermelha para o botão de logout */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+  font-size: 14px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.logout-btn:hover {
+  background: #c82333; /* Cor vermelha mais escura no hover */
 }

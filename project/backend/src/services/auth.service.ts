@@ -16,7 +16,7 @@ export class AuthService {
   ) { }
 
   // ✅ Método de login
-  async login(loginDto: LoginDto): Promise<{ accessToken: string }> {
+  async login(loginDto: LoginDto): Promise<{ accessToken: string; anunciante: { nome: string } }> {
     const { login, senha } = loginDto;
     let anunciante: Anunciante | null;
 
@@ -24,7 +24,7 @@ export class AuthService {
       // 🔍 Valida como e-mail
       anunciante = await this.anunciantesRepository.findOne({
         where: { email: login },
-        select: ['id', 'email', 'cpfcnpj', 'senha'],
+        select: ['id', 'email', 'cpfcnpj', 'senha', 'nome'], // Adiciona 'nome' ao select
       });
     } else {
       // 🔍 Valida como CPF ou CNPJ
@@ -37,7 +37,7 @@ export class AuthService {
 
       anunciante = await this.anunciantesRepository.findOne({
         where: { cpfcnpj: login },
-        select: ['id', 'email', 'cpfcnpj', 'senha'],
+        select: ['id', 'email', 'cpfcnpj', 'senha', 'nome'], // Adiciona 'nome' ao select
       });
     }
 
@@ -55,6 +55,7 @@ export class AuthService {
     const payload = { id: anunciante.id, email: anunciante.email };
     const accessToken = this.jwtService.sign(payload);
 
-    return { accessToken };
+    // Retorna o token e o nome do anunciante
+    return { accessToken, anunciante: { nome: anunciante.nome } };
   }
 }
