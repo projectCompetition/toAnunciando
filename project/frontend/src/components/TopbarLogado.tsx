@@ -52,7 +52,7 @@ const TopbarLogado: React.FC = () => {
           ) : (
             <Link to="/login" className="nav-link">
               <button className="login-btn">Login</button>
-            </Link>
+            </Link>          
           )}
         </div>
       </div>

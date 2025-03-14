@@ -9,11 +9,11 @@ import Veiculos from "./publico/Veiculos";
 const AuthRoutes: React.FC = () => {
   return (
     <Routes>
-      <Route path="/imoveis" element={<Imoveis />} />
-      <Route path="/veiculos" element={<Veiculos />} />
+      <Route path="/publico/imoveis" element={<Imoveis />} />
+      <Route path="/publico/veiculos" element={<Veiculos />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/cadastro" element={<Cadastro />} />
-      <Route path="/homePage" element={<HomePage />} />
+      <Route path="/publico/cadastro" element={<Cadastro />} />
+      <Route path="/publico/homePage" element={<HomePage />} />
       <Route path="*" element={<Login />} /> {/* Se não encontrar, redireciona para Login */}
     </Routes>
   );

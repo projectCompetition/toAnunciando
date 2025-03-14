@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
           {/* Categoria Imóveis */}
           <div
             className="category imoveis"
-            onClick={() => navigate("/imoveis")} // Redireciona para a página de imóveis
+            onClick={() => navigate("/publico/imoveis")} // Redireciona para a página de imóveis
           >
             <div className="category-image"></div>
             <p>IMÓVEIS</p>
@@ -25,7 +25,7 @@ const HomePage: React.FC = () => {
           {/* Categoria Veículos */}
           <div
             className="category carros"
-            onClick={() => navigate("/veiculos")} // Redireciona para a página de veículos
+            onClick={() => navigate("/publico/veiculos")} // Redireciona para a página de veículos
           >
             <div className="category-image"></div>
             <p>VEÍCULOS</p>

@@ -3,8 +3,8 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 // Definição do tipo do contexto
 interface AuthContextType {
   isAuthenticated: boolean;
-  anunciante: { nome: string } | null; // Adicionado o tipo para o anunciante
-  login: (token: string, nome: string) => void; // Adicionado o parâmetro "nome"
+  anunciante: { nome: string } | null;
+  login: (token: string, nome: string) => void;
   logout: () => void;
 }
 
@@ -14,30 +14,33 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 // Provedor de autenticação
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("token"));
-  const [anunciante, setAnunciante] = useState<{ nome: string } | null>(null); // Estado para o anunciante
+  const [anunciante, setAnunciante] = useState<{ nome: string } | null>(null);
 
-  // Atualiza o estado quando o token muda
+  // Recupera o token e o anunciante ao inicializar o contexto
   useEffect(() => {
-    const handleStorageChange = () => {
-      setIsAuthenticated(!!localStorage.getItem("token"));
-    };
+    const token = localStorage.getItem("token");
+    const storedAnunciante = localStorage.getItem("anunciante");
 
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
+    if (token && storedAnunciante) {
+      setIsAuthenticated(true);
+      setAnunciante(JSON.parse(storedAnunciante));
+    }
   }, []);
 
   // Função de login
   const login = (token: string, nome: string) => {
     localStorage.setItem("token", token);
+    localStorage.setItem("anunciante", JSON.stringify({ nome }));
     setIsAuthenticated(true);
-    setAnunciante({ nome }); // Armazena o nome do anunciante
+    setAnunciante({ nome });
   };
 
   // Função de logout
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("anunciante");
     setIsAuthenticated(false);
-    setAnunciante(null); // Limpa as informações do anunciante
+    setAnunciante(null);
   };
 
   return (
