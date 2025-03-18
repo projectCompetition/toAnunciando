@@ -141,9 +141,6 @@ const Imoveis: React.FC = () => {
               ))}
             </div>
 
-            {/* Linha vertical */}
-            <div className="linha-separadora"></div>
-
             {/* Filtro Localização */}
             <div className="filtros-coluna">
               <h5>Localização</h5>
@@ -174,9 +171,6 @@ const Imoveis: React.FC = () => {
                 </div>
               </div>
             </div>
-
-            {/* Linha vertical */}
-            <div className="linha-separadora"></div>
 
             {/* Filtro Valor */}
             <div className="filtros-coluna">

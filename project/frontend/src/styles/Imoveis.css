@@ -94,7 +94,7 @@
 /* Container dos filtros */
 .imoveis-filtros-container {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 20px;
   margin-bottom: 10px;
   padding: 20px;
@@ -111,14 +111,14 @@
   flex-direction: column;
   gap: 10px;
   flex: 1;
+  padding-right: 20px; /* Espaçamento à direita da coluna */
+  border-right: 1px solid #646363; /* Barra vertical */
+  border-right-width: 100%;
 }
 
-/* Linha de separação entre as colunas de filtros */
-.linha-separadora {
-  width: 1px;
-  height: 100%;
-  background-color: #646363;
-  margin: 0 10px;
+.filtros-coluna:last-child {
+  border-right: none; /* Remove a borda da última coluna */
+  padding-right: 0; /* Remove o padding da última coluna */
 }
 
 /* Estilo dos filtros individuais */
@@ -194,5 +194,10 @@
 
   .linha-separadora {
     display: none;
+  }
+
+  .filtros-coluna {
+    border-right: none; /* Remove a borda em telas menores */
+    padding-right: 0; /* Remove o padding em telas menores */
   }
 }

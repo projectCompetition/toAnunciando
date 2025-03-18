@@ -9,7 +9,7 @@ const TopbarLogado: React.FC = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate("/publico/homepage");
   };
 
   return (

@@ -12,7 +12,7 @@ const TopbarLogado: React.FC = () => {
     setLoading(true); // Ativa o estado de loading
     try {
       await logout(); // Chama a função de logout do contexto
-      navigate("/login"); // Redireciona para a página de login
+      navigate("/publico/homepage"); // Redireciona para a página de login
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
     } finally {

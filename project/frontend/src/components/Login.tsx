@@ -20,7 +20,7 @@ const Login: React.FC = () => {
       if (response.data && response.data.accessToken) {
         // Chama a função de login do contexto com o token e o nome do anunciante
         authLogin(response.data.accessToken, response.data.anunciante.nome);
-        navigate("/dashboard"); // Redireciona para o dashboard
+        navigate("/homepage"); // Redireciona para o dashboard
       } else {
         setError("Erro ao fazer login. Tente novamente.");
       }
