@@ -3,14 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Cadastro from "./components/Cadastro";
 import HomePage from "./publico/HomePage";
-import Imoveis from "./publico/Imoveis";
-import Veiculos from "./publico/Veiculos";
+import Anuncios from "./publico/Anuncios";
 
 const AuthRoutes: React.FC = () => {
   return (
     <Routes>
-      <Route path="/publico/imoveis" element={<Imoveis />} />
-      <Route path="/publico/veiculos" element={<Veiculos />} />
+      <Route path="/publico/imoveis" element={<Anuncios type={"imoveis"} />} />
+      <Route path="/publico/veiculos" element={<Anuncios type={"veiculos"} />} />
       <Route path="/login" element={<Login />} />
       <Route path="/publico/cadastro" element={<Cadastro />} />
       <Route path="/publico/homePage" element={<HomePage />} />
