@@ -36,23 +36,19 @@ const TopbarLogado: React.FC = () => {
 
         <div className="div-login">
           {anunciante ? (
-            <div className="anunciante-info">
-              <span className="anunciante-nome">
-                Olá, {anunciante.nome || "Anunciante"}
-              </span>
-              <button
-                className="logout-btn"
-                onClick={handleLogout}
-                disabled={loading} // Desabilita o botão durante o loading
-                aria-label="Logout"
-              >
-                {loading ? "Saindo..." : "Logout"}
-              </button>
+            <div className="dropdown">
+              <button className="dropbtn">Olá, {anunciante.nome || "Anunciante"} </button>
+              <div className="dropdown-content">
+                <a href='#'> Minha Conta </a>
+                <a href='#'> Meus Pedidos </a>
+                <a href='#'> Meus Créditos </a>
+                <a href='#' onClick={handleLogout}> Sair </a>                
+              </div>
             </div>
           ) : (
             <Link to="/login" className="nav-link">
               <button className="login-btn">Login</button>
-            </Link>          
+            </Link>
           )}
         </div>
       </div>

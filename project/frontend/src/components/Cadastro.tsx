@@ -122,7 +122,6 @@ const Cadastro: React.FC = () => {
             <input type="text" name="nome" placeholder="Nome Completo" value={formData.nome} onChange={handleChange} className="input-field" required />
             <input type="text" name="cpfcnpj" placeholder="CPF/CNPJ" value={formData.cpfcnpj} onChange={handleChange} className="input-field" required />
             <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className="input-field" required />
-            <input type="text" name="endereco" placeholder="Endereço" value={formData.endereco} onChange={handleChange} className="input-field" required />
             <select name="pais" value={formData.pais} onChange={handleChange} className="input-field" required>
               <option value="">Selecione o País</option>
               {paises.map((pais) => (
@@ -147,6 +146,7 @@ const Cadastro: React.FC = () => {
                 </option>
               ))}
             </select>
+            <input type="text" name="endereco" placeholder="Endereço" value={formData.endereco} onChange={handleChange} className="input-field" required />
             <input type="text" name="telefone" placeholder="Telefone" value={formData.telefone} onChange={handleChange} className="input-field" required />
             <input type="password" name="senha" placeholder="Senha" value={formData.senha} onChange={handleChange} className="input-field" required />
             <button type="submit" className="cadastro-button">Cadastrar</button>
