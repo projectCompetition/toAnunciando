@@ -5,18 +5,18 @@ import "../styles/Topbar.css";
 
 const TopbarLogado: React.FC = () => {
   const { anunciante, logout } = useAuth();
-  const [loading, setLoading] = useState(false); // Estado para controlar o loading
+  const [, setLoading] = useState(false); 
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    setLoading(true); // Ativa o estado de loading
+    setLoading(true); 
     try {
-      await logout(); // Chama a função de logout do contexto
-      navigate("/publico/homepage"); // Redireciona para a página de login
+      await logout(); 
+      navigate("/publico/homepage"); 
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
     } finally {
-      setLoading(false); // Desativa o estado de loading
+      setLoading(false); 
     }
   };
 
@@ -37,12 +37,17 @@ const TopbarLogado: React.FC = () => {
         <div className="div-login">
           {anunciante ? (
             <div className="dropdown">
-              <button className="dropbtn">Olá, {anunciante.nome || "Anunciante"} </button>
+              <div>
+                Olá,{' '}
+                <span className="nome-destaque">
+                  {(anunciante.nome || "Anunciante").toUpperCase()}
+                </span>
+              </div>
               <div className="dropdown-content">
                 <a href='#'> Minha Conta </a>
                 <a href='#'> Meus Pedidos </a>
                 <a href='#'> Meus Créditos </a>
-                <a href='#' onClick={handleLogout}> Sair </a>                
+                <a href='#' onClick={handleLogout}> Sair </a>
               </div>
             </div>
           ) : (

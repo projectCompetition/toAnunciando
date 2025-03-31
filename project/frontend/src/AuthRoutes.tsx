@@ -13,7 +13,7 @@ const AuthRoutes: React.FC = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/publico/cadastro" element={<Cadastro />} />
       <Route path="/publico/homePage" element={<HomePage />} />
-      <Route path="*" element={<Login />} /> {/* Se não encontrar, redireciona para Login */}
+      <Route path="*" element={<HomePage />} /> 
     </Routes>
   );
 };

@@ -6,7 +6,7 @@ const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="*" element={<HomePage />} /> {/* Se não encontrar, redireciona para Dashboard */}
+      <Route path="*" element={<HomePage />} /> 
     </Routes>
   );
 };

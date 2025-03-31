@@ -14,6 +14,7 @@
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   box-sizing: border-box;
+  gap: 20px;
 }
 
 .logo {
@@ -32,24 +33,26 @@
 
 .nav-menu {
   display: flex;
-  align-items: center;
   gap: 20px;
 }
 
 .nav-link {
   color: white;
   text-decoration: none;
+  align-items: center;
   font-size: 16px;
   transition: color 0.3s;
+  display: inline-block;
+  transform-origin: center;
 }
 
-.nav-link:hover {
-  color: #6c5ce7;
+.nome-destaque {
+  font-weight: bold;
 }
 
 .login-btn {
-  background: #5a67d8;
-  color: white;
+  background: white;
+  color: #6c5ce7;
   border: none;
   padding: 6px 12px;
   cursor: pointer;
@@ -61,10 +64,6 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-}
-
-.login-btn:hover {
-  background: #434190;
 }
 
 /* Novos estilos para a área logada */
@@ -79,39 +78,6 @@
   color: white;
 }
 
-.logout-btn {
-  background: #dc3545; /* Cor vermelha para o botão de logout */
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s;
-  font-size: 14px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-
-.logout-btn:hover {
-  background: #c82333; /* Cor vermelha mais escura no hover */
-}
-
-.dropbtn {
-  background-color: #6c5ce7;
-  color: white;
-  padding: 16px;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s;
-  align-items: center;
-  justify-content: center;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -121,8 +87,9 @@
   display: none;
   position: absolute;
   background-color: #6c5ce7;
+  font-size: 14px;
   min-width: 185px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -134,7 +101,7 @@
 }
 
 .dropdown-content a:hover {
-  background-color: #5a4cb1;
+  background-color: #9183f8;
 }
 
 .dropdown:hover .dropdown-content {
