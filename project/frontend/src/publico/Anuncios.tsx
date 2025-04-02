@@ -75,12 +75,12 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
   const [items, setItems] = useState<(Veiculo | Imovel)[]>([]);
   const [loading, setLoading] = useState(true);
   const [mostrarFiltros, setMostrarFiltros] = useState(false);
-  
+
   // Estados específicos para veículos
   const [filtroValor, setFiltroValor] = useState<number | null>(null);
   const [filtroKM, setFiltroKM] = useState<number | null>(null);
   const [filtroCor, setFiltroCor] = useState("");
-  
+
   // Estados específicos para imóveis
   const [filtrosTipo, setFiltrosTipo] = useState<string[]>([]);
   const [filtroCidade, setFiltroCidade] = useState("");
@@ -90,11 +90,11 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
     try {
       const endpoint = type === 'veiculos' ? 'carro' : 'imovel';
       const response = await fetch(`http://localhost:3001/${endpoint}`);
-      
+
       if (!response.ok) {
         throw new Error(`Erro ao buscar ${type}`);
       }
-      
+
       const data = await response.json();
       setItems(data);
     } catch (error) {
@@ -103,6 +103,11 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
       setLoading(false);
     }
   };
+
+
+  useEffect(() => {
+    document.title = "Anúncios";
+  }, []);
 
   useEffect(() => {
     fetchItems();
@@ -122,7 +127,7 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
   const itemsFiltrados = items.filter((item) => {
     // Filtros compartilhados
     const filtroValorAtivo = filtroValor ? item.valor <= filtroValor : true;
-    
+
     // Filtros específicos para veículos
     if (type === 'veiculos') {
       const veiculo = item as Veiculo;
@@ -130,15 +135,15 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
       const filtroCorAtivo = filtroCor
         ? veiculo.cor.toLowerCase().includes(filtroCor.toLowerCase())
         : true;
-      
+
       return filtroValorAtivo && filtroKMAtivo && filtroCorAtivo;
     }
-    
+
     // Filtros específicos para imóveis
     if (type === 'imoveis') {
       const imovel = item as Imovel;
-      const filtroTipoAtivo = filtrosTipo.length > 0 
-        ? filtrosTipo.includes(imovel.tipo_imovel) 
+      const filtroTipoAtivo = filtrosTipo.length > 0
+        ? filtrosTipo.includes(imovel.tipo_imovel)
         : true;
       const filtroCidadeAtivo = filtroCidade
         ? imovel.cidade.toLowerCase().includes(filtroCidade.toLowerCase())
@@ -146,10 +151,10 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
       const filtroBairroAtivo = filtroBairro
         ? imovel.endereco.toLowerCase().includes(filtroBairro.toLowerCase())
         : true;
-      
+
       return filtroValorAtivo && filtroTipoAtivo && filtroCidadeAtivo && filtroBairroAtivo;
     }
-    
+
     return true;
   });
 

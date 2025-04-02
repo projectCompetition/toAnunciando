@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext"; // Importa o contexto de autenticação
 import api from "../api";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF, FaApple } from "react-icons/fa";
 import "../styles/Login.css";
+import "../styles/Default.css";
 
 const Login: React.FC = () => {
   const [login, setLogin] = useState("");
@@ -12,6 +11,11 @@ const Login: React.FC = () => {
   const [error, setError] = useState("");
   const { login: authLogin } = useAuth(); // Usa a função de login do contexto
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
+
 
   const handleLogin = async () => {
     try {
@@ -40,7 +44,7 @@ const Login: React.FC = () => {
       <div className="login-container">
         {/* Left Section */}
         <div className="login-box">
-          <h1>Sign in</h1>
+          <h1>Bem Vindo!</h1>
           {error && <p className="error-message">{error}</p>}
           <input
             type="text"
@@ -52,43 +56,21 @@ const Login: React.FC = () => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Senha"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
             className="input-field"
             onKeyDown={handleKeyPress} // Detecta pressionamento de tecla
           />
           <div className="login-options">
-            <label>
-              <input type="checkbox" /> Remember me
-            </label>
-            <a href="#">Forgot password?</a>
+            <a href="/publico/cadastro">Registre-se</a>
           </div>
-          <button className="login-button" onClick={handleLogin}>
+          <button className="button-width-100" onClick={handleLogin}>
             Sign in
           </button>
-          <div className="social-login">
-            <p>Or sign in with</p>
-            <div className="social-icons">
-              <button className="social-button">
-                <FcGoogle />
-              </button>
-              <button className="social-button">
-                <FaFacebookF />
-              </button>
-              <button className="social-button">
-                <FaApple />
-              </button>
-            </div>
-          </div>
-        </div>
-        {/* Right Section */}
-        <div className="info-box">
-          <h2>Voluptate dolor tempor</h2>
-          <p>Minim cupidatat cillum</p>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Importe o useNavigate
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
@@ -6,6 +6,11 @@ import "../styles/HomePage.css";
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate(); // Hook para navegação
+
+
+  useEffect(() => {
+    document.title = "Página Inicial";
+  }, []);
 
   return (
     <div className="homepage-container">

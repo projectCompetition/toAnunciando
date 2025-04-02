@@ -54,6 +54,11 @@ const Veiculos: React.FC = () => {
     fetchCarros();
   }, []);
 
+
+  useEffect(() => {
+    document.title = "Veículos";
+  }, []);
+
   const handleSearch = () => {
     console.log("Pesquisar por:", searchTerm);
     alert(`Você pesquisou por: ${searchTerm}`);

@@ -69,6 +69,10 @@ const Imoveis: React.FC = () => {
     fetchImoveis();
   }, []);
 
+  useEffect(() => {
+    document.title = "Imóveis";
+  }, []);
+
   const handleSearch = () => {
     console.log("Pesquisar por:", searchTerm);
     alert(`Você pesquisou por: ${searchTerm}`);
