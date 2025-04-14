@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { cpf, cnpj } from 'cpf-cnpj-validator'; // Importação da biblioteca
+import { cpf, cnpj } from 'cpf-cnpj-validator'; 
 import api from "../api";
 import "../styles/Cadastro.css";
 

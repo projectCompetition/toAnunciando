@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Importe o useNavigate
+import { useNavigate } from "react-router-dom"; 
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
+import TopbarLogado from "../components/TopbarLogado";
+import { useAuth }from "../contexts/AuthContext";
 import "../styles/HomePage.css";
 
 const HomePage: React.FC = () => {
-  const navigate = useNavigate(); // Hook para navegação
-
+  const navigate = useNavigate(); 
+  const isAuthenticated = useAuth;
 
   useEffect(() => {
     document.title = "Página Inicial";
@@ -14,23 +16,21 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="homepage-container">
-      <Topbar /> {/* ✅ Topbar reutilizável */}
+      {isAuthenticated()? <TopbarLogado /> : <Topbar />}
 
       <main className="main-content">
         <div className="categories">
-          {/* Categoria Imóveis */}
           <div
             className="category imoveis"
-            onClick={() => navigate("/publico/imoveis")} // Redireciona para a página de imóveis
+            onClick={() => navigate("/imoveis")} 
           >
             <div className="category-image"></div>
             <p>IMÓVEIS</p>
           </div>
 
-          {/* Categoria Veículos */}
           <div
             className="category carros"
-            onClick={() => navigate("/publico/veiculos")} // Redireciona para a página de veículos
+            onClick={() => navigate("/veiculos")} 
           >
             <div className="category-image"></div>
             <p>VEÍCULOS</p>
@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
         </div>
       </main>
 
-      <Footer /> {/* ✅ Footer reutilizável */}
+      <Footer />
     </div>
   );
 };
