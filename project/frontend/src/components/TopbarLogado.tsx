@@ -44,9 +44,9 @@ const TopbarLogado: React.FC = () => {
                 </span>
               </div>
               <div className="dropdown-content">
-                <a href='#'> Minha Conta </a>
-                <a href='#'> Meus Pedidos </a>
-                <a href='#'> Meus Créditos </a>
+                <Link to='/minha-conta'> Minha Conta </Link>
+                <Link to='/meus-pedidos'> Meus Pedidos </Link>
+                <Link to='/meus-creditos'> Meus Créditos </Link>
                 <a href='#' onClick={handleLogout}> Sair </a>
               </div>
             </div>

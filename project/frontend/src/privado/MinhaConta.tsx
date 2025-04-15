@@ -71,7 +71,7 @@ const getCombustivelDescricao = (tipo: string) => {
   }
 };
 
-const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
+const MinhaConta: React.FC<UnifiedListingsProps> = ({ type }) => {
   // Estados compartilhados
   const [searchTerm, setSearchTerm] = useState("");
   const [items, setItems] = useState<(Veiculo | Imovel)[]>([]);
@@ -394,4 +394,4 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
   );
 };
 
-export default UnifiedListings;
+export default MinhaConta;

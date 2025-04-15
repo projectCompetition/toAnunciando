@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Topbar from "../components/Topbar";
 import Footer from "../components/Footer";
 import TopbarLogado from "../components/TopbarLogado";
-import { useAuth }from "../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 import "../styles/HomePage.css";
 
 const HomePage: React.FC = () => {
