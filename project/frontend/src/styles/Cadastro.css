@@ -38,16 +38,6 @@
   text-align: center;
 }
 
-.input-field {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  box-sizing: border-box; /* Para garantir que o padding não altere o tamanho total do campo */
-}
-
 .cadastro-options {
   display: flex;
   justify-content: space-between;
@@ -118,13 +108,15 @@
 }
 
 select {
-  background-color: #fff; /* Cor de fundo para select */
+  background-color: #fff;
+  /* Cor de fundo para select */
 }
 
 input:focus,
 select:focus {
   outline: none;
-  border-color: #007bff; /* Ajuste a cor da borda ao focar no campo */
+  border-color: #007bff;
+  /* Ajuste a cor da borda ao focar no campo */
 }
 
 /* Responsiveness */
