@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 
-// Definição do tipo do contexto
 interface AuthContextType {
   isAuthenticated: boolean;
   anunciante: { nome: string } | null;
@@ -8,15 +7,12 @@ interface AuthContextType {
   logout: () => void;
 }
 
-// Criando o contexto com valores iniciais
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Provedor de autenticação
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("token"));
   const [anunciante, setAnunciante] = useState<{ nome: string } | null>(null);
 
-  // Recupera o token e o anunciante ao inicializar o contexto
   useEffect(() => {
     const token = localStorage.getItem("token");
     const storedAnunciante = localStorage.getItem("anunciante");
@@ -27,7 +23,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  // Função de login
   const login = (token: string, nome: string) => {
     localStorage.setItem("token", token);
     localStorage.setItem("anunciante", JSON.stringify({ nome }));
@@ -35,7 +30,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setAnunciante({ nome });
   };
 
-  // Função de logout
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("anunciante");
@@ -50,7 +44,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   );
 };
 
-// Hook para usar o contexto de autenticação
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -58,3 +51,5 @@ export const useAuth = () => {
   }
   return context;
 };
+
+export default AuthContext;
