@@ -84,10 +84,6 @@
     margin-left: 10px;
   }
   
-  .filter-button:hover {
-    opacity: 0.7;
-  }
-  
   /* Container dos filtros */
   .filtros-container {
     display: flex;
