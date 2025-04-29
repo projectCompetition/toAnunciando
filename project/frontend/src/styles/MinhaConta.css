@@ -1,184 +1,61 @@
-.user-registration-container {
+  .container-minha-conta {
     display: flex;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    gap: 20px;
-}
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .menu-lateral {
+    width: 13%;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+    padding-top: 80px;
+  }
 
-/* Left Panel - User Photo & Basic Info (30%) */
-.user-profile-panel {
-    flex: 0 0 30%;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.user-photo-container {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: #e0e0e0;
-    margin-bottom: 20px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.user-photo-placeholder {
-    font-size: 60px;
-    color: #888;
-}
-
-.user-photo-upload {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-align: center;
-    padding: 5px 0;
-    cursor: pointer;
-}
-
-.user-basic-info {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.info-item {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
-}
-
-.info-label {
+  .conteudo-principal {
+    padding: 32px;
+  }
+  
+  .titulo-menu {
+    font-size: 20px;
     font-weight: bold;
-    color: #6c5ce7;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.info-value {
-    color: #555;
-}
-
-/* Right Panel - Form (70%) */
-.user-form-panel {
-    flex: 1;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-}
-
-.form-header {
-    margin-bottom: 30px;
-}
-
-.form-header h2 {
-    color: #6c5ce7;
-    margin: 0 0 10px 0;
-}
-
-.form-header p {
-    color: #777;
+    margin-bottom: 24px;
+    color: #333;
+  }
+  
+  .lista-menu {
+    list-style: none;
+    padding-left: 0;
     margin: 0;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group.full-width {
-    grid-column: span 2;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #555;
-}
-
-input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-}
-
-input:focus, select:focus, textarea:focus {
-    border-color: #6c5ce7;
-    outline: none;
-}
-
-.form-actions {
-    grid-column: span 2;
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.btn {
-    padding: 12px 25px;
-    border-radius: 5px;
-    font-size: 16px;
+  }
+  
+  .item-menu {
+    padding: 12px 16px;
+    margin-bottom: 12px;
     cursor: pointer;
-    transition: all 0.3s;
-}
-
-.btn-primary {
-    background-color: #6c5ce7;
-    color: white;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #5a4cb1;
-}
-
-.btn-secondary {
-    background-color: white;
-    color: #6c5ce7;
-    border: 1px solid #6c5ce7;
-}
-
-.btn-secondary:hover {
-    background-color: #f5f3ff;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .user-registration-container {
-        flex-direction: column;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-group.full-width {
-        grid-column: span 1;
-    }
-
-    .form-actions {
-        grid-column: span 1;
-        justify-content: center;
-    }
-}
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    color: #444;
+  }
+  
+  .item-menu:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .item-menu.ativo {
+    background-color: #e0f0ff;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  .item-menu.sair {
+    color: #d9534f;
+    margin-top: 24px;
+  }
+  
+  .item-menu.sair:hover {
+    background-color: #f8d7da;
+  }
+  
