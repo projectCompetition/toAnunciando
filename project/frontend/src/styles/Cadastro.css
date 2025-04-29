@@ -54,18 +54,9 @@
 .cadastro-button {
   width: 100%;
   padding: 12px;
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
   font-size: 16px;
   font-weight: bold;
   transition: background 0.3s ease-in-out;
-}
-
-.cadastro-button:hover {
-  background-color: #357ab8;
 }
 
 .cadastro-form p {
@@ -74,20 +65,13 @@
   text-align: center;
 }
 
-.cadastro-form a {
-  color: #4a90e2;
-  text-decoration: none;
-  font-weight: bold;
-}
-
 .cadastro-form a:hover {
   text-decoration: underline;
 }
 
-/* Right Side - Illustration */
 .cadastro-info {
   flex: 1;
-  background: #4a90e2;
+  background: #6c5ce7;
   color: white;
   display: flex;
   flex-direction: column;
@@ -109,17 +93,8 @@
 
 select {
   background-color: #fff;
-  /* Cor de fundo para select */
 }
 
-input:focus,
-select:focus {
-  outline: none;
-  border-color: #007bff;
-  /* Ajuste a cor da borda ao focar no campo */
-}
-
-/* Responsiveness */
 @media (max-width: 768px) {
   .cadastro-box {
     flex-direction: column;

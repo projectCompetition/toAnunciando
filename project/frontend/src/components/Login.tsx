@@ -53,7 +53,7 @@ const Login: React.FC = () => {
             value={login}
             onChange={(e) => setLogin(e.target.value)}
             className="input-field"
-            onKeyDown={handleKeyPress} // Detecta pressionamento de tecla
+            onKeyDown={handleKeyPress}
           />
 
           <input
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
             className="input-field"
-            onKeyDown={handleKeyPress} // Detecta pressionamento de tecla
+            onKeyDown={handleKeyPress}
           />
 
           <div className="login-options justify-content-right">
@@ -74,7 +74,7 @@ const Login: React.FC = () => {
           </button>
 
           <div className="login-options">
-            <p>Novo por aqui? <a href="/publico/cadastro">Cadastre-se</a></p>
+            <p>Novo por aqui? <a href="/cadastro">Cadastre-se</a></p>
           </div>
         </div>
       </div>

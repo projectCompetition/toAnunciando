@@ -17,19 +17,19 @@ export class Anunciante {
   @Column({ type: 'varchar', length: 100, unique: true, nullable: false })
   email: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: false })
+  @Column({ type: 'varchar', length: 100 })
   endereco: string;
 
-  @Column({ type: 'varchar', length: 40, nullable: false })
+  @Column({ type: 'varchar', length: 40 })
   cidade: string;
 
-  @Column({ type: 'varchar', length: 2, nullable: false })
+  @Column({ type: 'varchar', length: 2 })
   uf: string;
 
-  @Column({ type: 'varchar', length: 2, nullable: false })
+  @Column({ type: 'varchar', length: 2 })
   pais: string;
 
-  @Column({ type: 'varchar', length: 15, nullable: false })
+  @Column({ type: 'varchar', length: 15 })
   telefone: string;
 
   @Column({ type: 'varchar', length: 255, nullable: false, select: false }) 
