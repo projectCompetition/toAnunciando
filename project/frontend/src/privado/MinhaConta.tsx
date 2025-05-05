@@ -3,6 +3,12 @@ import { useAuth } from "../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
 import TopbarLogado from "../components/TopbarLogado";
 import Footer from "../components/Footer";
+
+import DadosPessoaisInfo from "./componentes/DadosPessoaisInfo";
+import MinhaContaInfo from "./componentes/MinhaContaInfo";
+import MeusAnunciosInfo from "./componentes/MeusAnunciosInfo";
+import MeusCreditosInfo from "./componentes/MeusCreditosInfo";
+
 import "../styles/MinhaConta.css";
 
 const MinhaConta: React.FC = () => {
@@ -16,20 +22,21 @@ const MinhaConta: React.FC = () => {
   const renderContent = () => {
     switch (selectedOption) {
       case "dados-pessoais":
-        return <div>Seus dados pessoais vão aqui.</div>;
+        return <DadosPessoaisInfo />;
       case "minha-conta":
-        return <div>Informações da sua conta.</div>;
+        return <MinhaContaInfo />;
       case "meus-anuncios":
-        return <div>Seus anúncios serão listados aqui.</div>;
+        return <MeusAnunciosInfo />;
       case "meus-creditos":
-        return <div>Seus créditos aparecerão aqui.</div>;
+        return <MeusCreditosInfo />;
       default:
-        return <div>Minha Conta</div>;
+        return <MinhaContaInfo />;
     }
   };
 
   const handleLogout = () => {
     console.log("Usuário saiu");
+    // Aqui você pode chamar seu método de logout, por exemplo: logout()
   };
 
   return (
@@ -39,7 +46,6 @@ const MinhaConta: React.FC = () => {
       <main className="main-content">
         <div className="container-minha-conta">
           <div className="menu-lateral">
-            {/* <h2 className="titulo-menu">Minha Conta</h2> */}
             <ul className="lista-menu">
               <li
                 className={`item-menu ${selectedOption === "dados-pessoais" ? "ativo" : ""}`}
@@ -76,6 +82,7 @@ const MinhaConta: React.FC = () => {
           </div>
         </div>
       </main>
+
       <Footer />
     </div>
   );
