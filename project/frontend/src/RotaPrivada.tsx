@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./privado/HomePage";
 import Anuncios from "./publico/Anuncios";
-// import MinhaConta from "./privado/MinhaConta";
+import MinhaConta from "./privado/MinhaConta";
 
 const RotaPrivada: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ const RotaPrivada: React.FC = () => {
       <Route path="*" element={<HomePage />} /> 
       <Route path="/imoveis" element={<Anuncios type={"imoveis"} />} />
       <Route path="/veiculos" element={<Anuncios type={"veiculos"} />} />
-      {/* <Route path="/minha-conta" element={<MinhaConta />} /> */}
+      <Route path="/minha-conta" element={<MinhaConta />} />
       {/* <Route path="/meus-anuncios" element={<MeusAnuncios />} />
       <Route path="/meus-creditos" element={<MeusCreditos />} /> */}   
     </Routes>
