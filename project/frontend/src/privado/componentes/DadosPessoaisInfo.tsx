@@ -3,6 +3,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import "../componentes/DadosPessoaisInfo.css";
 
 interface Anunciante {
+  id: number;
   nome: string;
   cpfcnpj: string;
   email: string;
@@ -11,48 +12,44 @@ interface Anunciante {
   uf: string;
   pais: string;
   telefone: string;
-  senha?: string;
   creditos: number;
 }
 
 const DadosPessoaisInfo: React.FC = () => {
-  const { anunciante } = useAuth(); 
+  const { anunciante } = useAuth();
   const [loading, setLoading] = useState<boolean>(true);
   const [erro, setErro] = useState<string | null>(null);
-  const [anuncianteData, setAnuncianteData] = useState<Anunciante | null>(null); 
+  const [anuncianteData, setAnuncianteData] = useState<Anunciante | null>(null);
 
   useEffect(() => {
-    if (!anunciante) {
-      setErro("Dados do anunciante não encontrados.");
-      setLoading(false);
-      return;
-    }
+    document.title = "Dados Pessoais";
 
     const fetchDados = async () => {
-      try {
-        const token = localStorage.getItem("token");
+      
+      if (!anunciante || !anunciante.id) {
+        setErro("Anunciante não autenticado.");
+        setLoading(false);
+        return;
+      }
 
-        const response = await fetch("/api/anunciante", { // toDO felipe- MUDAR AQUI A ROTA PARA A ROTA CORRETA DA API PARA O ANUNCIANTE
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+      try {
+        const response = await fetch(`http://localhost:3001/anunciante/${anunciante.id}`);
 
         if (!response.ok) {
           throw new Error("Erro ao buscar dados do anunciante");
         }
 
         const data: Anunciante = await response.json();
-        setLoading(false);
-        setAnuncianteData(data); 
-      } catch (err) {
-        setErro((err as Error).message);
+        setAnuncianteData(data);
+      } catch (error) {
+        setErro((error as Error).message);
+      } finally {
         setLoading(false);
       }
     };
 
     fetchDados();
-  }, [anunciante]); 
+  }, [anunciante]);
 
   if (loading) return <p>Carregando dados...</p>;
   if (erro) return <p>Erro: {erro}</p>;
@@ -62,6 +59,7 @@ const DadosPessoaisInfo: React.FC = () => {
     <div>
       <h2>Dados Pessoais</h2>
       <p><strong>Nome:</strong> {anuncianteData.nome}</p>
+      console.log({anuncianteData.nome})
       <p><strong>Documento:</strong> {anuncianteData.cpfcnpj}</p>
       <p><strong>Email:</strong> {anuncianteData.email}</p>
       <p><strong>Endereço:</strong> {anuncianteData.endereco}</p>

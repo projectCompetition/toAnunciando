@@ -108,7 +108,6 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
     }
   };
 
-
   useEffect(() => {
     document.title = "Anúncios";
   }, []);
