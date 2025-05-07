@@ -1,9 +1,14 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 
+interface Anunciante {
+  id: number;
+  nome: string;
+}
+
 interface AuthContextType {
   isAuthenticated: boolean;
-  anunciante: { nome: string } | null;
-  login: (token: string, nome: string) => void;
+  anunciante: Anunciante | null;
+  login: (token: string, anuncianteData: Anunciante) => void;
   logout: () => void;
 }
 
@@ -11,7 +16,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("token"));
-  const [anunciante, setAnunciante] = useState<{ nome: string } | null>(null);
+  const [anunciante, setAnunciante] = useState< Anunciante | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -23,11 +28,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const login = (token: string, nome: string) => {
+  const login = (token: string, anuncianteData: Anunciante) => {
     localStorage.setItem("token", token);
-    localStorage.setItem("anunciante", JSON.stringify({ nome }));
+    localStorage.setItem("anunciante", JSON.stringify(anuncianteData));
     setIsAuthenticated(true);
-    setAnunciante({ nome });
+    setAnunciante(anuncianteData);
   };
 
   const logout = () => {
