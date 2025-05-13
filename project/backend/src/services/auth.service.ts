@@ -12,22 +12,19 @@ export class AuthService {
   constructor(
     @InjectRepository(Anunciante)
     private readonly anunciantesRepository: Repository<Anunciante>,
-    private readonly jwtService: JwtService, // ✅ Injeta o serviço JWT
+    private readonly jwtService: JwtService, 
   ) { }
 
-  // ✅ Método de login
-  async login(loginDto: LoginDto): Promise<{ accessToken: string; anunciante: { nome: string } }> {
+  async login(loginDto: LoginDto): Promise<{ accessToken: string; anunciante: { id: number, nome: string } }> {
     const { login, senha } = loginDto;
     let anunciante: Anunciante | null;
 
     if (login.includes('@')) {
-      // 🔍 Valida como e-mail
       anunciante = await this.anunciantesRepository.findOne({
         where: { email: login },
-        select: ['id', 'email', 'cpfcnpj', 'senha', 'nome'], // Adiciona 'nome' ao select
+        select: ['id', 'email', 'cpfcnpj', 'senha', 'nome'], 
       });
     } else {
-      // 🔍 Valida como CPF ou CNPJ
       const isCpfValid = cpf.isValid(login);
       const isCnpjValid = cnpj.isValid(login);
 
@@ -37,7 +34,7 @@ export class AuthService {
 
       anunciante = await this.anunciantesRepository.findOne({
         where: { cpfcnpj: login },
-        select: ['id', 'email', 'cpfcnpj', 'senha', 'nome'], // Adiciona 'nome' ao select
+        select: ['id', 'email', 'cpfcnpj', 'senha', 'nome'], 
       });
     }
 
@@ -45,17 +42,14 @@ export class AuthService {
       throw new UnauthorizedException('Credenciais inválidas');
     }
 
-    // 🔐 Verifica se a senha está correta
     const isPasswordValid = await bcrypt.compare(senha, anunciante.senha);
     if (!isPasswordValid) {
       throw new UnauthorizedException('Credenciais inválidas');
     }
 
-    // ✅ Gera o token JWT
     const payload = { id: anunciante.id, email: anunciante.email };
     const accessToken = this.jwtService.sign(payload);
 
-    // Retorna o token e o nome do anunciante
-    return { accessToken, anunciante: { nome: anunciante.nome } };
+    return { accessToken, anunciante: { id: anunciante.id, nome: anunciante.nome } };
   }
 }
