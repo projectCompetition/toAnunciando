@@ -40,4 +40,11 @@ export class AuthController {
       cpfcnpj: anunciante.cpfcnpj,
     };
   }
+
+  @Post('forgot-password')
+  async forgotPassword(@Body() body: { email: string; cpfCnpj: string }) {
+    const { email, cpfCnpj } = body;
+    await this.authService.sendPasswordResetEmail(email, cpfCnpj);
+    return { message: 'E-mail de recuperação enviado.' };
+  }
 }
