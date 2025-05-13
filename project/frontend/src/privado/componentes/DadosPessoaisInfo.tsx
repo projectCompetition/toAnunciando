@@ -56,18 +56,17 @@ const DadosPessoaisInfo: React.FC = () => {
   if (!anuncianteData) return <p>Nenhum dado encontrado.</p>;
 
   return (
-    <div>
-      <h2>Dados Pessoais</h2>
-      <p><strong>Nome:</strong> {anuncianteData.nome}</p>
-      console.log({anuncianteData.nome})
-      <p><strong>Documento:</strong> {anuncianteData.cpfcnpj}</p>
-      <p><strong>Email:</strong> {anuncianteData.email}</p>
-      <p><strong>Endereço:</strong> {anuncianteData.endereco}</p>
-      <p><strong>Cidade:</strong> {anuncianteData.cidade}</p>
-      <p><strong>UF:</strong> {anuncianteData.uf}</p>
-      <p><strong>País:</strong> {anuncianteData.pais}</p>
-      <p><strong>Telefone:</strong> {anuncianteData.telefone}</p>
-      <p><strong>Créditos:</strong> {anuncianteData.creditos}</p>
+    <div className="dados-container">
+      <div className="dados-header">Dados Pessoais</div>
+      <div className="dados-item"><strong>Nome:</strong> {anuncianteData.nome}</div>
+      <div className="dados-item"><strong>Documento:</strong> {anuncianteData.cpfcnpj}</div>
+      <div className="dados-item"><strong>Email:</strong> {anuncianteData.email}</div>
+      <div className="dados-item"><strong>Endereço:</strong> {anuncianteData.endereco}</div>
+      <div className="dados-item"><strong>Cidade:</strong> {anuncianteData.cidade}</div>
+      <div className="dados-item"><strong>UF:</strong> {anuncianteData.uf}</div>
+      <div className="dados-item"><strong>País:</strong> {anuncianteData.pais}</div>
+      <div className="dados-item"><strong>Telefone:</strong> {anuncianteData.telefone}</div>
+      <div className="dados-item"><strong>Créditos:</strong> {anuncianteData.creditos}</div>
     </div>
   );
 };
