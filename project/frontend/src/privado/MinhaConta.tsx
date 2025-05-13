@@ -36,6 +36,7 @@ const MinhaConta: React.FC = () => {
 
   const handleLogout = () => {
     console.log("Usuário saiu");
+    // Aqui você pode chamar seu método de logout, por exemplo: logout()
   };
 
   return (

@@ -118,6 +118,7 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
 
   const handleSearch = () => {
     console.log("Pesquisar por:", searchTerm);
+    // Implementar lógica de pesquisa real aqui
   };
 
   const toggleFiltroTipo = (tipo: string) => {
@@ -127,8 +128,10 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
   };
 
   const itemsFiltrados = items.filter((item) => {
+    // Filtros compartilhados
     const filtroValorAtivo = filtroValor ? item.valor <= filtroValor : true;
 
+    // Filtros específicos para veículos
     if (type === 'veiculos') {
       const veiculo = item as Veiculo;
       const filtroKMAtivo = filtroKM ? veiculo.km <= filtroKM : true;
@@ -139,6 +142,7 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
       return filtroValorAtivo && filtroKMAtivo && filtroCorAtivo;
     }
 
+    // Filtros específicos para imóveis
     if (type === 'imoveis') {
       const imovel = item as Imovel;
       const filtroTipoAtivo = filtrosTipo.length > 0
