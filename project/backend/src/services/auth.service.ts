@@ -23,19 +23,17 @@ export class AuthService {
 
   async login(loginDto: LoginDto): Promise<{
     accessToken: string;
-    anunciante: { nome: string };
+    anunciante: { id: number, nome: string };
   }> {
     const { login, senha } = loginDto;
     let anunciante: Anunciante | null;
 
     if (login.includes('@')) {
-      // E-mail
       anunciante = await this.anunciantesRepository.findOne({
         where: { email: login },
         select: ['id', 'email', 'cpfcnpj', 'senha', 'nome'],
       });
     } else {
-      // CPF ou CNPJ
       const isCpfValid = cpf.isValid(login);
       const isCnpjValid = cnpj.isValid(login);
 
@@ -61,7 +59,7 @@ export class AuthService {
     const payload = { id: anunciante.id, email: anunciante.email };
     const accessToken = this.jwtService.sign(payload);
 
-    return { accessToken, anunciante: { nome: anunciante.nome } };
+    return { accessToken, anunciante: { id: anunciante.id, nome: anunciante.nome }};
   }
 
   async sendPasswordResetEmail(
