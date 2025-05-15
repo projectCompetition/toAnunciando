@@ -50,3 +50,7 @@ button {
 .justify-content-left {
   justify-content: left;
 }
+
+div {
+  width: 100%;
+}

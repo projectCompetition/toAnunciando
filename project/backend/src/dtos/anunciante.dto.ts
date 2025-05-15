@@ -11,4 +11,6 @@ export class CreateAnuncianteDto {
   @IsNotEmpty() @IsPhoneNumber() telefone: string;
   @IsNotEmpty() @IsString() senha: string;
   @IsOptional() @IsNumber() creditos?: number;
+  @IsOptional() @IsString() complemento?: string;
+  @IsNotEmpty() @IsNumber() cep?: number;
 }

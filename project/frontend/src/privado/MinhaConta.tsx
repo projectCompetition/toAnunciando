@@ -4,7 +4,6 @@ import { Navigate } from "react-router-dom";
 import TopbarLogado from "../components/TopbarLogado";
 import Footer from "../components/Footer";
 
-import DadosPessoaisInfo from "./componentes/DadosPessoaisInfo";
 import MinhaContaInfo from "./componentes/MinhaContaInfo";
 import MeusAnunciosInfo from "./componentes/MeusAnunciosInfo";
 import MeusCreditosInfo from "./componentes/MeusCreditosInfo";
@@ -21,8 +20,6 @@ const MinhaConta: React.FC = () => {
 
   const renderContent = () => {
     switch (selectedOption) {
-      case "dados-pessoais":
-        return <DadosPessoaisInfo />;
       case "minha-conta":
         return <MinhaContaInfo />;
       case "meus-anuncios":
@@ -46,12 +43,6 @@ const MinhaConta: React.FC = () => {
         <div className="container-minha-conta">
           <div className="menu-lateral">
             <ul className="lista-menu">
-              <li
-                className={`item-menu ${selectedOption === "dados-pessoais" ? "ativo" : ""}`}
-                onClick={() => setSelectedOption("dados-pessoais")}
-              >
-                Dados Pessoais
-              </li>
               <li
                 className={`item-menu ${selectedOption === "minha-conta" ? "ativo" : ""}`}
                 onClick={() => setSelectedOption("minha-conta")}

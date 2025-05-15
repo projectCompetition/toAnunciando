@@ -10,15 +10,13 @@ import { LoginDto } from '../dtos/login.dto';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { cpf, cnpj } from 'cpf-cnpj-validator';
-import { MailerService } from '@nestjs-modules/mailer';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectRepository(Anunciante)
     private readonly anunciantesRepository: Repository<Anunciante>,
-    private readonly jwtService: JwtService,
-    private readonly mailerService: MailerService,
+    private readonly jwtService: JwtService
   ) { }
 
   async login(loginDto: LoginDto): Promise<{
@@ -81,16 +79,6 @@ export class AuthService {
     );
 
     const resetLink = `https://seusite.com/redefinir-senha?token=${token}`;
-
-    await this.mailerService.sendMail({
-      to: email,
-      subject: 'Recuperação de Senha',
-      template: 'forgot-password',
-      context: {
-        nome: anunciante.nome,
-        resetLink,
-      },
-    });
   }
 
   async resetPassword(token: string, novaSenha: string): Promise<void> {
@@ -110,6 +98,6 @@ export class AuthService {
     }
 
     anunciante.senha = await bcrypt.hash(novaSenha, 10);
-    await this.anunciantesRepository.save(anunciante);
+    await this.anunciantesRepository.save(anunciante); 
   }
 }

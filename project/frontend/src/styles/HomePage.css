@@ -7,7 +7,7 @@
 
 .main-content {
   flex: 1;
-  padding: 80px 20px 20px; /* Adicionar padding-top para evitar corte pelo Topbar */
+  padding: 80px 20px 20px;
   text-align: center;
   background: white;
   margin-top: 60px;
