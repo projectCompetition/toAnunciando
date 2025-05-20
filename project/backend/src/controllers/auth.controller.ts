@@ -14,29 +14,25 @@ export class AuthController {
     private readonly anunciantesRepository: Repository<Anunciante>,
   ) { }
 
-  // ✅ Endpoint de login
   @Post('login')
   async login(@Body() loginDto: LoginDto) {
     return this.authService.login(loginDto);
   }
 
-  // ✅ Endpoint para obter dados do usuário autenticado
   @UseGuards(AuthGuard('jwt'))
   @Get('me')
   async getProfile(@Request() req) {
-    const { id } = req.user; // Obtém o ID do usuário do token JWT
+    const { id } = req.user; 
 
-    // Busca o anunciante no banco de dados
     const anunciante = await this.anunciantesRepository.findOne({
       where: { id },
-      select: ['id', 'nome', 'email', 'cpfcnpj'], // Seleciona os campos desejados
+      select: ['id', 'nome', 'email', 'cpfcnpj'], 
     });
 
     if (!anunciante) {
       throw new UnauthorizedException('Usuário não encontrado');
     }
 
-    // Retorna os dados do anunciante
     return {
       id: anunciante.id,
       nome: anunciante.nome,
