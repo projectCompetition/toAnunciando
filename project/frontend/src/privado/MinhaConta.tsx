@@ -1,85 +1,83 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react"; // Adicionado useEffect
 import { useAuth } from "../contexts/AuthContext";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom"; // Adicionado useNavigate
 import TopbarLogado from "../components/TopbarLogado";
 import Footer from "../components/Footer";
 
-import DadosPessoaisInfo from "./componentes/DadosPessoaisInfo";
 import MinhaContaInfo from "./componentes/MinhaContaInfo";
 import MeusAnunciosInfo from "./componentes/MeusAnunciosInfo";
 import MeusCreditosInfo from "./componentes/MeusCreditosInfo";
 
-import "../styles/MinhaConta.css";
+import "../styles/MinhaConta.css"; // CSS específico para Minha Conta
+// Adicionar ícones se forem usados no menu
+import { FaUserCircle, FaListAlt, FaCreditCard, FaSignOutAlt } from "react-icons/fa";
 
 const MinhaConta: React.FC = () => {
-  const isAuthenticated = useAuth();
+  const { isAuthenticated, logout } = useAuth(); // isAuthenticated é um booleano
   const [selectedOption, setSelectedOption] = useState("minha-conta");
+  const navigate = useNavigate();
 
-  if (!isAuthenticated) {
+  useEffect(() => {
+    document.title = "Minha Conta - toAnunciando";
+  }, []);
+
+  if (!isAuthenticated) { // Corrigido aqui: usar como booleano
     return <Navigate to="/login" replace />;
   }
 
-  const renderContent = () => {
-    switch (selectedOption) {
-      case "dados-pessoais":
-        return <DadosPessoaisInfo />;
-      case "minha-conta":
-        return <MinhaContaInfo />;
-      case "meus-anuncios":
-        return <MeusAnunciosInfo />;
-      case "meus-creditos":
-        return <MeusCreditosInfo />;
-      default:
-        return <MinhaContaInfo />;
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/login"); // Redirecionar para login após logout
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+      // Tratar erro de logout se necessário
     }
   };
 
-  const handleLogout = () => {
-    console.log("Usuário saiu");
-    // Aqui você pode chamar seu método de logout, por exemplo: logout()
+  const menuItems = [
+    { id: "minha-conta", label: "Minha Conta", icon: <FaUserCircle />, component: <MinhaContaInfo /> },
+    { id: "meus-anuncios", label: "Meus Anúncios", icon: <FaListAlt />, component: <MeusAnunciosInfo /> },
+    { id: "meus-creditos", label: "Meus Créditos", icon: <FaCreditCard />, component: <MeusCreditosInfo /> },
+  ];
+
+  const renderContent = () => {
+    const selectedItem = menuItems.find(item => item.id === selectedOption);
+    return selectedItem ? selectedItem.component : <MinhaContaInfo />;
   };
 
   return (
-    <div className="page-container">
+    <div className="page-container-minha-conta">
       <TopbarLogado />
 
-      <main className="main-content">
-        <div className="container-minha-conta">
-          <div className="menu-lateral">
-            <ul className="lista-menu">
-              <li
-                className={`item-menu ${selectedOption === "dados-pessoais" ? "ativo" : ""}`}
-                onClick={() => setSelectedOption("dados-pessoais")}
-              >
-                Dados Pessoais
-              </li>
-              <li
-                className={`item-menu ${selectedOption === "minha-conta" ? "ativo" : ""}`}
-                onClick={() => setSelectedOption("minha-conta")}
-              >
-                Minha Conta
-              </li>
-              <li
-                className={`item-menu ${selectedOption === "meus-anuncios" ? "ativo" : ""}`}
-                onClick={() => setSelectedOption("meus-anuncios")}
-              >
-                Meus Anúncios
-              </li>
-              <li
-                className={`item-menu ${selectedOption === "meus-creditos" ? "ativo" : ""}`}
-                onClick={() => setSelectedOption("meus-creditos")}
-              >
-                Meus Créditos
-              </li>
-              <li className="item-menu sair" onClick={handleLogout}>
-                Sair
+      <main className="main-content-minha-conta">
+        <div className="minha-conta-layout">
+          <aside className="menu-lateral-minha-conta">
+            {/* <h2 className="menu-title">Navegação</h2> */}
+            <ul className="lista-menu-minha-conta">
+              {menuItems.map((item) => (
+                <li
+                  key={item.id}
+                  className={`item-menu-minha-conta ${selectedOption === item.id ? "ativo" : ""}`}
+                  onClick={() => setSelectedOption(item.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyPress={(e) => e.key === "Enter" && setSelectedOption(item.id)}
+                >
+                  {item.icon} 
+                  <span>{item.label}</span>
+                </li>
+              ))}
+              <li className="item-menu-minha-conta sair" onClick={handleLogout} role="button" tabIndex={0} onKeyPress={(e) => e.key === "Enter" && handleLogout()}>
+                <FaSignOutAlt />
+                <span>Sair</span>
               </li>
             </ul>
-          </div>
+          </aside>
 
-          <div className="conteudo-principal">
+          <section className="conteudo-principal-minha-conta">
             {renderContent()}
-          </div>
+          </section>
         </div>
       </main>
 
@@ -89,3 +87,4 @@ const MinhaConta: React.FC = () => {
 };
 
 export default MinhaConta;
+

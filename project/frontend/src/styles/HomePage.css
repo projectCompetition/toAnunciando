@@ -1,123 +1,192 @@
+/* /home/ubuntu/toAnunciando/project/frontend/src/styles/HomePage.css */
+
 .homepage-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-width: 100vw;
+  background-color: var(--theme-color-background-light); /* Fundo geral da página */
 }
 
-.main-content {
+.main-content-homepage { /* Renomeado para evitar conflito com .main-content de outras páginas se houver */
   flex: 1;
-  padding: 80px 20px 20px; /* Adicionar padding-top para evitar corte pelo Topbar */
+  padding-top: calc(70px + var(--theme-spacing-xl)); /* 70px do Topbar + espaçamento */
+  padding-bottom: var(--theme-spacing-xl);
+  padding-left: var(--theme-spacing-lg);
+  padding-right: var(--theme-spacing-lg);
   text-align: center;
-  background: white;
-  margin-top: 60px;
+  width: 100%;
+  max-width: 1200px; /* Limitar largura do conteúdo principal */
+  margin: 0 auto; /* Centralizar conteúdo */
+  box-sizing: border-box;
 }
 
-.search-container {
+.homepage-title {
+  font-size: var(--theme-font-size-xxl);
+  font-weight: var(--theme-font-weight-bold);
+  color: var(--theme-color-text-primary);
+  margin-bottom: var(--theme-spacing-sm);
+}
+
+.homepage-subtitle {
+  font-size: var(--theme-font-size-lg);
+  color: var(--theme-color-text-secondary);
+  margin-bottom: var(--theme-spacing-xl);
+}
+
+/* Estilos para a barra de busca, se for adicionada como no theme */
+.homepage-search-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--theme-spacing-xxl);
+  background-color: var(--theme-color-background-main);
+  padding: var(--theme-spacing-lg);
+  border-radius: var(--theme-border-radius-lg);
+  box-shadow: var(--theme-box-shadow-sm);
 }
 
-.search-input {
-  width: 300px;
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid #ddd;
-  border-radius: 5px 0 0 5px;
+.homepage-search-input {
+  flex-grow: 1;
+  max-width: 600px;
+  padding: var(--theme-spacing-md) var(--theme-spacing-lg);
+  font-size: var(--theme-font-size-base);
+  border: 1px solid var(--theme-color-border);
+  border-radius: var(--theme-border-radius) 0 0 var(--theme-border-radius); /* Arredondar apenas à esquerda */
   outline: none;
   transition: border-color 0.3s;
 }
 
-.search-input:focus {
-  border-color: #5a67d8;
+.homepage-search-input:focus {
+  border-color: var(--theme-color-primary);
+  box-shadow: 0 0 0 0.2rem var(--theme-color-primary-focus-shadow); /* Adicionar sombra de foco */
 }
 
-.search-button:hover {
-  background: #434190;
+.homepage-search-button {
+  padding: var(--theme-spacing-md) var(--theme-spacing-xl);
+  font-size: var(--theme-font-size-base);
+  background-color: var(--theme-color-primary);
+  color: var(--theme-color-text-on-primary);
+  border: 1px solid var(--theme-color-primary);
+  border-left: none; /* Remover borda esquerda para juntar com o input */
+  border-radius: 0 var(--theme-border-radius) var(--theme-border-radius) 0; /* Arredondar apenas à direita */
+  cursor: pointer;
+  transition: var(--theme-transition-base);
+  font-weight: var(--theme-font-weight-semibold);
 }
 
-.categories {
-  display: flex;
+.homepage-search-button:hover {
+  background-color: var(--theme-color-primary-dark);
+  border-color: var(--theme-color-primary-dark);
+}
+
+.categories-grid { /* Renomeado de .categories para evitar conflitos e ser mais específico */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grid responsivo */
+  gap: var(--theme-spacing-lg);
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
 }
 
-.category {
+.category-card { /* Renomeado de .category */
   position: relative;
-  width: 420px;
-  height: 640px;
-  border-radius: 10px;
+  /* width: 100%; */ /* O grid cuida da largura */
+  aspect-ratio: 3 / 4; /* Proporção para os cards */
+  border-radius: var(--theme-border-radius-lg);
   overflow: hidden;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: var(--theme-box-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  background-color: var(--theme-color-neutral-lightest); /* Fundo para o card */
 }
 
-.category:hover {
-  transform: translateY(-10px);
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--theme-box-shadow-lg);
 }
 
-.category-image {
+.category-card-image {
   width: 100%;
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0.8;
-  transition: opacity 0.3s;
-  cursor: pointer;
+  transition: transform 0.4s ease;
 }
 
-.category:hover .category-image {
-  opacity: 1;
+.category-card:hover .category-card-image {
+  transform: scale(1.05); /* Efeito de zoom sutil na imagem */
 }
 
-.category.imoveis .category-image {
-  background-image: url("../imagens/apt.jpg");
+/* Imagens de fundo específicas */
+.category-card.imoveis .category-card-image {
+  background-image: url("../assets/placeholder-imovel.jpg"); /* Usar placeholder ou imagem real */
 }
 
-.category.carros .category-image {
-  background-image: url("../imagens/carro2.jpg");
+.category-card.carros .category-card-image {
+  background-image: url("../assets/placeholder-veiculo.jpg"); /* Usar placeholder ou imagem real */
 }
 
-.category p {
+.category-card-overlay {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  color: white;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: 'Montserrat-bold';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Alinhar texto na parte inferior */
+  align-items: center;
+  padding: var(--theme-spacing-lg);
+  box-sizing: border-box;
+}
+
+.category-card p {
+  font-size: var(--theme-font-size-xl);
+  color: var(--theme-color-text-on-dark-bg, white);
+  font-weight: var(--theme-font-weight-bold);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  margin: 0;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-  .categories {
+  .main-content-homepage {
+    padding-top: calc(70px + var(--theme-spacing-md));
+    padding-left: var(--theme-spacing-md);
+    padding-right: var(--theme-spacing-md);
+  }
+
+  .homepage-title {
+    font-size: calc(var(--theme-font-size-xxl) * 0.8);
+  }
+
+  .homepage-subtitle {
+    font-size: calc(var(--theme-font-size-lg) * 0.9);
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    gap: var(--theme-spacing-md);
+  }
+
+  .category-card {
+    aspect-ratio: 4 / 3; /* Ajustar proporção para mobile se necessário */
+  }
+
+  .homepage-search-container {
     flex-direction: column;
-    align-items: center;
+    padding: var(--theme-spacing-md);
   }
-
-  .category {
+  .homepage-search-input {
+    border-radius: var(--theme-border-radius);
+    margin-bottom: var(--theme-spacing-sm);
+  }
+  .homepage-search-button {
     width: 100%;
-    max-width: 400px;
-  }
-
-  .search-container {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .search-input {
-    width: 100%;
-    border-radius: 5px;
-  }
-
-  .search-button {
-    width: 100%;
-    border-radius: 5px;
+    border-radius: var(--theme-border-radius);
+    border-left: 1px solid var(--theme-color-primary);
   }
 }
+
+/* Adicionar placeholders para imagens se não existirem */
+/* No seu diretório de assets, crie placeholder-imovel.jpg e placeholder-veiculo.jpg */
+

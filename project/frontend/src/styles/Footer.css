@@ -1,103 +1,108 @@
+/* /home/ubuntu/toAnunciando/project/frontend/src/styles/Footer.css */
+
 .footer {
-    background: #5a67d8;
-    color: white;
-    padding-bottom: 10px; /* Padding reduzido para diminuir a altura */
-    text-align: center;
-    width: 100%; /* Garantir que ocupe toda a largura */
-    margin: 0; /* Remover margens padrão */
-    box-sizing: border-box; /* Garantir que o padding não aumente a largura */
-  }
-  
+  background: var(--theme-color-primary); /* Alterado de #5a67d8 */
+  color: var(--theme-color-text-on-primary); /* Alterado de white */
+  padding-top: var(--theme-spacing-lg);
+  padding-bottom: var(--theme-spacing-md); 
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Alterado de space-between para melhor distribuição */
+  max-width: 1200px;
+  margin: 0 auto var(--theme-spacing-lg) auto; /* Adicionado margem inferior */
+  padding: 0 var(--theme-spacing-md);
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 220px; /* Reduzido para melhor encaixe em telas menores */
+  margin: var(--theme-spacing-md) var(--theme-spacing-sm);
+  padding: 0 var(--theme-spacing-sm);
+  text-align: left; /* Alinhamento à esquerda para melhor leitura */
+}
+
+.footer-section h3 {
+  font-size: var(--theme-font-size-lg);
+  font-weight: var(--theme-font-weight-semibold);
+  margin-bottom: var(--theme-spacing-md);
+  color: var(--theme-color-text-on-primary);
+}
+
+.footer-section p,
+.footer-section ul li {
+  font-size: var(--theme-font-size-sm);
+  line-height: var(--theme-line-height-base);
+  margin-bottom: var(--theme-spacing-xs);
+  color: var(--theme-color-text-on-primary_softer, #e0e0e0); /* Cor um pouco mais suave que branco puro */
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li a {
+  color: var(--theme-color-text-on-primary_softer, #e0e0e0);
+  text-decoration: none;
+  transition: var(--theme-transition-base);
+}
+
+.footer-section ul li a:hover {
+  color: var(--theme-color-primary-light); /* Usar o azul claro do tema para hover */
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: flex-start; /* Alinhar à esquerda com o texto da seção */
+  margin-top: var(--theme-spacing-md);
+  gap: var(--theme-spacing-md);
+}
+
+.social-icons a {
+  color: var(--theme-color-text-on-primary_softer, #e0e0e0);
+  font-size: var(--theme-font-size-xl);
+  transition: var(--theme-transition-base);
+}
+
+.social-icons a:hover {
+  color: var(--theme-color-primary-light);
+}
+
+.footer-bottom {
+  margin-top: var(--theme-spacing-lg);
+  border-top: var(--theme-border-width) solid var(--theme-color-primary-dark); /* Usar azul escuro para a borda */
+  padding-top: var(--theme-spacing-md);
+  width: 100%;
+}
+
+.footer-bottom p {
+  font-size: var(--theme-font-size-sm);
+  color: var(--theme-color-text-on-primary_softer, #e0e0e0);
+  margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
   .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px; /* Largura máxima do conteúdo */
-    margin: 0 auto; /* Centralizar o conteúdo */
-    padding: 0 20px; /* Adicionar padding lateral */
+    flex-direction: column;
+    align-items: center; /* Centralizar seções na vertical */
   }
-  
+
   .footer-section {
-    flex: 1;
-    min-width: 250px;
-    margin: 0; /* Margem reduzida */
-    padding: 0 10px; /* Padding reduzido */
-  }
-  
-  .footer-section h3 {
-    font-size: 16px;
-    margin-bottom: 5px; /* Margem inferior reduzida */
+    text-align: center; /* Centralizar texto dentro das seções em mobile */
+    margin-bottom: var(--theme-spacing-lg);
   }
 
-  .footer-section p {
-    list-style: none;
-    padding: 0;
-    font-size: 12px;
-    line-height: 1;
-  }
-
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-    font-size: 12px;
-    line-height: 1.6;
-  }
-  
-  .footer-section ul li {
-    margin-bottom: 4px; /* Margem inferior reduzida */
-  }
-  
-  .footer-section ul li a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .footer-section ul li a:hover {
-    color: #5a67d8;
-  }
-  
   .social-icons {
-    display: flex;
     justify-content: center;
-    margin-top: 15px;
-    gap: 15px;
   }
-  
-  .social-icons a {
-    color: white;
-    font-size: 24px;
-    transition: color 0.3s;
-  }
-  
-  .social-icons a:hover {
-    color: #5a67d8;
-  }
-  
-  .footer-bottom {
-    margin-top: 0; 
-    border-top: 1px solid #444;
-    padding-top: 10px;
-    width: 100%; 
-  }
-  
-  .footer-bottom p {
-    font-size: 11px;
-    margin: 0;
-  }
-  
-  /* Responsividade */
-  @media (max-width: 768px) {
-    .footer-content {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .footer-section {
-      text-align: center;
-    }
-  
-    .social-icons {
-      justify-content: center;
-    }
-  }
+}
+

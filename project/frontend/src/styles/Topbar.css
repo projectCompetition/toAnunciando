@@ -1,74 +1,104 @@
-/* Estilos existentes do Topbar */
+/* /home/ubuntu/toAnunciando/project/frontend/src/styles/Topbar.css */
+
 .topbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;
-  background: #6c5ce7;
-  color: white;
+  height: 70px; /* Aumentar um pouco a altura para melhor respiro */
+  background: var(--theme-color-background-main); /* Fundo branco como no theme */
+  color: var(--theme-color-text-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 120px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 0 var(--theme-spacing-xl); /* Usar variável de espaçamento */
+  box-shadow: var(--theme-box-shadow-sm); /* Sombra suave */
   z-index: 1000;
   box-sizing: border-box;
-  gap: 20px;
+  gap: var(--theme-spacing-md);
 }
 
 .logo {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: var(--theme-font-size-xl);
+  font-weight: var(--theme-font-weight-bold);
+  color: var(--theme-color-primary); /* Logo com a cor primária */
 }
 
-.div-login {
-  padding-left: 20px;
+.logo .nav-link {
+  color: var(--theme-color-primary);
+  text-decoration: none;
 }
 
 .div-nav {
   display: flex;
   align-items: center;
+  gap: var(--theme-spacing-lg);
 }
 
 .nav-menu {
   display: flex;
-  gap: 20px;
+  gap: var(--theme-spacing-lg);
 }
 
 .nav-link {
-  color: white;
+  color: var(--theme-color-text-secondary); /* Texto secundário para links de navegação */
   text-decoration: none;
-  align-items: center;
-  font-size: 16px;
-  transition: color 0.3s;
-  display: inline-block;
-  transform-origin: center;
+  font-size: var(--theme-font-size-base);
+  font-weight: var(--theme-font-weight-semibold);
+  transition: var(--theme-transition-base);
+  padding: var(--theme-spacing-xs) var(--theme-spacing-sm);
+  border-radius: var(--theme-border-radius-sm);
 }
 
-.nome-destaque {
-  font-weight: bold;
+.nav-link:hover,
+.nav-link.active { /* Adicionar classe active para link ativo */
+  color: var(--theme-color-primary);
+  background-color: var(--theme-color-background-light); /* Fundo sutil no hover/active */
+}
+
+.div-login {
+  /* O espaçamento já é tratado pelo gap no .div-nav */
 }
 
 .login-btn {
-  background: white;
-  color: #6c5ce7;
+  /* Usar a classe .btn-theme ou .btn-theme-secondary do tema */
+  /* Exemplo de uso do botão primário do tema: */
+  /* background-color: var(--theme-color-primary); */
+  /* color: var(--theme-color-text-on-primary); */
+  /* border: none; */
+  /* padding: var(--theme-spacing-sm) var(--theme-spacing-md); */
+  /* border-radius: var(--theme-border-radius); */
+  /* font-weight: var(--theme-font-weight-semibold); */
+  /* cursor: pointer; */
+  /* transition: var(--theme-transition-base); */
+
+  /* Estilo específico se não usar classe de botão global */
+  background-color: var(--theme-color-primary);
+  color: var(--theme-color-text-on-primary);
+  padding: var(--theme-spacing-sm) var(--theme-spacing-lg);
+  border-radius: var(--theme-border-radius);
+  text-decoration: none;
+  font-weight: var(--theme-font-weight-semibold);
+  border: none;
+  cursor: pointer;
+  transition: var(--theme-transition-base);
 }
 
 .login-btn:hover {
-  background-color: rgb(243, 236, 236);
+  background-color: var(--theme-color-primary-dark);
 }
 
-/* Novos estilos para a área logada */
+/* Estilos para TopbarLogado (serão movidos/ajustados se houver um TopbarLogado.css) */
 .anunciante-info {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--theme-spacing-sm);
 }
 
 .anunciante-nome {
-  font-size: 14px;
-  color: white;
+  font-size: var(--theme-font-size-sm);
+  color: var(--theme-color-text-primary);
+  font-weight: var(--theme-font-weight-semibold);
 }
 
 .dropdown {
@@ -76,31 +106,95 @@
   display: inline-block;
 }
 
+.dropdown .nav-link {
+    cursor: pointer;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #6c5ce7;
-  font-size: 14px;
-  min-width: 185px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  background-color: var(--theme-color-background-main);
+  min-width: 200px; /* Aumentar um pouco */
+  box-shadow: var(--theme-box-shadow);
+  border-radius: var(--theme-border-radius-sm);
+  z-index: 1001; /* Acima do topbar */
+  right: 0; /* Alinhar à direita */
+  top: 100%; /* CORRIGIDO: Removido o espaço para evitar que o mouse saia do hover */
 }
 
 .dropdown-content a {
-  color: white;
-  padding: 12px 16px;
+  color: var(--theme-color-text-primary);
+  padding: var(--theme-spacing-sm) var(--theme-spacing-md);
   text-decoration: none;
   display: block;
+  font-size: var(--theme-font-size-sm);
+  font-weight: var(--theme-font-weight-normal);
+  border-bottom: var(--theme-border-width) solid var(--theme-color-divider);
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
 }
 
 .dropdown-content a:hover {
-  background-color: #9183f8;
+  background-color: var(--theme-color-background-light);
+  color: var(--theme-color-primary);
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.dropdown:hover .dropbtn {
-  background-color: #5a4cb1;
+/* Remover o hover específico do dropbtn se o nav-link já trata o hover */
+/* .dropdown:hover .dropbtn {
+  background-color: var(--theme-color-primary-dark); 
+} */
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+  .topbar {
+    padding: 0 var(--theme-spacing-md);
+    height: auto; /* Altura automática para acomodar itens empilhados */
+    flex-direction: column; /* Empilhar itens em telas menores */
+    align-items: flex-start; /* Alinhar itens à esquerda */
+    padding-top: var(--theme-spacing-sm);
+    padding-bottom: var(--theme-spacing-sm);
+  }
+
+  .div-nav {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--theme-spacing-sm);
+    margin-top: var(--theme-spacing-sm);
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--theme-spacing-xs);
+  }
+
+  .nav-link {
+    display: block; /* Fazer links ocuparem toda a largura */
+    width: 100%;
+    text-align: left;
+    padding: var(--theme-spacing-sm);
+  }
+
+  .div-login {
+    width: 100%;
+    margin-top: var(--theme-spacing-sm);
+  }
+
+  .login-btn {
+    width: 100%; /* Botão de login ocupa toda a largura */
+  }
+
+  .dropdown-content {
+    min-width: 100%; /* Dropdown ocupa toda a largura */
+    left:0;
+    right:auto;
+  }
 }
+

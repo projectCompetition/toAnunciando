@@ -16,7 +16,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("token"));
-  const [anunciante, setAnunciante] = useState< Anunciante | null>(null);
+  const [anunciante, setAnunciante] = useState<Anunciante | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -31,6 +31,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = (token: string, anuncianteData: Anunciante) => {
     localStorage.setItem("token", token);
     localStorage.setItem("anunciante", JSON.stringify(anuncianteData));
+
     setIsAuthenticated(true);
     setAnunciante(anuncianteData);
   };

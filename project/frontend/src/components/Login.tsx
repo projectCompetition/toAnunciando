@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Adicionado Link
 import { useAuth } from "../contexts/AuthContext";
 import api from "../api";
-import "../styles/Login.css";
-import "../styles/Default.css";
+import "../styles/Login.css"; // Mantém o CSS específico do Login
+// import "../styles/Default.css"; // Remover se não for mais necessário ou se o conteúdo foi para o tema
 
 const Login: React.FC = () => {
   const [login, setLogin] = useState("");
@@ -13,10 +13,15 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Login";
+    document.title = "Login - toAnunciando"; // Título mais descritivo
   }, []);
 
   const handleLogin = async () => {
+    setError(""); // Limpar erros anteriores
+    if (!login || !senha) {
+      setError("Por favor, preencha todos os campos.");
+      return;
+    }
     try {
       const response = await api.post("/auth/login", { login, senha });
 
@@ -27,12 +32,16 @@ const Login: React.FC = () => {
 
       if (response.data && response.data.accessToken) {
         authLogin(response.data.accessToken, anuncianteData);
-        navigate("/homepage");
+        navigate("/homepage"); // Idealmente, redirecionar para uma dashboard ou página privada
       } else {
-        setError("Erro ao fazer login. Tente novamente.");
+        setError(response.data.message || "Erro ao fazer login. Tente novamente.");
       }
-    } catch (err) {
-      setError("Usuário ou senha incorretos");
+    } catch (err: any) {
+      if (err.response && err.response.data && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("Usuário ou senha incorretos, ou erro no servidor.");
+      }
     }
   };
 
@@ -44,55 +53,75 @@ const Login: React.FC = () => {
 
   return (
     <div className="body-login">
-      <div className="login-container">
-        <div className="login-box">
-          <h1 className="padding-10; display-flex-center">Bem Vindo!</h1>
+      <div className="login-page-container">
+        <div className="login-form-section">
+          <h1>Bem Vindo!</h1>
+          {/* Se quiser adicionar abas de Email/Telefone como no theme, seria aqui */}
+          {/* <div className="login-method-tabs">
+            <div className="login-method-tab active">Email</div>
+            <div className="login-method-tab">Telefone</div>
+          </div> */}
 
           {error && <p className="error-message">{error}</p>}
 
-          <input
-            type="text"
-            placeholder="E-mail, CPF ou CNPJ"
-            value={login}
-            onChange={(e) => setLogin(e.target.value)}
-            className="input-field"
-            onKeyDown={handleKeyPress}
-          />
-
-          <input
-            type="password"
-            placeholder="Senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            className="input-field"
-            onKeyDown={handleKeyPress}
-          />
-
-          <div className="login-options justify-content-right">
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate("/recuperacao-senha");
-              }}
-            >
-              Esqueci minha senha
-            </a>
+          <div className="input-field-container">
+            <input
+              type="text"
+              placeholder="E-mail, CPF ou CNPJ"
+              value={login}
+              onChange={(e) => setLogin(e.target.value)}
+              className="form-control-theme" // Usar classe do tema
+              onKeyDown={handleKeyPress}
+            />
           </div>
 
-          <button className="button-width-100" onClick={handleLogin}>
+          <div className="input-field-container">
+            <input
+              type="password"
+              placeholder="Senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              className="form-control-theme" // Usar classe do tema
+              onKeyDown={handleKeyPress}
+            />
+          </div>
+
+          <div className="login-options justify-content-right">
+            <Link
+              to="/recuperacao-senha"
+            >
+              Esqueci minha senha
+            </Link>
+          </div>
+
+          <button className="btn-theme btn-full-width" onClick={handleLogin}>
             Login
           </button>
 
-          <div className="login-options">
+          {/* Opção de login social pode ser adicionada aqui, similar ao theme */}
+          {/* <div style={{ textAlign: "center", margin: "var(--theme-spacing-md) 0" }}>Ou</div>
+          <button className="btn-theme-secondary btn-full-width" style={{ marginBottom: "var(--theme-spacing-sm)" }}>
+            Login com Google
+          </button>
+          <button className="btn-theme-secondary btn-full-width">
+            Login com Facebook
+          </button> */}
+        </div>
+
+        <div className="login-branding-section">
+          <div className="brand-logo">toAnunciando</div>
+          <p>A sua plataforma completa de anúncios.</p>
+          <div className="login-options alternative-action">
             <p>
-              Novo por aqui? <a href="/cadastro">Cadastre-se</a>
+              Novo por aqui? <Link to="/cadastro">Cadastre-se</Link>
             </p>
           </div>
         </div>
+
       </div>
     </div>
   );
 };
 
 export default Login;
+

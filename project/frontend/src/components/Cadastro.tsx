@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Adicionado Link
 import { cpf, cnpj } from 'cpf-cnpj-validator';
 import api from "../api";
-import "../styles/Cadastro.css";
+import "../styles/Cadastro.css"; // Mantém o CSS específico do Cadastro
 
 const Cadastro: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,38 +10,31 @@ const Cadastro: React.FC = () => {
     cpfcnpj: "",
     email: "",
     senha: "",
-    confirmacaoSenha: "",
+    confirmacaoSenha: "", // Mantido para consistência, mas o backend pode não usar
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const [, setDocumentType] = useState<"CPF" | "CNPJ">("CPF");
+  const [, setDocumentType] = useState<"CPF" | "CNPJ">("CPF"); // Mantido para lógica de formatação
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Cadastro";
+    document.title = "Cadastro - toAnunciando";
   }, []);
-
 
   const handleDocumentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     const cleanedValue = value.replace(/\D/g, '');
 
-    // Determina automaticamente o tipo de documento
-    if (cleanedValue.length <= 11) {
-      setDocumentType("CPF");
-    } else {
-      setDocumentType("CNPJ");
-    }
-
-    // Formata o valor conforme o tipo
     let formattedValue = value;
     if (cleanedValue.length <= 11) {
+      setDocumentType("CPF");
       formattedValue = cleanedValue
         .replace(/(\d{3})(\d)/, '$1.$2')
         .replace(/(\d{3})(\d)/, '$1.$2')
         .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
         .substring(0, 14);
     } else {
+      setDocumentType("CNPJ");
       formattedValue = cleanedValue
         .replace(/^(\d{2})(\d)/, '$1.$2')
         .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
@@ -58,7 +51,6 @@ const Cadastro: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-
     if (name === "cpfcnpj") {
       handleDocumentChange(e as React.ChangeEvent<HTMLInputElement>);
     } else {
@@ -71,10 +63,17 @@ const Cadastro: React.FC = () => {
     setError("");
     setSuccess(false);
 
-    // Validação do documento
+    if (formData.senha !== formData.confirmacaoSenha) {
+      setError("As senhas não coincidem. Por favor, verifique.");
+      return;
+    }
+    
     const cleanedDoc = formData.cpfcnpj.replace(/\D/g, '');
     let isValidDocument = false;
-
+    if (cleanedDoc.length === 0) {
+        setError("CPF/CNPJ é obrigatório.");
+        return;
+    }
     if (cleanedDoc.length <= 11) {
       isValidDocument = cpf.isValid(cleanedDoc);
       if (!isValidDocument) {
@@ -89,15 +88,12 @@ const Cadastro: React.FC = () => {
       }
     }
 
-    if (formData.senha !== formData.confirmacaoSenha) {
-      setError("As senhas não coincidem. Por favor, verifique.");
-      return;
-    }
-
     try {
+      // Removendo confirmacaoSenha se o backend não espera
+      const { confirmacaoSenha, ...submissionData } = formData;
       await api.post("/anunciante", {
-        ...formData,
-        cpfcnpj: cleanedDoc // Envia sem formatação para o backend
+        ...submissionData,
+        cpfcnpj: cleanedDoc 
       });
       setSuccess(true);
       setTimeout(() => navigate("/login"), 2000);
@@ -110,33 +106,44 @@ const Cadastro: React.FC = () => {
   };
 
   return (
-    <div className="cadastro-container">
-      <div className="cadastro-box">
-        <div className="cadastro-form">
-          <h1>Cadastro</h1>
+    <div className="body-cadastro">
+      <div className="cadastro-page-container">
+        <div className="cadastro-form-section">
+          <h1>Crie sua Conta</h1>
           {error && <p className="error-message">{error}</p>}
-          {success && <p className="success-message">Cadastro realizado com sucesso! Redirecionando...</p>}
+          {success && <p className="success-message">Cadastro realizado com sucesso! Redirecionando para o login...</p>}
 
-          <form onSubmit={handleSubmit}>
-            <input type="text" name="nome" placeholder="Nome Completo" value={formData.nome} onChange={handleChange} className="input-field" required />
-
-            <input type="text" name="cpfcnpj" placeholder="CPF ou CNPJ" value={formData.cpfcnpj} onChange={handleChange} className="input-field" required />
-
-            <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className="input-field" required />
-
-            <input type="password" name="senha" placeholder="Senha" value={formData.senha} onChange={handleChange} className="input-field" required />
-
-            <input type="password" name="confirmacao_senha" placeholder="Confirmação de Senha" value={formData.confirmacaoSenha} onChange={handleChange} className="input-field" required />
-
-            <button type="submit" className="cadastro-button">Cadastrar</button>
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="input-field-container">
+              <input type="text" name="nome" placeholder="Nome Completo ou Razão Social" value={formData.nome} onChange={handleChange} className="form-control-theme" required />
+            </div>
+            <div className="input-field-container">
+              <input type="text" name="cpfcnpj" placeholder="CPF ou CNPJ" value={formData.cpfcnpj} onChange={handleChange} className="form-control-theme" required />
+            </div>
+            <div className="input-field-container">
+              <input type="email" name="email" placeholder="Seu melhor e-mail" value={formData.email} onChange={handleChange} className="form-control-theme" required />
+            </div>
+            <div className="input-field-container">
+              <input type="password" name="senha" placeholder="Crie uma senha" value={formData.senha} onChange={handleChange} className="form-control-theme" required />
+            </div>
+            <div className="input-field-container">
+              <input type="password" name="confirmacaoSenha" placeholder="Confirme sua senha" value={formData.confirmacaoSenha} onChange={handleChange} className="form-control-theme" required />
+            </div>
+            <button type="submit" className="btn-theme btn-full-width" style={{ marginTop: 'var(--theme-spacing-sm)' }}>Cadastrar</button>
           </form>
-
-          <p>Já tem uma conta? <a href="/login">Faça login</a></p>
+          {/* <p className="login-link-container" style={{ marginTop: 'var(--theme-spacing-lg)' }}>
+            Ao se cadastrar, você concorda com nossos <Link to="/termos">Termos de Uso</Link> e <Link to="/privacidade">Política de Privacidade</Link>.
+          </p> */}
         </div>
 
-        <div className="cadastro-info">
-          <h2>Seja bem-vindo!</h2>
-          <p>Crie sua conta e comece a anunciar hoje mesmo.</p>
+        <div className="cadastro-branding-section">
+          <div className="brand-logo">toAnunciando</div>
+          <p>Anuncie fácil, venda rápido.</p>
+          <div className="alternative-action" style={{ marginTop: 'var(--theme-spacing-xl)'}}>
+            <p>
+              Já tem uma conta? <Link to="/login">Faça login</Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -144,3 +151,4 @@ const Cadastro: React.FC = () => {
 };
 
 export default Cadastro;
+

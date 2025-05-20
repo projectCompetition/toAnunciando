@@ -1,3 +1,8 @@
+/* /home/ubuntu/toAnunciando/project/frontend/src/App.css */
+
+/* Importar o tema global primeiro */
+/* @import './theme.css'; /* Se theme.css não for importado no main.tsx ou index.tsx */
+
 html,
 body {
   margin: 0;
@@ -5,7 +10,12 @@ body {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--theme-font-family-base); /* Usar a fonte do tema */
+  background-color: var(--theme-color-background-light); /* Cor de fundo global */
+  color: var(--theme-color-text-primary); /* Cor de texto global */
+  line-height: var(--theme-line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 *,
@@ -13,3 +23,32 @@ body {
 *::after {
   box-sizing: inherit;
 }
+
+/* Reset básico para alguns elementos comuns */
+a {
+  color: var(--theme-color-text-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--theme-color-text-link-hover);
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit; /* Garantir que botões herdem a fonte */
+}
+
+/* Classes utilitárias globais inspiradas no theme (opcional) */
+.container-theme {
+  width: 100%;
+  max-width: 1200px; /* Ou o max-width definido no tema */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--theme-spacing-lg);
+  padding-right: var(--theme-spacing-lg);
+}
+
+/* Adicionar mais estilos globais ou resets conforme necessário */
+

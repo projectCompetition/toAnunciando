@@ -1,107 +1,148 @@
-.cadastro-container {
+/* /home/ubuntu/toAnunciando/project/frontend/src/styles/Cadastro.css */
+
+.body-cadastro { /* Renomeado de .cadastro-container para consistência com Login */
+  margin: 0;
+  padding: 0;
   display: flex;
-  height: 100vh;
-  align-items: center;
   justify-content: center;
-  background-color: #eef2f7;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--theme-color-background-light);
+  padding: var(--theme-spacing-md);
+  box-sizing: border-box;
 }
 
-.cadastro-box {
+.cadastro-page-container { /* Novo container para o layout de duas colunas */
   display: flex;
-  background: white;
-  width: 900px;
-  border-radius: 10px;
+  width: 100%;
+  max-width: 960px; /* Largura similar ao theme e Login */
+  min-height: 700px; /* Altura pode ser maior para acomodar mais campos */
+  background-color: var(--theme-color-background-main);
+  border-radius: var(--theme-border-radius-lg);
+  box-shadow: var(--theme-box-shadow-lg);
   overflow: hidden;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.cadastro-form {
-  flex: 1;
-  padding: 40px;
+.cadastro-form-section { /* Coluna do formulário */
+  flex: 1.2; /* Dar um pouco mais de espaço para o formulário de cadastro */
+  padding: var(--theme-spacing-xl) var(--theme-spacing-xxl);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.cadastro-form h1 {
-  margin-bottom: 15px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-}
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.cadastro-options {
+.cadastro-branding-section { /* Coluna da marca (azul) */
+  flex: 0.8; /* Um pouco menor que a do formulário */
+  background: var(--theme-color-background-panel);
+  color: var(--theme-color-text-on-primary);
   display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-.cadastro-options label {
-  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 5px;
-}
-
-.cadastro-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background 0.3s ease-in-out;
-}
-
-.cadastro-form p {
-  margin-top: 15px;
-  font-size: 14px;
+  padding: var(--theme-spacing-xl);
   text-align: center;
 }
 
-.cadastro-form a:hover {
+.cadastro-branding-section .brand-logo {
+  font-size: 2.5rem; /* Ajustar tamanho do logo se necessário */
+  font-weight: var(--theme-font-weight-bold);
+  margin-bottom: var(--theme-spacing-lg);
+}
+
+.cadastro-branding-section p {
+  font-size: var(--theme-font-size-lead);
+  margin-bottom: var(--theme-spacing-md);
+}
+
+.cadastro-branding-section .alternative-action a {
+  color: var(--theme-color-text-on-primary);
+  font-weight: var(--theme-font-weight-semibold);
   text-decoration: underline;
 }
 
-.cadastro-info {
-  flex: 1;
-  background: #6c5ce7;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.cadastro-branding-section .alternative-action a:hover {
+  color: var(--theme-color-primary-light);
+}
+
+.cadastro-form-section h1 {
+  font-size: var(--theme-font-size-xl);
+  font-weight: var(--theme-font-weight-bold);
+  color: var(--theme-color-text-primary);
+  margin-bottom: var(--theme-spacing-lg);
   text-align: center;
-  padding: 30px;
 }
 
-.cadastro-info h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+/* .input-field será substituído por .form-control-theme do tema */
+.input-field-container {
+  margin-bottom: var(--theme-spacing-md);
 }
 
-.cadastro-info p {
-  font-size: 16px;
-  max-width: 300px;
+/* .cadastro-button será substituído por .btn-theme e .btn-full-width */
+
+.cadastro-form-section p.login-link-container {
+  margin-top: var(--theme-spacing-lg);
+  font-size: var(--theme-font-size-sm);
+  text-align: center;
 }
 
-select {
-  background-color: #fff;
+.cadastro-form-section p.login-link-container a {
+  color: var(--theme-color-text-link);
+  font-weight: var(--theme-font-weight-semibold);
+  text-decoration: none;
 }
 
+.cadastro-form-section p.login-link-container a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  background-color: var(--theme-color-danger-bg, #f8d7da);
+  color: var(--theme-color-danger-text, #721c24);
+  border: 1px solid var(--theme-color-danger-border, #f5c6cb);
+  padding: var(--theme-spacing-md);
+  border-radius: var(--theme-border-radius);
+  margin-bottom: var(--theme-spacing-md);
+  text-align: center;
+  font-size: var(--theme-font-size-sm);
+}
+
+.success-message {
+  background-color: var(--theme-color-success-bg, #d4edda); /* Adicionar variável para fundo de sucesso */
+  color: var(--theme-color-success-text, #155724); /* Adicionar variável para texto de sucesso */
+  border: 1px solid var(--theme-color-success-border, #c3e6cb); /* Adicionar variável para borda de sucesso */
+  padding: var(--theme-spacing-md);
+  border-radius: var(--theme-border-radius);
+  margin-bottom: var(--theme-spacing-md);
+  text-align: center;
+  font-size: var(--theme-font-size-sm);
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-  .cadastro-box {
+  .cadastro-page-container {
     flex-direction: column;
-    width: 90%;
+    min-height: auto;
+    margin: var(--theme-spacing-md) 0;
   }
 
-  .cadastro-info {
-    display: none;
+  .cadastro-branding-section {
+    display: none; /* Ocultar painel lateral em telas pequenas */
+  }
+
+  .cadastro-form-section {
+    padding: var(--theme-spacing-lg) var(--theme-spacing-md);
+  }
+
+  .cadastro-form-section h1 {
+    font-size: calc(var(--theme-font-size-xl) * 0.85);
   }
 }
+
+/* Adicionar variáveis de cores de sucesso ao :root se não existirem no tema principal */
+:root {
+  --theme-color-success-bg: #d4edda;
+  --theme-color-success-text: #155724;
+  --theme-color-success-border: #c3e6cb;
+}
+
