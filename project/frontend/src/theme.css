@@ -1,165 +1,202 @@
+/* Arquivo de tema global para padronização de estilos */
+
 :root {
-  /* Paleta de Cores - Baseado no theme */
-  --theme-color-primary: #007bff; /* Azul vibrante principal */
-  --theme-color-primary-dark: #0056b3; /* Azul mais escuro para hover/active */
-  --theme-color-primary-light: #66aeff; /* Azul mais claro para links ou destaques sutis */
+  /* Cores */
+  --theme-color-primary: #7c5dfa;
+  --theme-color-primary-dark: #684edb;
+  --theme-color-primary-light: #9277ff;
+  --theme-color-primary-lightest: #e0f0ff;
   
-  --theme-color-secondary: #4A00E0; /* Roxo/Azul escuro para elementos secundários ou botões sociais (exemplo) */
-  --theme-color-facebook: #1877F2; /* Azul Facebook */
-  --theme-color-microsoft: #00A4EF; /* Azul Microsoft */
-  --theme-color-google-border: #DDDDDD; /* Cinza claro para borda do botão Google */
-
-  --theme-color-background-main: #FFFFFF; /* Fundo principal (branco) */
-  --theme-color-background-panel: linear-gradient(to bottom right, #007bff, #0056b3); /* Gradiente azul para painel lateral */
-  --theme-color-background-light: #F8F9FA; /* Fundo levemente acinzentado para seções */
-
-  --theme-color-text-primary: #212529; /* Preto/Cinza escuro para texto principal */
-  --theme-color-text-secondary: #6C757D; /* Cinza para texto secundário */
-  --theme-color-text-on-primary: #FFFFFF; /* Texto branco sobre fundos primários (azuis) */
-  --theme-color-text-link: var(--theme-color-primary);
-  --theme-color-text-placeholder: #AEB6BF; /* Cinza claro para placeholders */
-
-  --theme-color-border: #CED4DA; /* Cinza claro para bordas de input */
-  --theme-color-border-focus: var(--theme-color-primary-light); /* Cor da borda ao focar */
-  --theme-color-divider: #E9ECEF; /* Cinza para divisores */
-
-  --theme-color-success: #28A745;
-  --theme-color-danger: #DC3545;
-  --theme-color-warning: #FFC107;
-  --theme-color-info: #17A2B8;
-
-  /* Tipografia - Baseado no theme */
-  --theme-font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --theme-color-secondary: #1e2139;
+  --theme-color-secondary-dark: #141625;
+  --theme-color-secondary-light: #252945;
   
-  --theme-font-size-base: 1rem; /* 16px */
-  --theme-font-size-lg: calc(var(--theme-font-size-base) * 1.25); /* 20px */
-  --theme-font-size-sm: calc(var(--theme-font-size-base) * 0.875); /* 14px */
-  --theme-font-size-xl: calc(var(--theme-font-size-base) * 1.5); /* 24px */
-  --theme-font-size-lead: calc(var(--theme-font-size-base) * 1.125); /* 18px */
-
-  --theme-font-weight-light: 300;
+  --theme-color-background-main: #ffffff;
+  --theme-color-background-light: #f8f8fb;
+  --theme-color-background-hover: #f0f0f0;
+  
+  --theme-color-text-primary: #0c0e16;
+  --theme-color-text-secondary: #7e88c3;
+  --theme-color-text-on-primary: #ffffff;
+  --theme-color-text-on-primary_softer: #e0e0e0;
+  
+  --theme-color-divider: #dfe3fa;
+  --theme-color-border: #dfe3fa;
+  
+  --theme-color-success: #33d69f;
+  --theme-color-warning: #ff8f00;
+  --theme-color-danger: #ec5757;
+  --theme-color-danger-dark: #721c24;
+  --theme-color-danger-bg: #f8d7da;
+  
+  /* Espaçamentos */
+  --theme-spacing-xs: 4px;
+  --theme-spacing-sm: 8px;
+  --theme-spacing-md: 16px;
+  --theme-spacing-lg: 24px;
+  --theme-spacing-xl: 32px;
+  --theme-spacing-xxl: 48px;
+  
+  /* Tipografia */
+  --theme-font-family: 'Lato', sans-serif;
+  --theme-font-size-xs: 12px;
+  --theme-font-size-sm: 14px;
+  --theme-font-size-base: 16px;
+  --theme-font-size-lg: 18px;
+  --theme-font-size-xl: 24px;
+  --theme-font-size-xxl: 32px;
+  
   --theme-font-weight-normal: 400;
+  --theme-font-weight-medium: 500;
   --theme-font-weight-semibold: 600;
   --theme-font-weight-bold: 700;
-
-  --theme-line-height-base: 1.5;
-  --theme-line-height-sm: 1.2;
-  --theme-line-height-lg: 1.7;
-
-  /* Espaçamento - Baseado no theme */
-  --theme-spacing-xs: 0.25rem;  /* 4px */
-  --theme-spacing-sm: 0.5rem;   /* 8px */
-  --theme-spacing-md: 1rem;     /* 16px */
-  --theme-spacing-lg: 1.5rem;   /* 24px */
-  --theme-spacing-xl: 2rem;     /* 32px */
-  --theme-spacing-xxl: 3rem;    /* 48px */
-
-  /* Bordas e Sombras - Baseado no theme */
-  --theme-border-radius: 0.375rem; /* 6px, cantos arredondados */
-  --theme-border-radius-sm: 0.25rem; /* 4px */
-  --theme-border-radius-lg: 0.5rem;  /* 8px */
   
+  --theme-line-height-tight: 1.2;
+  --theme-line-height-base: 1.5;
+  --theme-line-height-loose: 1.8;
+  
+  /* Bordas */
+  --theme-border-radius-sm: 4px;
+  --theme-border-radius: 8px;
+  --theme-border-radius-lg: 12px;
+  --theme-border-radius-xl: 16px;
   --theme-border-width: 1px;
   
-  --theme-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  --theme-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  --theme-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-
+  /* Sombras */
+  --theme-box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --theme-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --theme-box-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  
   /* Transições */
   --theme-transition-base: all 0.2s ease-in-out;
+  --theme-transition-slow: all 0.3s ease-in-out;
 }
 
-/* Importar a fonte Inter do Google Fonts (opcional, mas recomendado para consistência) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
-body {
-  font-family: var(--theme-font-family-sans-serif);
-  font-size: var(--theme-font-size-base);
-  font-weight: var(--theme-font-weight-normal);
-  line-height: var(--theme-line-height-base);
-  color: var(--theme-color-text-primary);
-  background-color: var(--theme-color-background-light); /* Um fundo global levemente acinzentado */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  color: var(--theme-color-text-link);
-  text-decoration: none; /* Remover sublinhado padrão */
-  transition: var(--theme-transition-base);
-}
-
-a:hover {
-  color: var(--theme-color-primary-dark);
-  text-decoration: underline;
-}
-
-/* Estilos básicos para botões para herdar variáveis */
+/* Estilos de botões */
 .btn-theme {
-  display: inline-block;
-  font-weight: var(--theme-font-weight-semibold);
-  line-height: var(--theme-line-height-base);
-  color: var(--theme-color-text-on-primary);
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
   background-color: var(--theme-color-primary);
-  border: var(--theme-border-width) solid var(--theme-color-primary);
-  padding: var(--theme-spacing-sm) var(--theme-spacing-md);
-  font-size: var(--theme-font-size-base);
+  color: var(--theme-color-text-on-primary);
+  border: none;
+  padding: var(--theme-spacing-sm) var(--theme-spacing-lg);
   border-radius: var(--theme-border-radius);
+  font-weight: var(--theme-font-weight-semibold);
+  cursor: pointer;
   transition: var(--theme-transition-base);
+  font-size: var(--theme-font-size-base);
+  text-align: center;
+  display: inline-block;
 }
 
 .btn-theme:hover {
   background-color: var(--theme-color-primary-dark);
-  border-color: var(--theme-color-primary-dark);
+}
+
+.btn-theme:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .btn-theme-secondary {
-  color: var(--theme-color-primary);
-  background-color: transparent;
-  border-color: var(--theme-color-primary);
+  background-color: var(--theme-color-background-light);
+  color: var(--theme-color-text-secondary);
+  border: 1px solid var(--theme-color-border);
+  padding: var(--theme-spacing-sm) var(--theme-spacing-lg);
+  border-radius: var(--theme-border-radius);
+  font-weight: var(--theme-font-weight-semibold);
+  cursor: pointer;
+  transition: var(--theme-transition-base);
+  font-size: var(--theme-font-size-base);
+  text-align: center;
+  display: inline-block;
 }
 
 .btn-theme-secondary:hover {
-  color: var(--theme-color-text-on-primary);
-  background-color: var(--theme-color-primary);
-  border-color: var(--theme-color-primary);
-}
-
-/* Estilos básicos para inputs */
-.form-control-theme {
-  display: block;
-  width: 100%;
-  padding: var(--theme-spacing-sm) var(--theme-spacing-md);
-  font-size: var(--theme-font-size-base);
-  font-weight: var(--theme-font-weight-normal);
-  line-height: var(--theme-line-height-base);
+  background-color: var(--theme-color-background-hover);
   color: var(--theme-color-text-primary);
-  background-color: var(--theme-color-background-main);
-  background-clip: padding-box;
-  border: var(--theme-border-width) solid var(--theme-color-border);
-  border-radius: var(--theme-border-radius);
-  transition: border-color var(--theme-transition-base), box-shadow var(--theme-transition-base);
 }
 
-.form-control-theme::placeholder {
-  color: var(--theme-color-text-placeholder);
-  opacity: 1; 
+.btn-theme-danger {
+  background-color: var(--theme-color-danger);
+  color: var(--theme-color-text-on-primary);
+}
+
+.btn-theme-danger:hover {
+  background-color: var(--theme-color-danger-dark);
+}
+
+.btn-full-width {
+  width: 100%;
+  display: block;
+}
+
+/* Estilos de formulários */
+.form-control-theme {
+  padding: 10px;
+  border-radius: var(--theme-border-radius);
+  border: 1px solid var(--theme-color-border);
+  font-size: var(--theme-font-size-base);
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--theme-font-family);
+  transition: var(--theme-transition-base);
+  background-color: var(--theme-color-background-main);
 }
 
 .form-control-theme:focus {
-  color: var(--theme-color-text-primary);
-  background-color: var(--theme-color-background-main);
-  border-color: var(--theme-color-border-focus);
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(var(--theme-color-primary-rgb, 0, 123, 255), 0.25); /* Necessário definir --theme-color-primary-rgb se usar rgba com variável */
+  outline: none;
+  border-color: var(--theme-color-primary);
+  box-shadow: 0 0 0 2px rgba(124, 93, 250, 0.2);
 }
 
-/* Adicionar --theme-color-primary-rgb se for usar no box-shadow */
-:root {
-  --theme-color-primary-rgb: 0, 123, 255; /* Exemplo para #007bff */
+.form-control-theme:disabled {
+  background-color: var(--theme-color-background-light);
+  cursor: not-allowed;
 }
 
+.form-control-theme.campo-erro {
+  border-color: var(--theme-color-danger);
+}
+
+.form-label-theme {
+  display: block;
+  font-weight: var(--theme-font-weight-semibold);
+  font-size: var(--theme-font-size-sm);
+  margin-bottom: var(--theme-spacing-xs);
+  color: var(--theme-color-text-secondary);
+}
+
+.form-group-theme {
+  margin-bottom: var(--theme-spacing-md);
+}
+
+.texto-erro {
+  color: var(--theme-color-danger);
+  font-size: var(--theme-font-size-xs);
+  margin-top: var(--theme-spacing-xs);
+  display: block;
+}
+
+/* Utilitários */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.mt-sm { margin-top: var(--theme-spacing-sm); }
+.mt-md { margin-top: var(--theme-spacing-md); }
+.mt-lg { margin-top: var(--theme-spacing-lg); }
+
+.mb-sm { margin-bottom: var(--theme-spacing-sm); }
+.mb-md { margin-bottom: var(--theme-spacing-md); }
+.mb-lg { margin-bottom: var(--theme-spacing-lg); }
+
+.p-sm { padding: var(--theme-spacing-sm); }
+.p-md { padding: var(--theme-spacing-md); }
+.p-lg { padding: var(--theme-spacing-lg); }

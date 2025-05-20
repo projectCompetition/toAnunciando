@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import "../styles/Topbar.css"; // Continua usando o Topbar.css que agora contém estilos para logado
+import "../styles/Logo.css"; // Importando os estilos da logo
 
 const TopbarLogado: React.FC = () => {
   const { anunciante, logout } = useAuth();
@@ -27,7 +28,7 @@ const TopbarLogado: React.FC = () => {
       <div className="logo">
         {/* O Link para a homepage pública pode ser ajustado se necessário para usuários logados */}
         <Link to={anunciante ? "/homepage" : "/publico/homepage"} className="nav-link">
-          to Anunciando
+          <img src="/imagens/logo.png" alt="toAnunciando" className="logo-img" />
         </Link>
       </div>
 

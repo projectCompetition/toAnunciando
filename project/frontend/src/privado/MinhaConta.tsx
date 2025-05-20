@@ -18,7 +18,7 @@ const MinhaConta: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Minha Conta - toAnunciando";
+    document.title = "Minha Conta - Área do Cliente";
   }, []);
 
   if (!isAuthenticated) { // Corrigido aqui: usar como booleano

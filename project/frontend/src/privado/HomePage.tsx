@@ -11,7 +11,7 @@ const HomePagePrivada: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Minha Área - toAnunciando";
+    document.title = "Minha Área - Área do Cliente";
   }, []);
 
   const nomeAnunciante = anunciante?.nome?.split(" ")[0] || "Usuário";

@@ -1,104 +1,88 @@
-/* /home/ubuntu/toAnunciando/project/frontend/src/styles/Topbar.css */
-
 .topbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px; /* Aumentar um pouco a altura para melhor respiro */
-  background: var(--theme-color-background-main); /* Fundo branco como no theme */
-  color: var(--theme-color-text-primary);
+  height: 70px;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--theme-spacing-xl); /* Usar variável de espaçamento */
-  box-shadow: var(--theme-box-shadow-sm); /* Sombra suave */
-  z-index: 1000;
+  padding: 0 var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  z-index: var(--z-index-fixed);
   box-sizing: border-box;
-  gap: var(--theme-spacing-md);
+  gap: var(--spacing-md);
 }
 
 .logo {
-  font-size: var(--theme-font-size-xl);
-  font-weight: var(--theme-font-weight-bold);
-  color: var(--theme-color-primary); /* Logo com a cor primária */
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
 }
 
 .logo .nav-link {
-  color: var(--theme-color-primary);
+  color: var(--primary);
   text-decoration: none;
 }
 
 .div-nav {
   display: flex;
   align-items: center;
-  gap: var(--theme-spacing-lg);
+  gap: var(--spacing-lg);
 }
 
 .nav-menu {
   display: flex;
-  gap: var(--theme-spacing-lg);
+  gap: var(--spacing-lg);
 }
 
 .nav-link {
-  color: var(--theme-color-text-secondary); /* Texto secundário para links de navegação */
+  color: var(--dark-medium);
   text-decoration: none;
-  font-size: var(--theme-font-size-base);
-  font-weight: var(--theme-font-weight-semibold);
-  transition: var(--theme-transition-base);
-  padding: var(--theme-spacing-xs) var(--theme-spacing-sm);
-  border-radius: var(--theme-border-radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  transition: var(--transition-fast);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-md);
 }
 
 .nav-link:hover,
-.nav-link.active { /* Adicionar classe active para link ativo */
-  color: var(--theme-color-primary);
-  background-color: var(--theme-color-background-light); /* Fundo sutil no hover/active */
-}
-
-.div-login {
-  /* O espaçamento já é tratado pelo gap no .div-nav */
+.nav-link.active {
+  color: var(--primary);
+  background-color: var(--primary-bg);
 }
 
 .login-btn {
-  /* Usar a classe .btn-theme ou .btn-theme-secondary do tema */
-  /* Exemplo de uso do botão primário do tema: */
-  /* background-color: var(--theme-color-primary); */
-  /* color: var(--theme-color-text-on-primary); */
-  /* border: none; */
-  /* padding: var(--theme-spacing-sm) var(--theme-spacing-md); */
-  /* border-radius: var(--theme-border-radius); */
-  /* font-weight: var(--theme-font-weight-semibold); */
-  /* cursor: pointer; */
-  /* transition: var(--theme-transition-base); */
-
-  /* Estilo específico se não usar classe de botão global */
-  background-color: var(--theme-color-primary);
-  color: var(--theme-color-text-on-primary);
-  padding: var(--theme-spacing-sm) var(--theme-spacing-lg);
-  border-radius: var(--theme-border-radius);
+  background: var(--gradient-primary);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
   text-decoration: none;
-  font-weight: var(--theme-font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   border: none;
   cursor: pointer;
-  transition: var(--theme-transition-base);
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-sm);
 }
 
 .login-btn:hover {
-  background-color: var(--theme-color-primary-dark);
+  background-color: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
-/* Estilos para TopbarLogado (serão movidos/ajustados se houver um TopbarLogado.css) */
+/* Estilos para TopbarLogado */
 .anunciante-info {
   display: flex;
   align-items: center;
-  gap: var(--theme-spacing-sm);
+  gap: var(--spacing-sm);
 }
 
 .anunciante-nome {
-  font-size: var(--theme-font-size-sm);
-  color: var(--theme-color-text-primary);
-  font-weight: var(--theme-font-weight-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--dark);
+  font-weight: var(--font-weight-semibold);
 }
 
 .dropdown {
@@ -107,94 +91,94 @@
 }
 
 .dropdown .nav-link {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: var(--theme-color-background-main);
-  min-width: 200px; /* Aumentar um pouco */
-  box-shadow: var(--theme-box-shadow);
-  border-radius: var(--theme-border-radius-sm);
-  z-index: 1001; /* Acima do topbar */
-  right: 0; /* Alinhar à direita */
-  top: 100%; /* CORRIGIDO: Removido o espaço para evitar que o mouse saia do hover */
+  background-color: white;
+  min-width: 220px;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--border-radius-md);
+  z-index: var(--z-index-dropdown);
+  right: 0;
+  top: 100%;
+  overflow: hidden;
+  animation: fadeIn var(--transition-fast);
 }
 
 .dropdown-content a {
-  color: var(--theme-color-text-primary);
-  padding: var(--theme-spacing-sm) var(--theme-spacing-md);
+  color: var(--dark);
+  padding: var(--spacing-md);
   text-decoration: none;
   display: block;
-  font-size: var(--theme-font-size-sm);
-  font-weight: var(--theme-font-weight-normal);
-  border-bottom: var(--theme-border-width) solid var(--theme-color-divider);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  border-bottom: 1px solid var(--light-medium);
+  transition: var(--transition-fast);
 }
 
 .dropdown-content a:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .dropdown-content a:hover {
-  background-color: var(--theme-color-background-light);
-  color: var(--theme-color-primary);
+  background-color: var(--primary-bg);
+  color: var(--primary);
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Remover o hover específico do dropbtn se o nav-link já trata o hover */
-/* .dropdown:hover .dropbtn {
-  background-color: var(--theme-color-primary-dark); 
-} */
-
 /* Media queries para responsividade */
 @media (max-width: 768px) {
   .topbar {
-    padding: 0 var(--theme-spacing-md);
-    height: auto; /* Altura automática para acomodar itens empilhados */
-    flex-direction: column; /* Empilhar itens em telas menores */
-    align-items: flex-start; /* Alinhar itens à esquerda */
-    padding-top: var(--theme-spacing-sm);
-    padding-bottom: var(--theme-spacing-sm);
+    padding: 0 var(--spacing-md);
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
   }
 
   .div-nav {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--theme-spacing-sm);
-    margin-top: var(--theme-spacing-sm);
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
   }
 
   .nav-menu {
     flex-direction: column;
     width: 100%;
-    gap: var(--theme-spacing-xs);
+    gap: var(--spacing-xs);
   }
 
   .nav-link {
-    display: block; /* Fazer links ocuparem toda a largura */
+    display: block;
     width: 100%;
     text-align: left;
-    padding: var(--theme-spacing-sm);
+    padding: var(--spacing-sm);
   }
 
   .div-login {
     width: 100%;
-    margin-top: var(--theme-spacing-sm);
+    margin-top: var(--spacing-sm);
   }
 
   .login-btn {
-    width: 100%; /* Botão de login ocupa toda a largura */
+    width: 100%;
+    display: block;
+    text-align: center;
   }
 
   .dropdown-content {
-    min-width: 100%; /* Dropdown ocupa toda a largura */
-    left:0;
-    right:auto;
+    min-width: 100%;
+    left: 0;
+    right: auto;
   }
 }
 

@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Topbar.css";
+import "../styles/Logo.css"; // Importando os estilos da logo
 
 const Topbar: React.FC = () => {
   return (
     <header className="topbar">
       <div className="logo">
         <Link to="/publico/homepage" className="nav-link">
-          to Anunciando
+          <img src="/imagens/logo.png" alt="toAnunciando" className="logo-img" />
         </Link>
       </div>
 
