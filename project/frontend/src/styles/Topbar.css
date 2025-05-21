@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 70px;
-  background-color: white;
+  background-color: #f4f4f4;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,11 +18,11 @@
 .logo {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
-  color: var(--primary);
+  color: #333;
 }
 
 .logo .nav-link {
-  color: var(--primary);
+  color: #333;
   text-decoration: none;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .nav-link {
-  color: var(--dark-medium);
+  color: var(--theme-color-text-on-primary);
   text-decoration: none;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
@@ -47,14 +47,16 @@
   border-radius: var(--border-radius-md);
 }
 
-.nav-link:hover,
 .nav-link.active {
-  color: var(--primary);
-  background-color: var(--primary-bg);
+  color: var(--theme-color-text-on-primary);
+  background-color: var(--theme-color-primary-light);
+  text-decoration: none;
 }
 
+/* Removido o hover dos botões do topbar conforme solicitado */
+
 .login-btn {
-  background: var(--gradient-primary);
+  background: var(--theme-color-primary-dark);
   color: white;
   padding: var(--spacing-sm) var(--spacing-lg);
   border-radius: var(--border-radius-md);
@@ -67,7 +69,7 @@
 }
 
 .login-btn:hover {
-  background-color: var(--primary-dark);
+  background-color: var(--theme-color-primary-light);
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
 }

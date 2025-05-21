@@ -34,9 +34,12 @@ const MeusCreditosInfo: React.FC = () => {
       }
 
       try {
-        // Simulação de dados - em produção, substituir por chamada real à API
-        const mockData: CreditosData = {
-          saldo: 150,
+        // Usando o saldo real do anunciante em vez de dados mockados
+        const saldoReal = anunciante.creditos || 0;
+        
+        // Histórico ainda é mockado, mas o saldo é real
+        const dadosReais: CreditosData = {
+          saldo: saldoReal,
           historico: [
             { id: 1, data: "2025-05-15", tipo: "compra", descricao: "Compra de créditos", valor: 100 },
             { id: 2, data: "2025-05-16", tipo: "uso", descricao: "Anúncio de imóvel", valor: -30 },
@@ -44,7 +47,7 @@ const MeusCreditosInfo: React.FC = () => {
           ]
         };
         
-        setCreditosData(mockData);
+        setCreditosData(dadosReais);
       } catch (error) {
         setErro((error as Error).message);
       } finally {

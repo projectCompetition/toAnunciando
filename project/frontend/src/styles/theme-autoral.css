@@ -1,15 +1,15 @@
 /* 
  * TEMA AUTORAL PARA TOANUNCIANDO
- * Inspirado em Autentique, iFood e Hostinger
+ * Inspirado na imagem de referência com tons roxos
  * Criado para proporcionar uma experiência moderna e profissional
  */
 
 :root {
-  /* Paleta de cores principal */
-  --primary: #2563eb;         /* Azul vibrante - cor principal */
-  --primary-dark: #1d4ed8;    /* Azul escuro para hover */
-  --primary-light: #60a5fa;   /* Azul claro para elementos secundários */
-  --primary-bg: #eff6ff;      /* Fundo azul suave */
+  /* Paleta de cores principal - Tons de Roxo */
+  --primary: #7c5dfa;         /* Roxo vibrante - cor principal */
+  --primary-dark: #5e3bd1;    /* Roxo escuro para hover */
+  --primary-light: #9277ff;   /* Roxo claro para elementos secundários */
+  --primary-bg: #f5f3ff;      /* Fundo roxo suave */
   
   --secondary: #10b981;       /* Verde vibrante - cor secundária */
   --secondary-dark: #059669;  /* Verde escuro para hover */

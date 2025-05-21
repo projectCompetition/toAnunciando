@@ -1,0 +1,184 @@
+.meus-creditos-container {
+  max-width: 1200px;
+  margin: 100px auto 50px;
+  padding: 0 20px;
+}
+
+.meus-creditos-header {
+  margin-bottom: 30px;
+}
+
+.meus-creditos-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--theme-color-text-primary);
+  margin-bottom: 10px;
+}
+
+.meus-creditos-header p {
+  font-size: 1.1rem;
+  color: var(--theme-color-primary);
+  margin: 0;
+}
+
+.saldo-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.saldo-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--theme-color-text-primary);
+}
+
+.saldo-valor {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--theme-color-primary);
+}
+
+.creditos-section {
+  margin-bottom: 50px;
+}
+
+.creditos-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--theme-color-text-primary);
+}
+
+.transacoes-table-container {
+  overflow-x: auto;
+  margin-bottom: 30px;
+}
+
+.transacoes-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.transacoes-table th,
+.transacoes-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.transacoes-table th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  color: var(--theme-color-text-primary);
+}
+
+.transacoes-table tr:last-child td {
+  border-bottom: none;
+}
+
+.transacao-tipo {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.transacao-tipo.compra {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+
+.transacao-tipo.uso {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.credito-positivo {
+  color: #388e3c;
+  font-weight: 600;
+}
+
+.credito-negativo {
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+.comprar-creditos-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.credito-option {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.credito-option:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.credito-option.destaque {
+  border: 2px solid var(--theme-color-primary);
+}
+
+.credito-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--theme-color-primary);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.credito-option h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--theme-color-text-primary);
+}
+
+.credito-valor {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--theme-color-primary);
+  margin-bottom: 10px;
+}
+
+.credito-preco {
+  font-size: 1.2rem;
+  color: var(--theme-color-text-secondary);
+  margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+  .saldo-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .comprar-creditos-options {
+    grid-template-columns: 1fr;
+  }
+}

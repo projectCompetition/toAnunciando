@@ -1,12 +1,13 @@
 /* Arquivo de tema global para padronização de estilos */
 
 :root {
-  /* Cores */
-  --theme-color-primary: #7c5dfa;
-  --theme-color-primary-dark: #684edb;
-  --theme-color-primary-light: #9277ff;
-  --theme-color-primary-lightest: #e0f0ff;
+  /* Cores - Paleta conforme solicitado */
+  --theme-color-primary: #6c5ce7;
+  --theme-color-primary-dark: #5649c0;
+  --theme-color-primary-light: #8174e8;
+  --theme-color-primary-lightest: #e0dcff;
   
+  /* Cores secundárias - Tons neutros para complementar */
   --theme-color-secondary: #1e2139;
   --theme-color-secondary-dark: #141625;
   --theme-color-secondary-light: #252945;

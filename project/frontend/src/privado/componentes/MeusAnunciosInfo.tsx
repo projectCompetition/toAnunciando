@@ -34,7 +34,12 @@ const MeusAnunciosInfo: React.FC = () => {
 
       try {
         // Simulação de dados - em produção, substituir por chamada real à API
-        const mockAnuncios: Anuncio[] = [
+        // Aqui estamos simulando uma chamada à API que retornaria apenas os anúncios do anunciante logado
+        // Em um ambiente real, isso seria feito com uma chamada como:
+        // const response = await api.get(`/anuncios?anuncianteId=${anunciante.id}`);
+        
+        // Dados mockados para simular anúncios do anunciante logado
+        const todosAnuncios: Anuncio[] = [
           {
             id: 1,
             titulo: "Apartamento 3 quartos - Centro",
@@ -77,7 +82,16 @@ const MeusAnunciosInfo: React.FC = () => {
           }
         ];
         
-        setAnuncios(mockAnuncios);
+        // Filtrando apenas os anúncios do anunciante logado
+        // Em um ambiente mockado, estamos simulando que apenas alguns anúncios pertencem ao anunciante atual
+        // baseado no ID do anunciante (assumindo que IDs pares têm anúncios pares e ímpares têm anúncios ímpares)
+        const anunciosDoAnunciante = todosAnuncios.filter(anuncio => {
+          // Lógica de simulação: se o ID do anunciante for par, mostra anúncios pares, se for ímpar, mostra anúncios ímpares
+          const anuncianteId = anunciante.id || 0;
+          return anuncianteId % 2 === 0 ? anuncio.id % 2 === 0 : anuncio.id % 2 !== 0;
+        });
+        
+        setAnuncios(anunciosDoAnunciante);
       } catch (error) {
         setErro((error as Error).message);
       } finally {
