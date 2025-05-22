@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import "../styles/Topbar.css"; // Continua usando o Topbar.css que agora contém estilos para logado
+import "../styles/Logo.css"; // Importando os estilos da logo
 
 const TopbarLogado: React.FC = () => {
   const { anunciante, logout } = useAuth();
@@ -22,12 +23,17 @@ const TopbarLogado: React.FC = () => {
     }
   };
 
+  const handleProfileClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate("/profile");
+  };
+
   return (
     <header className="topbar">
       <div className="logo">
         {/* O Link para a homepage pública pode ser ajustado se necessário para usuários logados */}
         <Link to={anunciante ? "/homepage" : "/publico/homepage"} className="nav-link">
-          to Anunciando
+          <img src="/imagens/logo.png" alt="toAnunciando" className="logo-img" />
         </Link>
       </div>
 
@@ -45,7 +51,7 @@ const TopbarLogado: React.FC = () => {
         <div className="div-login"> {/* Mantido para consistência estrutural, pode ser renomeado se fizer mais sentido */} 
           {anunciante ? (
             <div className="dropdown">
-              <div className="nav-link"> {/* Aplicar nav-link para estilizar o gatilho do dropdown */} 
+              <div className="nav-link" onClick={handleProfileClick}> {/* Ao clicar no nome, vai para profile */} 
                 Olá,{' '}
                 <span className="anunciante-nome"> {/* Classe atualizada de Topbar.css */} 
                   {(anunciante.nome || "Anunciante").split(' ')[0]} {/* Mostrar apenas o primeiro nome e capitalizar */} 
@@ -56,10 +62,9 @@ const TopbarLogado: React.FC = () => {
                 </svg>
               </div>
               <div className="dropdown-content">
-                <Link to='/minha-conta'>Minha Conta</Link>
-                <Link to='/meus-anuncios'>Meus Anúncios</Link> {/* Exemplo de novo link */} 
-                {/* <Link to='/meus-pedidos'>Meus Pedidos</Link> - Removido se não existir ou renomeado */}
-                <Link to='/meus-creditos'>Meus Créditos</Link>
+                <Link to='/minha-conta?submenu=principal'>Minha Conta</Link>
+                <Link to='/minha-conta?submenu=anuncios'>Meus Anúncios</Link>
+                <Link to='/minha-conta?submenu=creditos'>Meus Créditos</Link>
                 <a href='#' onClick={handleLogout}>Sair</a>
               </div>
             </div>

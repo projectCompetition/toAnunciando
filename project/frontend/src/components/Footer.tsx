@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} to Anunciando. Todos os direitos reservados.</p>
+        <p>&copy; {new Date().getFullYear()} <img src="/imagens/logo.png" alt="toAnunciando" className="logo-img-small" /> Todos os direitos reservados.</p>
       </div>
     </footer>
   );

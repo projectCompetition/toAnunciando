@@ -16,10 +16,22 @@ const MinhaConta: React.FC = () => {
   const { isAuthenticated, logout } = useAuth(); // isAuthenticated é um booleano
   const [selectedOption, setSelectedOption] = useState("minha-conta");
   const navigate = useNavigate();
-
+  
   useEffect(() => {
-    document.title = "Minha Conta - toAnunciando";
-  }, []);
+    document.title = "Minha Conta - Área do Cliente";
+    
+    // Verificar a query string para ativar o submenu correto
+    const queryParams = new URLSearchParams(window.location.search);
+    const submenu = queryParams.get('submenu');
+    
+    if (submenu === 'anuncios') {
+      setSelectedOption("meus-anuncios");
+    } else if (submenu === 'creditos') {
+      setSelectedOption("meus-creditos");
+    } else if (submenu === 'principal' || !submenu) {
+      setSelectedOption("minha-conta");
+    }
+  }, [window.location.search]);
 
   if (!isAuthenticated) { // Corrigido aqui: usar como booleano
     return <Navigate to="/login" replace />;

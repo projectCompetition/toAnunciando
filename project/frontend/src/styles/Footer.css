@@ -1,46 +1,48 @@
-/* /home/ubuntu/toAnunciando/project/frontend/src/styles/Footer.css */
-
 .footer {
-  background: var(--theme-color-primary); /* Alterado de #5a67d8 */
-  color: var(--theme-color-text-on-primary); /* Alterado de white */
-  padding-top: var(--theme-spacing-lg);
-  padding-bottom: var(--theme-spacing-md); 
+  background: #000000;
+  color: #ffffff;
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg); 
   text-align: center;
   width: 100%;
   margin: 0;
   box-sizing: border-box;
+  position: relative;
+  left: 0;
+  right: 0;
 }
 
 .footer-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; /* Alterado de space-between para melhor distribuição */
+  justify-content: space-around;
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto var(--theme-spacing-lg) auto; /* Adicionado margem inferior */
-  padding: 0 var(--theme-spacing-md);
+  margin: 0 auto var(--spacing-xl) auto;
+  padding: 0 var(--spacing-md);
 }
 
 .footer-section {
   flex: 1;
-  min-width: 220px; /* Reduzido para melhor encaixe em telas menores */
-  margin: var(--theme-spacing-md) var(--theme-spacing-sm);
-  padding: 0 var(--theme-spacing-sm);
-  text-align: left; /* Alinhamento à esquerda para melhor leitura */
+  min-width: 220px;
+  margin: var(--spacing-md) var(--spacing-sm);
+  padding: 0 var(--spacing-sm);
+  text-align: left;
 }
 
 .footer-section h3 {
-  font-size: var(--theme-font-size-lg);
-  font-weight: var(--theme-font-weight-semibold);
-  margin-bottom: var(--theme-spacing-md);
-  color: var(--theme-color-text-on-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-md);
+  color: #ffffff;
 }
 
 .footer-section p,
 .footer-section ul li {
-  font-size: var(--theme-font-size-sm);
-  line-height: var(--theme-line-height-base);
-  margin-bottom: var(--theme-spacing-xs);
-  color: var(--theme-color-text-on-primary_softer, #e0e0e0); /* Cor um pouco mais suave que branco puro */
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-xs);
+  color: #cccccc;
 }
 
 .footer-section ul {
@@ -49,43 +51,46 @@
 }
 
 .footer-section ul li a {
-  color: var(--theme-color-text-on-primary_softer, #e0e0e0);
+  color: var(--light-medium);
   text-decoration: none;
-  transition: var(--theme-transition-base);
+  transition: var(--transition-fast);
 }
 
 .footer-section ul li a:hover {
-  color: var(--theme-color-primary-light); /* Usar o azul claro do tema para hover */
-  text-decoration: underline;
+  color: var(--theme-color-primary-lightest);
+  text-decoration: none;
 }
 
 .social-icons {
   display: flex;
-  justify-content: flex-start; /* Alinhar à esquerda com o texto da seção */
-  margin-top: var(--theme-spacing-md);
-  gap: var(--theme-spacing-md);
+  justify-content: flex-start;
+  margin-top: var(--spacing-md);
+  gap: var(--spacing-md);
 }
 
 .social-icons a {
-  color: var(--theme-color-text-on-primary_softer, #e0e0e0);
-  font-size: var(--theme-font-size-xl);
-  transition: var(--theme-transition-base);
+  color: var(--light-medium);
+  font-size: var(--font-size-xl);
+  transition: var(--transition-fast);
 }
 
 .social-icons a:hover {
-  color: var(--theme-color-primary-light);
+  color: var(--theme-color-primary-lightest);
 }
 
 .footer-bottom {
-  margin-top: var(--theme-spacing-lg);
-  border-top: var(--theme-border-width) solid var(--theme-color-primary-dark); /* Usar azul escuro para a borda */
-  padding-top: var(--theme-spacing-md);
+  margin-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--spacing-md);
   width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .footer-bottom p {
-  font-size: var(--theme-font-size-sm);
-  color: var(--theme-color-text-on-primary_softer, #e0e0e0);
+  font-size: var(--font-size-sm);
+  color: var(--light-medium);
   margin: 0;
 }
 
@@ -93,12 +98,12 @@
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
-    align-items: center; /* Centralizar seções na vertical */
+    align-items: center;
   }
 
   .footer-section {
-    text-align: center; /* Centralizar texto dentro das seções em mobile */
-    margin-bottom: var(--theme-spacing-lg);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
   }
 
   .social-icons {

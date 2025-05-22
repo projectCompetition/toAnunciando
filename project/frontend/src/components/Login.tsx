@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom"; // Adicionado Link
 import { useAuth } from "../contexts/AuthContext";
 import api from "../api";
 import "../styles/Login.css"; // Mantém o CSS específico do Login
-// import "../styles/Default.css"; // Remover se não for mais necessário ou se o conteúdo foi para o tema
+import "../styles/Logo.css"; // Importando os estilos da logo
 
 const Login: React.FC = () => {
   const [login, setLogin] = useState("");
@@ -13,7 +13,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Login - toAnunciando"; // Título mais descritivo
+    document.title = "Login - Área do Cliente"; // Título mais descritivo
   }, []);
 
   const handleLogin = async () => {
@@ -109,7 +109,9 @@ const Login: React.FC = () => {
         </div>
 
         <div className="login-branding-section">
-          <div className="brand-logo">toAnunciando</div>
+          <div className="brand-logo">
+            <img src="/imagens/logo.png" alt="toAnunciando" className="logo-img" />
+          </div>
           <p>A sua plataforma completa de anúncios.</p>
           <div className="login-options alternative-action">
             <p>

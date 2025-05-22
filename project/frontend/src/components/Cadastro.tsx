@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom"; // Adicionado Link
 import { cpf, cnpj } from 'cpf-cnpj-validator';
 import api from "../api";
 import "../styles/Cadastro.css"; // Mantém o CSS específico do Cadastro
+import "../styles/Logo.css"; // Importando os estilos da logo
 
 const Cadastro: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ const Cadastro: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = "Cadastro - toAnunciando";
+    document.title = "Cadastro - Área do Cliente";
   }, []);
 
   const handleDocumentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -137,7 +138,9 @@ const Cadastro: React.FC = () => {
         </div>
 
         <div className="cadastro-branding-section">
-          <div className="brand-logo">toAnunciando</div>
+          <div className="brand-logo">
+            <img src="/imagens/logo.png" alt="toAnunciando" className="logo-img" />
+          </div>
           <p>Anuncie fácil, venda rápido.</p>
           <div className="alternative-action" style={{ marginTop: 'var(--theme-spacing-xl)'}}>
             <p>

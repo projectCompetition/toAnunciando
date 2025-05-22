@@ -1,46 +1,45 @@
-/* /home/ubuntu/toAnunciando/project/frontend/src/styles/MinhaConta.css */
-
-.page-container-minha-conta { /* Renomeado para evitar conflitos */
+.page-container-minha-conta {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--theme-color-background-light);
+  background-color: var(--light);
 }
 
-.main-content-minha-conta { /* Renomeado para evitar conflitos */
+.main-content-minha-conta {
   flex: 1;
-  padding-top: calc(70px + var(--theme-spacing-xl)); /* 70px do Topbar + espaçamento */
-  padding-bottom: var(--theme-spacing-xl);
-  padding-left: var(--theme-spacing-lg);
-  padding-right: var(--theme-spacing-lg);
+  padding-top: calc(70px + var(--spacing-xl));
+  padding-bottom: var(--spacing-xl);
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
   width: 100%;
-  max-width: 1200px; /* Limitar largura do conteúdo principal */
-  margin: 0 auto; /* Centralizar conteúdo */
   box-sizing: border-box;
 }
 
 .minha-conta-layout {
   display: flex;
-  gap: var(--theme-spacing-lg);
-  align-items: flex-start; /* Alinhar itens no topo */
+  gap: var(--spacing-lg);
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .menu-lateral-minha-conta {
-  width: 280px; /* Largura do menu lateral como no theme */
+  width: 280px;
   min-width: 220px;
-  background-color: var(--theme-color-background-main);
-  padding: var(--theme-spacing-lg);
-  border-radius: var(--theme-border-radius-lg);
-  box-shadow: var(--theme-box-shadow-sm);
+  background-color: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .menu-lateral-minha-conta .menu-title {
-  font-size: var(--theme-font-size-lg);
-  font-weight: var(--theme-font-weight-bold);
-  color: var(--theme-color-text-primary);
-  margin-bottom: var(--theme-spacing-md);
-  padding-bottom: var(--theme-spacing-sm);
-  border-bottom: 1px solid var(--theme-color-divider);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--dark);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--light-medium);
 }
 
 .lista-menu-minha-conta {
@@ -50,128 +49,138 @@
 }
 
 .item-menu-minha-conta {
-  padding: var(--theme-spacing-sm) var(--theme-spacing-md);
-  margin-bottom: var(--theme-spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
   cursor: pointer;
-  border-radius: var(--theme-border-radius);
-  transition: background-color 0.2s ease, color 0.2s ease;
-  font-weight: var(--theme-font-weight-medium);
-  color: var(--theme-color-text-secondary);
-  display: flex; /* Para alinhar ícone e texto */
+  border-radius: var(--border-radius-md);
+  transition: all var(--transition-fast);
+  font-weight: var(--font-weight-medium);
+  color: var(--dark-medium);
+  display: flex;
   align-items: center;
-  gap: var(--theme-spacing-sm);
+  gap: var(--spacing-sm);
 }
 
 .item-menu-minha-conta:hover {
-  background-color: var(--theme-color-background-hover, #f0f0f0); /* Usar variável do tema */
-  color: var(--theme-color-primary);
+  background-color: var(--primary-bg);
+  color: var(--primary);
 }
 
 .item-menu-minha-conta.ativo {
-  background-color: var(--theme-color-primary-lightest, #e0f0ff); /* Cor de fundo ativa do tema */
-  color: var(--theme-color-primary);
-  font-weight: var(--theme-font-weight-semibold);
+  background-color: var(--primary-bg);
+  color: var(--primary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .item-menu-minha-conta.sair {
-  color: var(--theme-color-danger, #d9534f);
-  margin-top: var(--theme-spacing-lg);
-  border-top: 1px solid var(--theme-color-divider);
-  padding-top: var(--theme-spacing-md);
+  color: var(--error);
+  margin-top: var(--spacing-lg);
+  border-top: 1px solid var(--light-medium);
+  padding-top: var(--spacing-md);
 }
 
 .item-menu-minha-conta.sair:hover {
-  background-color: var(--theme-color-danger-bg, #f8d7da);
-  color: var(--theme-color-danger-dark, #721c24);
+  background-color: #fee2e2;
+  color: #b91c1c;
 }
 
 .conteudo-principal-minha-conta {
   flex: 1;
-  background-color: var(--theme-color-background-main);
-  padding: var(--theme-spacing-xl);
-  border-radius: var(--theme-border-radius-lg);
-  box-shadow: var(--theme-box-shadow-sm);
-  min-height: 500px; /* Altura mínima para o conteúdo */
+  background-color: white;
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  min-height: 500px;
 }
 
-/* Estilos para os componentes internos (MinhaContaInfo, MeusAnunciosInfo, MeusCreditosInfo) */
-/* Estes serão mais detalhados nos seus respectivos arquivos CSS se necessário */
-
 .info-section-title {
-  font-size: var(--theme-font-size-xl);
-  font-weight: var(--theme-font-weight-bold);
-  color: var(--theme-color-text-primary);
-  margin-bottom: var(--theme-spacing-lg);
-  padding-bottom: var(--theme-spacing-md);
-  border-bottom: 1px solid var(--theme-color-divider);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--dark);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--light-medium);
 }
 
 .form-group-minha-conta {
-  margin-bottom: var(--theme-spacing-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 .form-group-minha-conta label {
   display: block;
-  font-size: var(--theme-font-size-sm);
-  font-weight: var(--theme-font-weight-semibold);
-  color: var(--theme-color-text-secondary);
-  margin-bottom: var(--theme-spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--dark-medium);
+  margin-bottom: var(--spacing-xs);
 }
-
-/* Usar .form-control-theme para inputs */
-/* Usar .btn-theme para botões */
 
 .anuncios-lista-container, 
 .creditos-historico-container {
-  /* Estilos para listas de anúncios ou histórico de créditos */
+  margin-top: var(--spacing-lg);
 }
 
 .anuncio-card-privado, 
 .credito-item {
-  background-color: var(--theme-color-background-light);
-  padding: var(--theme-spacing-md);
-  border-radius: var(--theme-border-radius);
-  margin-bottom: var(--theme-spacing-md);
-  border: 1px solid var(--theme-color-border);
+  background-color: var(--light);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--light-medium);
+  transition: all var(--transition-fast);
 }
 
+.anuncio-card-privado:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
 
-@media (max-width: 992px) { /* Ajustar breakpoint se necessário */
+@media (max-width: 992px) {
   .minha-conta-layout {
     flex-direction: column;
   }
+  
   .menu-lateral-minha-conta {
     width: 100%;
-    margin-bottom: var(--theme-spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    overflow: visible;
   }
+  
   .lista-menu-minha-conta {
     display: flex;
-    flex-wrap: wrap; /* Para que os itens do menu quebrem linha */
-    justify-content: space-around; /* Distribuir itens do menu */
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: var(--spacing-sm);
   }
+  
   .item-menu-minha-conta {
-    flex-grow: 1; /* Para que os itens ocupem espaço */
-    text-align: center;
-    justify-content: center;
-    margin-bottom: var(--theme-spacing-sm);
+    flex: 0 0 auto;
+    min-width: 150px;
+    text-align: left;
+    justify-content: flex-start;
+    margin-bottom: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
   }
+  
   .item-menu-minha-conta.sair {
-    margin-top: var(--theme-spacing-sm);
+    margin-top: var(--spacing-sm);
     border-top: none;
+    width: auto;
   }
 }
 
 @media (max-width: 768px) {
   .main-content-minha-conta {
-    padding-top: calc(70px + var(--theme-spacing-md));
-    padding-left: var(--theme-spacing-sm);
-    padding-right: var(--theme-spacing-sm);
+    padding-top: calc(70px + var(--spacing-md));
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
   }
+  
   .conteudo-principal-minha-conta {
-    padding: var(--theme-spacing-lg);
+    padding: var(--spacing-lg);
   }
+  
   .info-section-title {
-    font-size: calc(var(--theme-font-size-xl) * 0.9);
+    font-size: calc(var(--font-size-xl) * 0.9);
   }
 }
 
