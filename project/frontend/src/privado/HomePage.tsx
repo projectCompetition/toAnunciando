@@ -16,6 +16,11 @@ const HomePagePrivada: React.FC = () => {
 
   const nomeAnunciante = anunciante?.nome?.split(" ")[0] || "Usuário";
 
+  // Função para navegar para Minha Conta com o submenu apropriado
+  const navegarParaSubmenu = (submenu: string) => {
+    navigate(`/minha-conta?submenu=${submenu}`);
+  };
+
   return (
     <div className="page-container-privada">
       <TopbarLogado />
@@ -63,28 +68,52 @@ const HomePagePrivada: React.FC = () => {
         <div className="management-section">
           <h2 className="section-title">Gerenciar Minha Conta</h2>
           <div className="dashboard-grid">
-            <div className="dashboard-card" onClick={() => navigate("/meus-anuncios")} role="button" tabIndex={0} onKeyPress={(e) => e.key === "Enter" && navigate("/meus-anuncios")}>
+            <div 
+              className="dashboard-card" 
+              onClick={() => navegarParaSubmenu('anuncios')} 
+              role="button" 
+              tabIndex={0} 
+              onKeyPress={(e) => e.key === "Enter" && navegarParaSubmenu('anuncios')}
+            >
               <FaListAlt className="dashboard-card-icon" />
               <h3>Meus Anúncios</h3>
               <p>Visualize e gerencie os anúncios que você publicou.</p>
               <button className="btn-theme-secondary">Ver Anúncios</button>
             </div>
 
-            <div className="dashboard-card" onClick={() => navigate("/novo-anuncio")} role="button" tabIndex={0} onKeyPress={(e) => e.key === "Enter" && navigate("/novo-anuncio")}>
+            <div 
+              className="dashboard-card" 
+              onClick={() => navigate("/novo-anuncio")} 
+              role="button" 
+              tabIndex={0} 
+              onKeyPress={(e) => e.key === "Enter" && navigate("/novo-anuncio")}
+            >
               <FaPlusCircle className="dashboard-card-icon" />
               <h3>Criar Novo Anúncio</h3>
               <p>Publique um novo imóvel ou veículo na plataforma.</p>
               <button className="btn-theme-secondary">Criar Anúncio</button>
             </div>
 
-            <div className="dashboard-card" onClick={() => navigate("/minha-conta")} role="button" tabIndex={0} onKeyPress={(e) => e.key === "Enter" && navigate("/minha-conta")}>
+            <div 
+              className="dashboard-card" 
+              onClick={() => navegarParaSubmenu('principal')} 
+              role="button" 
+              tabIndex={0} 
+              onKeyPress={(e) => e.key === "Enter" && navegarParaSubmenu('principal')}
+            >
               <FaUserCircle className="dashboard-card-icon" />
               <h3>Minha Conta</h3>
               <p>Atualize suas informações pessoais e dados de acesso.</p>
               <button className="btn-theme-secondary">Acessar Conta</button>
             </div>
             
-            <div className="dashboard-card" onClick={() => navigate("/meus-creditos")} role="button" tabIndex={0} onKeyPress={(e) => e.key === "Enter" && navigate("/meus-creditos")}>
+            <div 
+              className="dashboard-card" 
+              onClick={() => navegarParaSubmenu('creditos')} 
+              role="button" 
+              tabIndex={0} 
+              onKeyPress={(e) => e.key === "Enter" && navegarParaSubmenu('creditos')}
+            >
               <FaCreditCard className="dashboard-card-icon" />
               <h3>Meus Créditos</h3>
               <p>Verifique seu saldo de créditos e histórico de uso.</p>

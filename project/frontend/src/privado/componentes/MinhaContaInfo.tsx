@@ -143,17 +143,6 @@ const MinhaContaInfo: React.FC = () => {
         </div>
       </div>
 
-      {/* Conta */}
-      <div className="dados-bloco">
-        <h3 className="subtitulo">Informações da Conta</h3>
-        <div className="linha">
-          <div className="dados-item">
-            <label>Créditos</label>
-            <div className="valor">{formData.creditos}</div>
-          </div>
-        </div>
-      </div>
-
       <button className="botao-salvar" onClick={handleSalvar} disabled={salvando}>
         {salvando ? "Salvando..." : "Salvar"}
       </button>

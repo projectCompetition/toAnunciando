@@ -81,8 +81,8 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
   const itemsPerPage = 9;
 
   // Estados específicos para veículos
-  const [filtroValor, setFiltroValor] = useState<number | null>(null);
-  const [filtroKM, setFiltroKM] = useState<number | null>(null);
+  const [filtroValor, setFiltroValor] = useState<string>("");
+  const [filtroKM, setFiltroKM] = useState<string>("");
   const [filtroCor, setFiltroCor] = useState("");
   const [filtroMarca, setFiltroMarca] = useState("");
   const [filtroAno, setFiltroAno] = useState("");
@@ -93,7 +93,7 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
   const [filtroBairro, setFiltroBairro] = useState("");
   const [filtroQuartos, setFiltroQuartos] = useState<number | null>(null);
   const [filtroBanheiros, setFiltroBanheiros] = useState<number | null>(null);
-  const [filtroAreaMin, setFiltroAreaMin] = useState<number | null>(null);
+  const [filtroAreaMin, setFiltroAreaMin] = useState<string>("");
 
   const isAuthenticated = useAuth;
 
@@ -338,10 +338,10 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
 
   const limparFiltros = () => {
     setSearchTerm("");
-    setFiltroValor(null);
     
     if (type === 'veiculos') {
-      setFiltroKM(null);
+      setFiltroValor("");
+      setFiltroKM("");
       setFiltroCor("");
       setFiltroMarca("");
       setFiltroAno("");
@@ -351,7 +351,7 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
       setFiltroBairro("");
       setFiltroQuartos(null);
       setFiltroBanheiros(null);
-      setFiltroAreaMin(null);
+      setFiltroAreaMin("");
     }
   };
 
@@ -363,11 +363,15 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
       : true;
     
     // Filtro por valor
-    const filtroValorAtivo = filtroValor ? item.valor <= filtroValor : true;
+    const filtroValorAtivo = filtroValor 
+      ? item.valor <= parseInt(filtroValor, 10) 
+      : true;
 
     if (type === 'veiculos') {
       const veiculo = item as Veiculo;
-      const filtroKMAtivo = filtroKM ? veiculo.km <= filtroKM : true;
+      const filtroKMAtivo = filtroKM 
+        ? veiculo.km <= parseInt(filtroKM, 10) 
+        : true;
       const filtroCorAtivo = filtroCor
         ? veiculo.cor.toLowerCase().includes(filtroCor.toLowerCase())
         : true;
@@ -399,7 +403,7 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
         ? imovel.detalhe.banheiros >= filtroBanheiros
         : true;
       const filtroAreaMinAtivo = filtroAreaMin
-        ? (imovel.area_total || 0) >= filtroAreaMin
+        ? (imovel.area_total || 0) >= parseInt(filtroAreaMin, 10)
         : true;
 
       return matchesSearch && filtroValorAtivo && filtroTipoAtivo && filtroCidadeAtivo && 
@@ -465,6 +469,37 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                     className="filtro-input"
                   />
                   
+                  <h5>Valor Máximo</h5>
+                  <input
+                    type="text"
+                    placeholder="Valor máximo (R$)"
+                    value={filtroValor}
+                    onChange={(e) => setFiltroValor(e.target.value)}
+                    className="filtro-input"
+                  />
+                </div>
+
+                <div className="filtros-coluna">
+                  <h5>Quilometragem Máxima</h5>
+                  <input
+                    type="text"
+                    placeholder="Quilometragem máxima (km)"
+                    value={filtroKM}
+                    onChange={(e) => setFiltroKM(e.target.value)}
+                    className="filtro-input"
+                  />
+                  
+                  <h5>Cor</h5>
+                  <input
+                    type="text"
+                    placeholder="Cor do veículo"
+                    value={filtroCor}
+                    onChange={(e) => setFiltroCor(e.target.value)}
+                    className="filtro-input"
+                  />
+                </div>
+
+                <div className="filtros-coluna">
                   <h5>Ano</h5>
                   <select 
                     className="filtro-select"
@@ -480,51 +515,6 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                     <option value="2018">2018</option>
                     <option value="2017">2017</option>
                   </select>
-                </div>
-
-                <div className="filtros-coluna">
-                  <h5>Valor máximo</h5>
-                  <input
-                    type="range"
-                    min="0"
-                    max="200000"
-                    step="10000"
-                    value={filtroValor || 0}
-                    onChange={(e) => setFiltroValor(Number(e.target.value))}
-                    className="filtro-range"
-                  />
-                  <div className="range-value">
-                    {filtroValor ? `R$ ${filtroValor.toLocaleString()}` : 'Sem limite'}
-                  </div>
-                  
-                  <h5>Quilometragem máxima</h5>
-                  <input
-                    type="range"
-                    min="0"
-                    max="100000"
-                    step="5000"
-                    value={filtroKM || 0}
-                    onChange={(e) => setFiltroKM(Number(e.target.value))}
-                    className="filtro-range"
-                  />
-                  <div className="range-value">
-                    {filtroKM ? `${filtroKM.toLocaleString()} km` : 'Sem limite'}
-                  </div>
-                </div>
-
-                <div className="filtros-coluna">
-                  <h5>Cor</h5>
-                  <div className="cores-container">
-                    {['Preto', 'Branco', 'Prata', 'Vermelho', 'Azul', 'Verde', 'Amarelo', 'Marrom'].map(cor => (
-                      <div 
-                        key={cor} 
-                        className={`cor-item ${filtroCor === cor ? 'selected' : ''}`}
-                        onClick={() => setFiltroCor(filtroCor === cor ? '' : cor)}
-                        style={{ backgroundColor: cor.toLowerCase() }}
-                        title={cor}
-                      />
-                    ))}
-                  </div>
                   
                   <div className="filtros-acoes">
                     <button className="limpar-filtros" onClick={limparFiltros}>
@@ -564,17 +554,12 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                   
                   <h5>Valor máximo</h5>
                   <input
-                    type="range"
-                    min="0"
-                    max="2000000"
-                    step="100000"
-                    value={filtroValor || 0}
-                    onChange={(e) => setFiltroValor(Number(e.target.value))}
-                    className="filtro-range"
+                    type="text"
+                    placeholder="Valor máximo (R$)"
+                    value={filtroValor}
+                    onChange={(e) => setFiltroValor(e.target.value)}
+                    className="filtro-input"
                   />
-                  <div className="range-value">
-                    {filtroValor ? `R$ ${filtroValor.toLocaleString()}` : 'Sem limite'}
-                  </div>
                 </div>
 
                 <div className="filtros-coluna">
@@ -596,10 +581,10 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                   
                   <h5>Área mínima (m²)</h5>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="Área mínima"
-                    value={filtroAreaMin || ""}
-                    onChange={(e) => setFiltroAreaMin(Number(e.target.value))}
+                    value={filtroAreaMin}
+                    onChange={(e) => setFiltroAreaMin(e.target.value)}
                     className="filtro-input"
                   />
                 </div>
