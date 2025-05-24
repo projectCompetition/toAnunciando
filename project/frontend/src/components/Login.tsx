@@ -98,6 +98,10 @@ const Login: React.FC = () => {
             Login
           </button>
 
+          <div className="cadastro-option">
+            <p>Primeira vez por aqui? <Link to="/cadastro" className="cadastro-link">Cadastre-se</Link></p>
+          </div>
+
           {/* Opção de login social pode ser adicionada aqui, similar ao theme */}
           {/* <div style={{ textAlign: "center", margin: "var(--theme-spacing-md) 0" }}>Ou</div>
           <button className="btn-theme-secondary btn-full-width" style={{ marginBottom: "var(--theme-spacing-sm)" }}>
@@ -113,11 +117,6 @@ const Login: React.FC = () => {
             <img src="/imagens/logo.png" alt="toAnunciando" className="logo-img" />
           </div>
           <p>A sua plataforma completa de anúncios.</p>
-          <div className="login-options alternative-action">
-            <p>
-              Novo por aqui? <Link to="/cadastro">Cadastre-se</Link>
-            </p>
-          </div>
         </div>
 
       </div>
@@ -126,4 +125,3 @@ const Login: React.FC = () => {
 };
 
 export default Login;
-

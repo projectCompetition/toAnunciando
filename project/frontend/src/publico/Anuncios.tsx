@@ -552,14 +552,29 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                     ))}
                   </div>
                   
-                  <h5>Valor máximo</h5>
-                  <input
-                    type="text"
-                    placeholder="Valor máximo (R$)"
-                    value={filtroValor}
-                    onChange={(e) => setFiltroValor(e.target.value)}
-                    className="filtro-input"
-                  />
+                  <div className="filtros-linha">
+                    <div className="filtro-metade">
+                      <h5>Valor máximo</h5>
+                      <input
+                        type="text"
+                        placeholder="Valor máximo (R$)"
+                        value={filtroValor}
+                        onChange={(e) => setFiltroValor(e.target.value)}
+                        className="filtro-input"
+                      />
+                    </div>
+                    
+                    <div className="filtro-metade">
+                      <h5>Área mínima (m²)</h5>
+                      <input
+                        type="text"
+                        placeholder="Área mínima"
+                        value={filtroAreaMin}
+                        onChange={(e) => setFiltroAreaMin(e.target.value)}
+                        className="filtro-input"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div className="filtros-coluna">
@@ -576,15 +591,6 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                     placeholder="Bairro"
                     value={filtroBairro}
                     onChange={(e) => setFiltroBairro(e.target.value)}
-                    className="filtro-input"
-                  />
-                  
-                  <h5>Área mínima (m²)</h5>
-                  <input
-                    type="text"
-                    placeholder="Área mínima"
-                    value={filtroAreaMin}
-                    onChange={(e) => setFiltroAreaMin(e.target.value)}
                     className="filtro-input"
                   />
                 </div>
