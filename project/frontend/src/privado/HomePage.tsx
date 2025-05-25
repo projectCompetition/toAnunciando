@@ -36,10 +36,10 @@ const HomePagePrivada: React.FC = () => {
           <div className="categories-grid">
             <div
               className="category-card imoveis"
-              onClick={() => navigate("/publico/imoveis")}
+              onClick={() => navigate("/imoveis")}
               role="button"
               tabIndex={0}
-              onKeyPress={(e) => e.key === 'Enter' && navigate("/publico/imoveis")}
+              onKeyPress={(e) => e.key === 'Enter' && navigate("/imoveis")}
             >
               <div className="category-card-image"></div>
               <div className="category-card-overlay">
@@ -50,10 +50,10 @@ const HomePagePrivada: React.FC = () => {
 
             <div
               className="category-card carros"
-              onClick={() => navigate("/publico/veiculos")}
+              onClick={() => navigate("/veiculos")}
               role="button"
               tabIndex={0}
-              onKeyPress={(e) => e.key === 'Enter' && navigate("/publico/veiculos")}
+              onKeyPress={(e) => e.key === 'Enter' && navigate("/veiculos")}
             >
               <div className="category-card-image"></div>
               <div className="category-card-overlay">

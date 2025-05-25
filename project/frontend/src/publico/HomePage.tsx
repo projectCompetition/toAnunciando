@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import TopbarLogado from "../components/TopbarLogado";
 import { useAuth } from "../contexts/AuthContext";
 import "../styles/HomePage.css";
-import { FaHome, FaCar, FaSearch } from "react-icons/fa";
+import { FaHome, FaCar } from "react-icons/fa";
 
 const HomePagePublica: React.FC = () => {
   const navigate = useNavigate();
@@ -26,10 +26,10 @@ const HomePagePublica: React.FC = () => {
         <div className="categories-grid">
           <div
             className="category-card imoveis"
-            onClick={() => navigate("/publico/imoveis")}
+            onClick={() => navigate("/imoveis")}
             role="button"
             tabIndex={0}
-            onKeyPress={(e) => e.key === 'Enter' && navigate("/publico/imoveis")}
+            onKeyPress={(e) => e.key === 'Enter' && navigate("/imoveis")}
           >
             <div className="category-card-image"></div>
             <div className="category-card-overlay">
@@ -41,10 +41,10 @@ const HomePagePublica: React.FC = () => {
 
           <div
             className="category-card carros"
-            onClick={() => navigate("/publico/veiculos")}
+            onClick={() => navigate("/veiculos")}
             role="button"
             tabIndex={0}
-            onKeyPress={(e) => e.key === 'Enter' && navigate("/publico/veiculos")}
+            onKeyPress={(e) => e.key === 'Enter' && navigate("/veiculos")}
           >
             <div className="category-card-image"></div>
             <div className="category-card-overlay">
@@ -53,21 +53,6 @@ const HomePagePublica: React.FC = () => {
               <span className="category-description">Carros, motos, caminhões e outros veículos</span>
             </div>
           </div>
-        </div>
-        
-        <div className="homepage-search-container">
-          <input 
-            type="text" 
-            placeholder="Busca rápida por palavra-chave..." 
-            className="homepage-search-input" 
-            onKeyPress={(e) => e.key === "Enter" && navigate("/publico/imoveis")}
-          />
-          <button 
-            className="homepage-search-button"
-            onClick={() => navigate("/publico/imoveis")}
-          >
-            <FaSearch /> Buscar
-          </button>
         </div>
       </main>
 
