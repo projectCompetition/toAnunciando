@@ -171,3 +171,35 @@
   --theme-color-danger-border: #f5c6cb;
 }
 
+
+.filtros-linha {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.filtro-metade {
+  flex: 1;
+  min-width: 0;
+}
+
+.cadastro-option {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #eee;
+}
+
+.cadastro-link {
+  color: var(--theme-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cadastro-link:hover {
+  color: var(--theme-primary-dark);
+  text-decoration: underline;
+}

@@ -1,106 +1,67 @@
-/* /home/ubuntu/toAnunciando/project/frontend/src/styles/HomePage.css */
+/* CSS Aprimorado para a HomePage com escolha entre imóveis e veículos */
 
 .homepage-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--theme-color-background-light); /* Fundo geral da página */
+  background-color: #f8f9fa;
+  font-family: var(--font-family, 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif);
 }
 
-.main-content-homepage { /* Renomeado para evitar conflito com .main-content de outras páginas se houver */
+.main-content-homepage {
   flex: 1;
-  padding-top: calc(70px + var(--theme-spacing-xl)); /* 70px do Topbar + espaçamento */
-  padding-bottom: var(--theme-spacing-xl);
-  padding-left: var(--theme-spacing-lg);
-  padding-right: var(--theme-spacing-lg);
-  text-align: center;
+  padding-top: calc(70px + 3rem);
+  padding-bottom: 3rem;
   width: 100%;
-  max-width: 1200px; /* Limitar largura do conteúdo principal */
-  margin: 0 auto; /* Centralizar conteúdo */
+  max-width: 1200px;
+  margin: 0 auto;
   box-sizing: border-box;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  text-align: center;
 }
 
 .homepage-title {
-  font-size: var(--theme-font-size-xxl);
-  font-weight: var(--theme-font-weight-bold);
-  color: var(--theme-color-text-primary);
-  margin-bottom: var(--theme-spacing-sm);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+  animation: fadeInDown 0.8s ease;
 }
 
 .homepage-subtitle {
-  font-size: var(--theme-font-size-lg);
-  color: var(--theme-color-text-secondary);
-  margin-bottom: var(--theme-spacing-xl);
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInUp 0.8s ease;
 }
 
-/* Estilos para a barra de busca, se for adicionada como no theme */
-.homepage-search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: var(--theme-spacing-xxl);
-  background-color: var(--theme-color-background-main);
-  padding: var(--theme-spacing-lg);
-  border-radius: var(--theme-border-radius-lg);
-  box-shadow: var(--theme-box-shadow-sm);
-}
-
-.homepage-search-input {
-  flex-grow: 1;
-  max-width: 600px;
-  padding: var(--theme-spacing-md) var(--theme-spacing-lg);
-  font-size: var(--theme-font-size-base);
-  border: 1px solid var(--theme-color-border);
-  border-radius: var(--theme-border-radius) 0 0 var(--theme-border-radius); /* Arredondar apenas à esquerda */
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.homepage-search-input:focus {
-  border-color: var(--theme-color-primary);
-  box-shadow: 0 0 0 0.2rem var(--theme-color-primary-focus-shadow); /* Adicionar sombra de foco */
-}
-
-.homepage-search-button {
-  padding: var(--theme-spacing-md) var(--theme-spacing-xl);
-  font-size: var(--theme-font-size-base);
-  background-color: var(--theme-color-primary);
-  color: var(--theme-color-text-on-primary);
-  border: 1px solid var(--theme-color-primary);
-  border-left: none; /* Remover borda esquerda para juntar com o input */
-  border-radius: 0 var(--theme-border-radius) var(--theme-border-radius) 0; /* Arredondar apenas à direita */
-  cursor: pointer;
-  transition: var(--theme-transition-base);
-  font-weight: var(--theme-font-weight-semibold);
-}
-
-.homepage-search-button:hover {
-  background-color: var(--theme-color-primary-dark);
-  border-color: var(--theme-color-primary-dark);
-}
-
-.categories-grid { /* Renomeado de .categories para evitar conflitos e ser mais específico */
+/* Categorias */
+.categories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grid responsivo */
-  gap: var(--theme-spacing-lg);
-  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto 3rem auto;
+  animation: fadeIn 1s ease;
 }
 
-.category-card { /* Renomeado de .category */
+.category-card {
   position: relative;
-  /* width: 100%; */ /* O grid cuida da largura */
-  aspect-ratio: 3 / 4; /* Proporção para os cards */
-  border-radius: var(--theme-border-radius-lg);
+  height: 350px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--theme-box-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  background-color: var(--theme-color-neutral-lightest); /* Fundo para o card */
+  transition: all 0.4s ease;
 }
 
 .category-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--theme-box-shadow-lg);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 .category-card-image {
@@ -108,85 +69,201 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  transition: transform 0.4s ease;
+  transition: transform 0.6s ease;
 }
 
 .category-card:hover .category-card-image {
-  transform: scale(1.05); /* Efeito de zoom sutil na imagem */
+  transform: scale(1.08);
 }
 
-/* Imagens de fundo específicas */
+/* Imagens específicas para cada categoria */
 .category-card.imoveis .category-card-image {
-  background-image: url("../assets/placeholder-imovel.jpg"); /* Usar placeholder ou imagem real */
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('../assets/imoveis-bg.jpg');
 }
 
 .category-card.carros .category-card-image {
-  background-image: url("../assets/placeholder-veiculo.jpg"); /* Usar placeholder ou imagem real */
+  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('../assets/veiculos-bg.jpg');
 }
 
 .category-card-overlay {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Alinhar texto na parte inferior */
   align-items: center;
-  padding: var(--theme-spacing-lg);
+  justify-content: flex-end;
+  text-align: center;
   box-sizing: border-box;
 }
 
-.category-card p {
-  font-size: var(--theme-font-size-xl);
-  color: var(--theme-color-text-on-dark-bg, white);
-  font-weight: var(--theme-font-weight-bold);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-  margin: 0;
+.category-icon {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-icon {
+  transform: scale(1.2);
+}
+
+.category-card-overlay p {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.category-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 0.5rem;
+  max-width: 80%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.category-card:hover .category-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.category-card:hover .category-card-overlay p {
+  transform: translateY(-8px);
+}
+
+/* Barra de busca rápida */
+.homepage-search-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  max-width: 700px;
+  animation: fadeIn 1.2s ease;
+}
+
+.homepage-search-input {
+  flex-grow: 1;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.homepage-search-input:focus {
+  border-color: #4a6bff;
+  box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.15);
+}
+
+.homepage-search-button {
+  padding: 1rem 1.5rem;
+  background-color: #4a6bff;
+  color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.homepage-search-button:hover {
+  background-color: #3a56d4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(74, 107, 255, 0.25);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-  .main-content-homepage {
-    padding-top: calc(70px + var(--theme-spacing-md));
-    padding-left: var(--theme-spacing-md);
-    padding-right: var(--theme-spacing-md);
-  }
-
+@media (max-width: 992px) {
   .homepage-title {
-    font-size: calc(var(--theme-font-size-xxl) * 0.8);
-  }
-
-  .homepage-subtitle {
-    font-size: calc(var(--theme-font-size-lg) * 0.9);
-  }
-
-  .categories-grid {
-    grid-template-columns: 1fr; /* Uma coluna em telas menores */
-    gap: var(--theme-spacing-md);
-  }
-
-  .category-card {
-    aspect-ratio: 4 / 3; /* Ajustar proporção para mobile se necessário */
-  }
-
-  .homepage-search-container {
-    flex-direction: column;
-    padding: var(--theme-spacing-md);
-  }
-  .homepage-search-input {
-    border-radius: var(--theme-border-radius);
-    margin-bottom: var(--theme-spacing-sm);
-  }
-  .homepage-search-button {
-    width: 100%;
-    border-radius: var(--theme-border-radius);
-    border-left: 1px solid var(--theme-color-primary);
+    font-size: 2.2rem;
   }
 }
 
-/* Adicionar placeholders para imagens se não existirem */
-/* No seu diretório de assets, crie placeholder-imovel.jpg e placeholder-veiculo.jpg */
+@media (max-width: 768px) {
+  .main-content-homepage {
+    padding-top: calc(70px + 2rem);
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
+  .homepage-title {
+    font-size: 2rem;
+  }
+
+  .homepage-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .category-card {
+    height: 250px;
+  }
+  
+  .homepage-search-container {
+    flex-direction: column;
+  }
+  
+  .homepage-search-input {
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .homepage-search-button {
+    border-radius: 8px;
+    justify-content: center;
+  }
+}
+
+/* Estilos para dispositivos muito pequenos */
+@media (max-width: 480px) {
+  .homepage-title {
+    font-size: 1.8rem;
+  }
+
+  .category-card {
+    height: 200px;
+  }
+
+  .category-card-overlay p {
+    font-size: 1.5rem;
+  }
+  
+  .category-icon {
+    font-size: 2rem;
+  }
+}
