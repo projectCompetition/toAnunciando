@@ -6,12 +6,13 @@ import HomePage from "./publico/HomePage";
 import Anuncios from "./publico/Anuncios";
 import RecuperacaoSenha from "./components/RecuperacaoSenha";
 import ResetarSenha from "./components/ResetarSenha";
+import DetalhesAnuncio from "./publico/DetalhesAnuncio";
 
 const RotaPublica: React.FC = () => {
   return (
     <Routes>
-      <Route path="/imoveis" element={<Anuncios type={"imoveis"} />} />
-      <Route path="/veiculos" element={<Anuncios type={"veiculos"} />} />
+      <Route path="/anuncios" element={<Anuncios />} />
+      <Route path="/detalhes-anuncio/:id" element={<DetalhesAnuncio />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<Cadastro />} />
       <Route path="/homePage" element={<HomePage />} />

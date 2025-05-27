@@ -14,7 +14,7 @@ const TopbarLogado: React.FC = () => {
     setLoading(true);
     try {
       await logout();
-      navigate("/publico/homepage");
+      navigate("/homePage");
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
       // Adicionar feedback para o usuário aqui, se necessário
@@ -32,17 +32,17 @@ const TopbarLogado: React.FC = () => {
     <header className="topbar">
       <div className="logo">
         {/* O Link para a homepage pública pode ser ajustado se necessário para usuários logados */}
-        <Link to={anunciante ? "/homepage" : "/publico/homepage"} className="nav-link">
+        <Link to={anunciante ? "/" : "/homePage"} className="nav-link">
           <img src="/imagens/logo.png" alt="toAnunciando" className="logo-img" />
         </Link>
       </div>
 
       <div className="div-nav">
         <nav className="nav-menu">
-          <Link to="/imoveis" className="nav-link">
+          <Link to="/anuncios?tipo=imoveis" className="nav-link">
             Imóveis
           </Link>
-          <Link to="/veiculos" className="nav-link">
+          <Link to="/anuncios?tipo=veiculos" className="nav-link">
             Veículos
           </Link>
           {/* Adicionar mais links de navegação se necessário para usuários logados */}
@@ -82,4 +82,3 @@ const TopbarLogado: React.FC = () => {
 };
 
 export default TopbarLogado;
-

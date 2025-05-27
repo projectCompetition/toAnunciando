@@ -7,7 +7,7 @@ const Topbar: React.FC = () => {
   return (
     <header className="topbar">
       <div className="logo">
-        <Link to="/publico/homepage" className="nav-link">
+        <Link to="/homePage" className="nav-link">
           <img src="/imagens/logo.png" alt="toAnunciando" className="logo-img" />
         </Link>
       </div>
@@ -15,10 +15,10 @@ const Topbar: React.FC = () => {
       <div className="div-nav">
         <div>
           <nav className="nav-menu">
-            <Link to="/publico/imoveis" className="nav-link">
+            <Link to="/anuncios?tipo=imoveis" className="nav-link">
               Imóveis
             </Link>
-            <Link to="/publico/veiculos" className="nav-link">
+            <Link to="/anuncios?tipo=veiculos" className="nav-link">
               Veículos
             </Link>
           </nav>

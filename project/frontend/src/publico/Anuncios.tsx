@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FaFilter, FaBed, FaBath, FaCar, FaRuler, FaTachometerAlt, FaCalendarAlt, FaPaintBrush } from "react-icons/fa";
 import Topbar from "../components/Topbar";
 import TopbarLogado from "../components/TopbarLogado";
@@ -50,7 +51,7 @@ interface Imovel extends Listing {
 type ListingType = 'veiculos' | 'imoveis';
 
 interface UnifiedListingsProps {
-  type: ListingType;
+  type?: ListingType;
 }
 
 const getTipoImovelDescricao = (tipo: string) => {
@@ -71,7 +72,11 @@ const getCombustivelDescricao = (tipo: string) => {
   }
 };
 
-const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
+const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type: propType }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [type, setType] = useState<ListingType>('imoveis');
+  
   // Estados compartilhados
   const [searchTerm, setSearchTerm] = useState("");
   const [items, setItems] = useState<(Veiculo | Imovel)[]>([]);
@@ -95,7 +100,19 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
   const [filtroBanheiros, setFiltroBanheiros] = useState<number | null>(null);
   const [filtroAreaMin, setFiltroAreaMin] = useState<string>("");
 
-  const isAuthenticated = useAuth;
+  const { isAuthenticated } = useAuth();
+
+  // Determinar o tipo de anúncio com base nos query params
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tipoParam = params.get('tipo');
+    
+    if (tipoParam === 'veiculos' || tipoParam === 'imoveis') {
+      setType(tipoParam);
+    } else if (propType) {
+      setType(propType);
+    }
+  }, [location.search, propType]);
 
   // Dados mockados para demonstração
   const mockVeiculos: Veiculo[] = [
@@ -421,9 +438,14 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+  // Função para navegar para a página de detalhes do anúncio
+  const navegarParaDetalhes = (id: number) => {
+    navigate(`/detalhes-anuncio/${id}`);
+  };
+
   return (
     <div className="page-container">
-      {isAuthenticated()? <TopbarLogado /> : <Topbar />}
+      {isAuthenticated ? <TopbarLogado /> : <Topbar />}
 
       <main className="main-content">
         <div className="anuncios-header">
@@ -551,10 +573,12 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                       </div>
                     ))}
                   </div>
-                  
+                </div>
+
+                <div className="filtros-coluna">
                   <div className="filtros-linha">
                     <div className="filtro-metade">
-                      <h5>Valor máximo</h5>
+                      <h5>Valor Máximo</h5>
                       <input
                         type="text"
                         placeholder="Valor máximo (R$)"
@@ -565,20 +589,18 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                     </div>
                     
                     <div className="filtro-metade">
-                      <h5>Área mínima (m²)</h5>
+                      <h5>Área Mínima</h5>
                       <input
                         type="text"
-                        placeholder="Área mínima"
+                        placeholder="Área mínima (m²)"
                         value={filtroAreaMin}
                         onChange={(e) => setFiltroAreaMin(e.target.value)}
                         className="filtro-input"
                       />
                     </div>
                   </div>
-                </div>
-
-                <div className="filtros-coluna">
-                  <h5>Localização</h5>
+                  
+                  <h5>Cidade</h5>
                   <input
                     type="text"
                     placeholder="Cidade"
@@ -586,6 +608,8 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                     onChange={(e) => setFiltroCidade(e.target.value)}
                     className="filtro-input"
                   />
+                  
+                  <h5>Bairro</h5>
                   <input
                     type="text"
                     placeholder="Bairro"
@@ -596,36 +620,33 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                 </div>
 
                 <div className="filtros-coluna">
-                  <h5>Características</h5>
-                  <div className="filtro-caracteristicas">
-                    <div className="filtro-caracteristica">
-                      <label>Quartos (mín.)</label>
-                      <div className="contador-container">
-                        <button 
-                          className="contador-btn" 
-                          onClick={() => filtroQuartos && filtroQuartos > 1 ? setFiltroQuartos(filtroQuartos - 1) : setFiltroQuartos(null)}
-                        >-</button>
-                        <span className="contador-valor">{filtroQuartos || 'Qualquer'}</span>
-                        <button 
-                          className="contador-btn" 
-                          onClick={() => setFiltroQuartos((filtroQuartos || 0) + 1)}
-                        >+</button>
-                      </div>
+                  <div className="filtro-caracteristica">
+                    <label>Quartos (mín.)</label>
+                    <div className="contador-container">
+                      <button 
+                        className="contador-btn" 
+                        onClick={() => filtroQuartos && filtroQuartos > 1 ? setFiltroQuartos(filtroQuartos - 1) : setFiltroQuartos(null)}
+                      >-</button>
+                      <span className="contador-valor">{filtroQuartos || 'Qualquer'}</span>
+                      <button 
+                        className="contador-btn" 
+                        onClick={() => setFiltroQuartos((filtroQuartos || 0) + 1)}
+                      >+</button>
                     </div>
-                    
-                    <div className="filtro-caracteristica">
-                      <label>Banheiros (mín.)</label>
-                      <div className="contador-container">
-                        <button 
-                          className="contador-btn" 
-                          onClick={() => filtroBanheiros && filtroBanheiros > 1 ? setFiltroBanheiros(filtroBanheiros - 1) : setFiltroBanheiros(null)}
-                        >-</button>
-                        <span className="contador-valor">{filtroBanheiros || 'Qualquer'}</span>
-                        <button 
-                          className="contador-btn" 
-                          onClick={() => setFiltroBanheiros((filtroBanheiros || 0) + 1)}
-                        >+</button>
-                      </div>
+                  </div>
+                  
+                  <div className="filtro-caracteristica">
+                    <label>Banheiros (mín.)</label>
+                    <div className="contador-container">
+                      <button 
+                        className="contador-btn" 
+                        onClick={() => filtroBanheiros && filtroBanheiros > 1 ? setFiltroBanheiros(filtroBanheiros - 1) : setFiltroBanheiros(null)}
+                      >-</button>
+                      <span className="contador-valor">{filtroBanheiros || 'Qualquer'}</span>
+                      <button 
+                        className="contador-btn" 
+                        onClick={() => setFiltroBanheiros((filtroBanheiros || 0) + 1)}
+                      >+</button>
                     </div>
                   </div>
                   
@@ -726,7 +747,10 @@ const UnifiedListings: React.FC<UnifiedListingsProps> = ({ type }) => {
                         </>
                       )}
                       
-                      <button className="details-button">
+                      <button 
+                        className="details-button"
+                        onClick={() => navegarParaDetalhes(item.id)}
+                      >
                         Ver detalhes
                       </button>
                     </div>

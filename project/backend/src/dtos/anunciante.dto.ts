@@ -12,5 +12,5 @@ export class CreateAnuncianteDto {
   @IsNotEmpty() @IsString() senha: string;
   @IsOptional() @IsNumber() creditos?: number;
   @IsOptional() @IsString() complemento?: string;
-  @IsNotEmpty() @IsNumber() cep?: number;
+  @IsOptional() @IsNumber() cep?: number;
 }

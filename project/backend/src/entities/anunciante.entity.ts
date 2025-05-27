@@ -41,7 +41,7 @@ export class Anunciante {
   @Column({ type: 'varchar', length: 75, nullable: true})
   complemento?: string;
 
-  @Column({ type: 'int', nullable: false})
+  @Column({ type: 'int', nullable: true})
   cep?: number;
 
   @OneToMany(() => Imovel, (imovel) => imovel.anunciante)

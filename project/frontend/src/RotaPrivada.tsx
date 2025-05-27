@@ -7,14 +7,15 @@ import NovoAnuncio from "./privado/NovoAnuncio";
 import Profile from "./privado/Profile";
 import MeusAnuncios from "./privado/MeusAnuncios";
 import MeusCreditos from "./privado/MeusCreditos";
+import DetalhesAnuncio from "./publico/DetalhesAnuncio";
 
 const RotaPrivada: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="*" element={<HomePage />} /> 
-      <Route path="/imoveis" element={<Anuncios type={"imoveis"} />} />
-      <Route path="/veiculos" element={<Anuncios type={"veiculos"} />} />
+      <Route path="/anuncios" element={<Anuncios />} />
+      <Route path="/detalhes-anuncio/:id" element={<DetalhesAnuncio />} />
       <Route path="/minha-conta" element={<MinhaConta />} />
       <Route path="/novo-anuncio" element={<NovoAnuncio />} />
       <Route path="/profile" element={<Profile />} />
